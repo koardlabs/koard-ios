@@ -1,4 +1,4 @@
-# KoardMerchantSDK
+# Koard SDK
 
 KoardSDK is a lightweight, modern SDK designed for iOS apps to enable Tap to Pay functionality, merchant authentication, transaction processing, location management, and digital receipt delivery.
 
