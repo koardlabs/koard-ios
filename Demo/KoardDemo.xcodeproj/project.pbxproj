@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F3ACD3C2E1F59FE000E3AF3 /* KoardSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5F3ACD3B2E1F59FE000E3AF3 /* KoardSDK */; };
+		5F3ACD652E1F5C37000E3AF3 /* KoardSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5F3ACD642E1F5C37000E3AF3 /* KoardSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F3ACD3C2E1F59FE000E3AF3 /* KoardSDK in Frameworks */,
+				5F3ACD652E1F5C37000E3AF3 /* KoardSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 			);
 			name = "KoardMerchantSDK-Demo";
 			packageProductDependencies = (
-				5F3ACD3B2E1F59FE000E3AF3 /* KoardSDK */,
+				5F3ACD642E1F5C37000E3AF3 /* KoardSDK */,
 			);
 			productName = "KoardMerchantSDK-Demo";
 			productReference = 5F81592D2E14785800F70DE6 /* Koard Demo.app */;
@@ -101,7 +101,7 @@
 			mainGroup = 5F8159242E14785800F70DE6;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				5F3ACD3A2E1F59FE000E3AF3 /* XCLocalSwiftPackageReference "../../KoardSDK" */,
+				5F3ACD632E1F5C37000E3AF3 /* XCLocalSwiftPackageReference "../../Koard-public" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5F81592E2E14785800F70DE6 /* Products */;
@@ -345,14 +345,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		5F3ACD3A2E1F59FE000E3AF3 /* XCLocalSwiftPackageReference "../../KoardSDK" */ = {
+		5F3ACD632E1F5C37000E3AF3 /* XCLocalSwiftPackageReference "../../Koard-public" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../KoardSDK;
+			relativePath = "../../Koard-public";
 		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5F3ACD3B2E1F59FE000E3AF3 /* KoardSDK */ = {
+		5F3ACD642E1F5C37000E3AF3 /* KoardSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KoardSDK;
 		};
