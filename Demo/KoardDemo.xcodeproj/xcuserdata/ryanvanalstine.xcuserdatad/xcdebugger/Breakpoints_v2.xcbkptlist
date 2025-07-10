@@ -36,28 +36,28 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "BC995C4E-E2AF-47CF-8793-77FCD10D9BD7 - c49b82b30da1278e"
+                  uuid = "BC995C4E-E2AF-47CF-8793-77FCD10D9BD7 - af92781239da9281"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "(3) suspend resume partial function for Koard_Demo.KoardMerchantService.setupLocation() async throws -&gt; ()"
                   moduleName = "Koard Demo.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ryanvanalstine/Desktop/Projects/VCG/Koard-public/KoardSDK/Demo/KoardMerchantSDK-Demo/Services/KoardMerchantService.swift"
+                  urlString = "file:///Users/ryanvanalstine/Desktop/Projects/VCG/Koard-public/Demo/KoardMerchantSDK-Demo/Services/KoardMerchantService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
                   endingLineNumber = "90">
                </Location>
                <Location
-                  uuid = "BC995C4E-E2AF-47CF-8793-77FCD10D9BD7 - 3eb4cf49173dc18f"
+                  uuid = "BC995C4E-E2AF-47CF-8793-77FCD10D9BD7 - 55bd35e823467480"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "(4) suspend resume partial function for Koard_Demo.KoardMerchantService.setupLocation() async throws -&gt; ()"
                   moduleName = "Koard Demo.debug.dylib"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ryanvanalstine/Desktop/Projects/VCG/Koard-public/KoardSDK/Demo/KoardMerchantSDK-Demo/Services/KoardMerchantService.swift"
+                  urlString = "file:///Users/ryanvanalstine/Desktop/Projects/VCG/Koard-public/Demo/KoardMerchantSDK-Demo/Services/KoardMerchantService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "90"
