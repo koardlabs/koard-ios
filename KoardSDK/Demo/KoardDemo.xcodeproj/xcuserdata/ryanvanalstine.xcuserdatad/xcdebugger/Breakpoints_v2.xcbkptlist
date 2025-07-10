@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "213C44D1-CC15-4F7C-9E3D-707800A1C935"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C1C92840-1FE1-44E3-95F3-8C8BFBB898D3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KoardMerchantSDK-Demo/Services/KoardMerchantService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "authenticateMerchant()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BC995C4E-E2AF-47CF-8793-77FCD10D9BD7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KoardMerchantSDK-Demo/Services/KoardMerchantService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "setupLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BC995C4E-E2AF-47CF-8793-77FCD10D9BD7 - c49b82b30da1278e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Koard_Demo.KoardMerchantService.setupLocation() async throws -&gt; ()"
+                  moduleName = "Koard Demo.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryanvanalstine/Desktop/Projects/VCG/Koard-public/KoardSDK/Demo/KoardMerchantSDK-Demo/Services/KoardMerchantService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90">
+               </Location>
+               <Location
+                  uuid = "BC995C4E-E2AF-47CF-8793-77FCD10D9BD7 - 3eb4cf49173dc18f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Koard_Demo.KoardMerchantService.setupLocation() async throws -&gt; ()"
+                  moduleName = "Koard Demo.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ryanvanalstine/Desktop/Projects/VCG/Koard-public/KoardSDK/Demo/KoardMerchantSDK-Demo/Services/KoardMerchantService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
