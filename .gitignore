@@ -1,0 +1,43 @@
+# Xcode
+*.xcworkspace
+*.xcuserdata
+*.xcuserstate
+*.xcodeproj/project.xcworkspace/xcuserdata
+*.xcodeproj/xcuserdata
+DerivedData/
+.idea/
+*.moved-aside
+*.xcscmblueprint
+
+# SwiftPM
+.build/
+.swiftpm/
+Package.resolved
+
+# macOS Finder and system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs and temp files
+*.log
+*.swp
+*.lock
+*.tmp
+
+# Archive products
+*.xcframework
+*.ipa
+*.dSYM
+*.dSYMs
+*.xcarchive
+*.zip
+
+# Xcode Preview Assets
+PreviewContent/
+
+# User-specific
+*.orig
+*.local
+*.env
+.env.*
