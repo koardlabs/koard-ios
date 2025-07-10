@@ -11,6 +11,7 @@ DerivedData/
 
 # SwiftPM
 .build/
+.swiftpm/
 Package.resolved
 
 # macOS Finder and system files
