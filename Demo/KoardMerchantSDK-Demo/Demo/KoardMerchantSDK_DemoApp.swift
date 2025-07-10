@@ -7,9 +7,9 @@ struct KoardMerchantSDK_DemoApp: App {
 
     init() {
         koardMerchantService = KoardMerchantService(
-            apiKey: "krd_s27IllrxIdLDaA6N7bH_oIdoGsFkSQTKj0c9yUY4h04",
-            merchantCode: "6uTCmwtoDRPF",
-            merchantPin: "598993",
+            apiKey: "<Your API Key>",
+            merchantCode: "<Your Merchant Code>",
+            merchantPin: "<Your Merchant Pin>"
         )
     }
 
