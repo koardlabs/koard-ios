@@ -56,5 +56,31 @@ public protocol KoardMerchantServiceable {
     func transactionConfirmed(transactionId: String, confirm: Bool) async throws -> KoardTransaction
     func searchTransactions(searchTerm: String) async throws -> TransactionHistoryResponse
     func fetchTransactionsByStatus(status: KoardTransaction.Status) async throws -> TransactionHistoryResponse
+    
+    func captureTransaction(
+        transactionId: String,
+        subtotal: Int,
+        taxRate: Double,
+        tipAmount: Int?,
+        tipType: PaymentBreakdown.TipType,
+        finalAmount: Int?
+    ) async throws -> String
+    
+    func preauthCaptureWorkflow(
+        subtotal: Int,
+        taxRate: Double,
+        tipAmount: Int?,
+        tipType: PaymentBreakdown.TipType
+    ) async throws -> TransactionResponse
+    
+    func incrementalAuthWorkflow(
+        initialAmount: Int,
+        incrementalSubtotal: Int,
+        taxRate: Double,
+        tipAmount: Int,
+        tipType: PaymentBreakdown.TipType,
+        finalAmount: Int
+    ) async throws -> TransactionResponse
+    
     func logout()
 }

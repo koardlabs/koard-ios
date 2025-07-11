@@ -741,6 +741,7 @@ public struct TransactionResponse : Swift.Decodable {
   public var transaction: KoardSDK.KoardTransaction? {
     get
   }
+  public init(transactionId: Swift.String?, eventId: Swift.String?, status: Swift.String?, statusReason: Swift.String?, surchargeApplied: Swift.Bool?, surchargeRate: Swift.Double?, surchargeAmount: Swift.Int?, surcharging: KoardSDK.Surcharge?, mid: Swift.String?, tid: Swift.String?, processorMid: Swift.String?, processorTid: Swift.String?, accountId: Swift.String?, deviceId: Swift.String?, processor: Swift.String?, gateway: Swift.String?, currency: Swift.String?, locationId: Swift.String?, gatewayTransactionId: Swift.String?, subtotal: Swift.Int?, tipAmount: Swift.Int?, tipType: Swift.String?, taxAmount: Swift.Int?, taxRate: Swift.Int?, totalAmount: Swift.Int?, createdAt: Swift.Int?, paymentMethod: Swift.String?, cardType: Swift.String?, cardBrand: Swift.String?, card: Swift.String?, processorResponseCode: Swift.String?, processorResponseMessage: Swift.String?, transactionType: Swift.String?, appleTransactionId: Swift.String?, readerIdentifier: Swift.String?, refunded: Swift.Int?, reversed: Swift.Int?, ownerId: Swift.String?, parentAccountIds: [Swift.String]?)
   public init(from decoder: any Swift.Decoder) throws
 }
 extension KoardSDK.ProcessorGateway : Swift.Equatable {}

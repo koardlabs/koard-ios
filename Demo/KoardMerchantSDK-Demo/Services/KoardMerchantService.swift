@@ -165,7 +165,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
         // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
         // return the original result instead of initiating a new charge.
         let eventId = UUID().uuidString
-        
+
         // Create currency
         let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
         let amount = subtotal + taxAmount + (tipAmount ?? 0)
@@ -299,7 +299,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
             // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
             // return the original result instead of initiating a new charge.
             let eventId = UUID().uuidString
-            
+
             let response = try await KoardMerchantSDK.shared.refund(
                 transactionId: transactionId,
                 amount: amount, // nil for full refund
@@ -332,7 +332,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
         // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
         // return the original result instead of initiating a new charge.
         let eventId = UUID().uuidString
-        
+
         do {
             let response = try await KoardMerchantSDK.shared.auth(
                 transactionId: transactionId,
@@ -359,10 +359,10 @@ public class KoardMerchantService: KoardMerchantServiceable {
             // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
             // return the original result instead of initiating a new charge.
             let eventId = UUID().uuidString
-            
+
             let response = try await KoardMerchantSDK.shared.reverse(
                 transactionId: transactionId,
-                amount: amount,// nil for full reversal
+                amount: amount, // nil for full reversal
                 eventId: eventId
             )
 
@@ -372,6 +372,198 @@ public class KoardMerchantService: KoardMerchantServiceable {
             print("Reversal failed: \(error)")
             throw error
         }
+    }
+
+    /// Finalizes a previously authorized transaction by capturing funds from the cardholder.
+    ///
+    /// This method completes a pre-authorized transaction by capturing either the originally authorized amount
+    /// or an updated amount based on a new subtotal, tax, and optional tip. It calculates the final tax from the
+    /// provided subtotal and tax rate, and constructs a `PaymentBreakdown` to pass into the capture request.
+    ///
+    /// A unique `eventId` is generated and included with the capture call to ensure idempotency. If the operation
+    /// is retried (e.g. due to a network error), using the same `eventId` ensures Koard returns the original
+    /// capture result instead of processing a duplicate charge.
+    ///
+    /// - Parameters:
+    ///   - transactionId: The identifier of the pre-authorized transaction to capture.
+    ///   - subtotal: The transaction subtotal in cents (e.g. `1000` = $10.00).
+    ///   - taxRate: The tax rate as a decimal percentage (e.g. `8.75` for 8.75%).
+    ///   - tipAmount: An optional tip amount in cents. Defaults to `0`.
+    ///   - tipType: The tip type, such as `.fixed` or `.percent`. Defaults to `.fixed`.
+    ///   - finalAmount: An optional override for the final amount to capture. If `nil`, the full preauthorized amount is captured.
+    /// - Returns: A `String` representing the generated `eventId` used for this capture.
+    /// - Throws: An error if the capture fails or if the transaction is not in a capturable state.
+    public func captureTransaction(
+        transactionId: String,
+        subtotal: Int,
+        taxRate: Double,
+        tipAmount: Int? = 0,
+        tipType: PaymentBreakdown.TipType = .fixed,
+        finalAmount: Int? = nil
+    ) async throws -> String {
+        let taxAmount = Int((Double(subtotal) * taxRate / 100.0).rounded())
+
+        // Optional: Update breakdown with final tip amount
+        let finalBreakdown = PaymentBreakdown(
+            subtotal: subtotal,
+            taxRate: Int(taxRate * 100),
+            taxAmount: taxAmount,
+            tipAmount: tipAmount ?? 0,
+            tipType: tipType
+        )
+
+        // To ensure idempotency in sale requests, use the optional eventID parameter.
+        // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
+        // return the original result instead of initiating a new charge.
+        let eventId = UUID().uuidString
+
+        do {
+            let response = try await KoardMerchantSDK.shared.capture(
+                transactionId: transactionId,
+                amount: finalAmount, // nil to capture full authorized amount
+                breakdown: finalBreakdown, // Optional: updated breakdown with final tip
+                eventId: eventId
+            )
+
+            print("Capture successful: \(response.transactionId ?? "Unknown")")
+            return eventId
+
+        } catch {
+            print("Capture failed: \(error)")
+            throw error
+        }
+    }
+
+    /// Executes a complete pre-authorization and capture workflow for a card-present transaction.
+    ///
+    /// This function first performs a pre-authorization for the base `subtotal` amount in USD, then captures
+    /// the final amount after applying tax and an optional tip. It constructs a `PaymentBreakdown` using the
+    /// provided values and calculates the tax amount from the `taxRate`.
+    ///
+    /// A unique `eventId` is generated and included in the capture request to ensure idempotency. If the capture
+    /// call is retried due to a network failure or timeout, reusing the same `eventId` ensures Koard will return
+    /// the original result instead of processing a duplicate charge.
+    ///
+    /// - Parameters:
+    ///   - subtotal: The base transaction amount in cents (e.g., `1000` = $10.00).
+    ///   - taxRate: The tax rate as a decimal percentage (e.g., `8.75` for 8.75%).
+    ///   - tipAmount: An optional tip amount in cents. Defaults to `0`.
+    ///   - tipType: The type of tip (e.g., `.fixed` or `.percent`). Defaults to `.fixed`.
+    /// - Returns: A `TransactionResponse` containing the result of the final capture operation.
+    /// - Throws: An error if the pre-authorization or capture step fails.
+    public func preauthCaptureWorkflow(
+        subtotal: Int,
+        taxRate: Double,
+        tipAmount: Int? = 0,
+        tipType: PaymentBreakdown.TipType = .fixed
+    ) async throws -> TransactionResponse {
+        let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
+
+        // Step 1: Preauthorize base amount
+        let preauthResponse = try await KoardMerchantSDK.shared.preauth(
+            amount: subtotal,
+            currency: currency
+        )
+
+        let authorizedTransactionId = preauthResponse.transactionId!
+        print("Preauth completed: \(authorizedTransactionId)")
+
+        // Step 2: Customer adds tip, create final breakdown
+        let taxAmount = Int((Double(subtotal) * taxRate / 100.0).rounded())
+
+        // Optional: Update breakdown with final tip amount
+        let finalBreakdown = PaymentBreakdown(
+            subtotal: subtotal,
+            taxRate: Int(taxRate * 100),
+            taxAmount: taxAmount,
+            tipAmount: tipAmount ?? 0,
+            tipType: tipType
+        )
+
+        // To ensure idempotency in sale requests, use the optional eventID parameter.
+        // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
+        // return the original result instead of initiating a new charge.
+        let eventId = UUID().uuidString
+        let amount = subtotal + taxAmount + (tipAmount ?? 0)
+        
+        // Step 3: Capture with final amount and breakdown
+        let captureResponse = try await KoardMerchantSDK.shared.capture(
+            transactionId: authorizedTransactionId,
+            amount: amount, // $12.88 final amount
+            breakdown: finalBreakdown,
+            eventId: eventId
+        )
+
+        return captureResponse
+    }
+
+    /// Executes an incremental authorization and final capture workflow on a pre-authorized transaction.
+    ///
+    /// - Parameters:
+    ///   - initialAmount: The amount (in cents) to pre-authorize initially.
+    ///   - incrementalSubtotal: The additional subtotal amount for incremental auth (in cents).
+    ///   - taxRate: The tax rate as a decimal percentage (e.g. 8.75 for 8.75%).
+    ///   - tipAmount: Optional tip amount in cents to include in the final capture. Defaults to `0`.
+    ///   - tipType: The type of tip (`.fixed` or `.percent`). Defaults to `.fixed`.
+    ///   - finalAmount: The full final amount (in cents) to capture after preauth + incremental + tip.
+    /// - Returns: A `TransactionResponse` for the final captured transaction.
+    /// - Throws: An error if any step in the preauth, incremental auth, or capture process fails.
+    public func incrementalAuthWorkflow(
+        initialAmount: Int,
+        incrementalSubtotal: Int,
+        taxRate: Double,
+        tipAmount: Int = 0,
+        tipType: PaymentBreakdown.TipType = .fixed,
+        finalAmount: Int
+    ) async throws -> TransactionResponse {
+        
+        let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
+
+        // Step 1: Initial preauth
+        let preauthResponse = try await KoardMerchantSDK.shared.preauth(
+            amount: initialAmount,
+            currency: currency
+        )
+
+        let authorizedTransactionId = preauthResponse.transactionId!
+        
+        // Step 2: Incremental authorization for additional items
+        let incrementalTax = Int((Double(incrementalSubtotal) * taxRate / 100.0).rounded())
+        let additionalBreakdown = PaymentBreakdown(
+            subtotal: incrementalSubtotal,
+            taxRate: Int(taxRate * 100),
+            taxAmount: incrementalTax,
+            tipAmount: 0,
+            tipType: .fixed
+        )
+
+        let eventId = UUID().uuidString
+
+        let _ = try await KoardMerchantSDK.shared.auth(
+            transactionId: authorizedTransactionId,
+            amount: incrementalSubtotal + incrementalTax,
+            breakdown: additionalBreakdown,
+            eventId: eventId
+        )
+
+        // Step 3: Final capture including all charges and tip
+        let totalTax = Int((Double(initialAmount + incrementalSubtotal) * taxRate / 100.0).rounded())
+        let finalBreakdown = PaymentBreakdown(
+            subtotal: initialAmount + incrementalSubtotal,
+            taxRate: Int(taxRate * 100),
+            taxAmount: totalTax,
+            tipAmount: tipAmount,
+            tipType: tipType
+        )
+
+        let captureResponse = try await KoardMerchantSDK.shared.capture(
+            transactionId: authorizedTransactionId,
+            amount: finalAmount,
+            breakdown: finalBreakdown,
+            eventId: eventId
+        )
+
+        return captureResponse
     }
 }
 

@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		XjlBt8pAp5/6qvaXu5UuE529TZo=
+		voUcjhZAI/ZzX7GkQtDU2HJP/sA=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		5BTXN9v/rPikaQ7kEZrXJgvF4Sg=
+		cVAFM2FfqziMEG5iBjduSYlA7I8=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -34,19 +34,19 @@
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		5BTXN9v/rPikaQ7kEZrXJgvF4Sg=
+		cVAFM2FfqziMEG5iBjduSYlA7I8=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		+H5cPLc8JR3vYkxPJ5Ee9zu/tpY=
+		wS0WBr9x4WErHlNntegooo08f5Q=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		XjlBt8pAp5/6qvaXu5UuE529TZo=
+		voUcjhZAI/ZzX7GkQtDU2HJP/sA=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		YILnHHsoTumaWBxBPsYKlCXy8HY=
+		Yz3nQHH3NZ2GIFCAXPRM/2KFvO4=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		YILnHHsoTumaWBxBPsYKlCXy8HY=
+		Yz3nQHH3NZ2GIFCAXPRM/2KFvO4=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		WiRZSZsehi7+nQ+Vc4vYmG91UI0=
+		jcdT12Fg99MRHhdDN1FI40DDNfE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -92,14 +92,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			29E5hNzGGjH7mn0ldHyLQlNdi1u3IqvPWKAbxWAZt1A=
+			bagfzMNc2ml4d3w5icfNGQHXNWol+9pUxebbznMpXb0=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CcuXECX1H3i+e28JHetT4nwu4VI0zEdVf7Yl3Er6cb8=
+			Mi/3CII+LaBuBuQ412jYWFL3bzp2nHExrBc4c3ub34o=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -113,28 +113,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CcuXECX1H3i+e28JHetT4nwu4VI0zEdVf7Yl3Er6cb8=
+			Mi/3CII+LaBuBuQ412jYWFL3bzp2nHExrBc4c3ub34o=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			G9N1fa/I1Lr731StVYci9s3TFDmIVmLpTY2dqfkR2Ho=
+			toydUZk8gAQ1n7nZ8ckDdpgUkgnWHfBk6iWq+zOUu4I=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			29E5hNzGGjH7mn0ldHyLQlNdi1u3IqvPWKAbxWAZt1A=
+			bagfzMNc2ml4d3w5icfNGQHXNWol+9pUxebbznMpXb0=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XtoxnTwuj6Lfx2I9rnB7a05XxyxeOaxIX69feOqTnDo=
+			afkXA/QBPR2kSQlhui9ogE3zeXvjgHAiVYQeKupshxE=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -148,14 +148,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XtoxnTwuj6Lfx2I9rnB7a05XxyxeOaxIX69feOqTnDo=
+			afkXA/QBPR2kSQlhui9ogE3zeXvjgHAiVYQeKupshxE=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RWNZ4bEN5T9KXX5FxEtknwPYIzITQt8xmEQEiPWGAko=
+			tr7OI/s/S9ceezk39OzdYKraTF0ouOy7CN19W58hyFI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

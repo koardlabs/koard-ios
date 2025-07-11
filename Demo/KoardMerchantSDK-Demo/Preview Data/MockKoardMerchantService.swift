@@ -107,5 +107,36 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
         .mockApprovedTransaction
     }
 
+    public func captureTransaction(
+        transactionId: String,
+        subtotal: Int,
+        taxRate: Double,
+        tipAmount: Int? = 0,
+        tipType: PaymentBreakdown.TipType = .fixed,
+        finalAmount: Int? = nil
+    ) async throws -> String {
+        "sample-event-id"
+    }
+
+    public func preauthCaptureWorkflow(
+        subtotal: Int,
+        taxRate: Double,
+        tipAmount: Int?,
+        tipType: PaymentBreakdown.TipType
+    ) async throws -> TransactionResponse {
+        .mockCapturedTransaction
+    }
+
+    public func incrementalAuthWorkflow(
+        initialAmount: Int,
+        incrementalSubtotal: Int,
+        taxRate: Double,
+        tipAmount: Int,
+        tipType: PaymentBreakdown.TipType,
+        finalAmount: Int
+    ) async throws -> TransactionResponse {
+        .mockCapturedTransaction
+    }
+
     public func logout() {}
 }
