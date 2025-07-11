@@ -13200,6 +13200,50 @@
           },
           {
             "kind": "Var",
+            "name": "eventId",
+            "printedName": "eventId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8KoardSDK0A11TransactionV7eventIdSSvp",
+            "mangledName": "$s8KoardSDK0A11TransactionV7eventIdSSvp",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8KoardSDK0A11TransactionV7eventIdSSvg",
+                "mangledName": "$s8KoardSDK0A11TransactionV7eventIdSSvg",
+                "moduleName": "KoardSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "tid",
             "printedName": "tid",
             "children": [
@@ -26368,1344 +26412,1344 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 70,
       "length": 13,
       "value": "\"bleu_sierra\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 108,
       "length": 15,
       "value": "\"payroc_sierra\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1022,
       "length": 17,
       "value": "\"organization_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1070,
       "length": 19,
       "value": "\"has_access_to_mms\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1128,
       "length": 28,
       "value": "\"has_access_to_apple_config\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1198,
       "length": 29,
       "value": "\"available_processor_configs\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1249,
       "length": 8,
       "value": "\"tax_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1388,
       "length": 20,
       "value": "\"parent_account_ids\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1455,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1493,
       "length": 12,
       "value": "\"deleted_at\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1531,
       "length": 12,
       "value": "\"updated_at\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Address.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Address.swift",
       "kind": "StringLiteral",
       "offset": 256,
       "length": 14,
       "value": "\"street_line1\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Address.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Address.swift",
       "kind": "StringLiteral",
       "offset": 298,
       "length": 14,
       "value": "\"street_line2\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 67,
       "length": 5,
       "value": "\"GET\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 89,
       "length": 6,
       "value": "\"POST\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 111,
       "length": 5,
       "value": "\"PUT\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 135,
       "length": 8,
       "value": "\"DELETE\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 1504,
       "length": 19,
       "value": "\"v1\/merchant\/login\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "IntegerLiteral",
       "offset": 2233,
       "length": 4,
       "value": "3600"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 2361,
       "length": 38,
       "value": "\"[Auth] Login successful, token saved\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/AuthorizeRequestModel.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/AuthorizeRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 207,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/CardReadData.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/CardReadData.swift",
       "kind": "StringLiteral",
       "offset": 623,
       "length": 13,
       "value": "\"location_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/CardReadData.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/CardReadData.swift",
       "kind": "StringLiteral",
       "offset": 660,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/ConfirmationModel.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/ConfirmationModel.swift",
       "kind": "StringLiteral",
       "offset": 204,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Extensions\/DateFormatter+Extensions.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Extensions\/DateFormatter+Extensions.swift",
       "kind": "StringLiteral",
       "offset": 965,
       "length": 18,
       "value": "\"America\/New_York\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 130,
       "length": 38,
       "value": "\"com.koard.merchantsdk.keys.devicekey\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 208,
       "length": 35,
       "value": "\"Koard Merchant Device Certificate\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 278,
       "length": 17,
       "value": "\"merchantCodeKey\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 328,
       "length": 16,
       "value": "\"merchantPinKey\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 376,
       "length": 15,
       "value": "\"locationIDKey\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 431,
       "length": 22,
       "value": "\"processingTerminalID\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 509,
       "length": 17,
       "value": "\"authAccessToken\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 569,
       "length": 27,
       "value": "\"authAccessTokenExpiration\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 627,
       "length": 19,
       "value": "\"merchantAccountID\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 713,
       "length": 20,
       "value": "\"showTTPTutorialKey\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 885,
       "length": 23,
       "value": "\"https:\/\/api.koard.com\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/FallbackRequestData.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/FallbackRequestData.swift",
       "kind": "StringLiteral",
       "offset": 251,
       "length": 13,
       "value": "\"location_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/FallbackResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/FallbackResponse.swift",
       "kind": "StringLiteral",
       "offset": 158,
       "length": 15,
       "value": "\"fallback_link\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 466,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 501,
       "length": 2,
       "value": "20"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
       "kind": "StringLiteral",
       "offset": 840,
       "length": 10,
       "value": "\"pgNumber\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
       "kind": "StringLiteral",
       "offset": 875,
       "length": 8,
       "value": "\"pgSize\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 869,
       "length": 3,
       "value": "100"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 936,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "StringLiteral",
       "offset": 1019,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "StringLiteral",
       "offset": 1122,
       "length": 6,
       "value": "\"desc\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 1788,
       "length": 3,
       "value": "100"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 1815,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "StringLiteral",
       "offset": 1843,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "StringLiteral",
       "offset": 1885,
       "length": 6,
       "value": "\"desc\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Services\/KeychainService.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Services\/KeychainService.swift",
       "kind": "StringLiteral",
       "offset": 99,
       "length": 15,
       "value": "\"com.koard.sdk\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
       "kind": "IntegerLiteral",
       "offset": 9200,
       "length": 3,
       "value": "100"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
       "kind": "IntegerLiteral",
       "offset": 9227,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
       "kind": "StringLiteral",
       "offset": 9255,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
       "kind": "StringLiteral",
       "offset": 9297,
       "length": 6,
       "value": "\"desc\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
       "kind": "BooleanLiteral",
       "offset": 3987,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
       "kind": "BooleanLiteral",
       "offset": 4212,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 689,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 700,
       "length": 5,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 715,
       "length": 7,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 732,
       "length": 5,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 747,
       "length": 7,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 2282,
+      "offset": 2289,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 2322,
+      "offset": 2329,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 2383,
+      "offset": 2390,
       "length": 15,
       "value": "\"processor_mid\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 2427,
+      "offset": 2434,
       "length": 15,
       "value": "\"processor_tid\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 2468,
+      "offset": 2475,
       "length": 12,
       "value": "\"account_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 2505,
+      "offset": 2512,
       "length": 11,
       "value": "\"device_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2585,
-      "length": 13,
-      "value": "\"location_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2635,
-      "length": 24,
-      "value": "\"gateway_transaction_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2707,
-      "length": 12,
-      "value": "\"tip_amount\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2743,
-      "length": 10,
-      "value": "\"tip_type\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2779,
-      "length": 12,
-      "value": "\"tax_amount\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2815,
-      "length": 10,
-      "value": "\"tax_rate\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2853,
-      "length": 14,
-      "value": "\"total_amount\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2900,
-      "length": 19,
-      "value": "\"surcharge_applied\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2951,
-      "length": 18,
-      "value": "\"surcharge_amount\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 2999,
-      "length": 16,
-      "value": "\"surcharge_rate\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3071,
-      "length": 10,
-      "value": "\"owner_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3114,
-      "length": 20,
-      "value": "\"parent_account_ids\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3160,
-      "length": 12,
-      "value": "\"created_at\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3221,
-      "length": 15,
-      "value": "\"status_reason\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3266,
-      "length": 16,
-      "value": "\"payment_method\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3307,
-      "length": 11,
-      "value": "\"card_type\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3344,
-      "length": 12,
-      "value": "\"card_brand\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3408,
-      "length": 20,
-      "value": "\"additional_details\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3471,
-      "length": 30,
-      "value": "\"gateway_transaction_response\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3539,
-      "length": 25,
-      "value": "\"processor_response_code\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3605,
-      "length": 28,
-      "value": "\"processor_response_message\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3665,
-      "length": 18,
-      "value": "\"transaction_type\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3718,
-      "length": 22,
-      "value": "\"apple_transaction_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3773,
-      "length": 19,
-      "value": "\"reader_identifier\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3828,
-      "length": 22,
-      "value": "\"surcharge_disclosure\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3883,
-      "length": 19,
-      "value": "\"surcharge_allowed\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 3938,
-      "length": 22,
-      "value": "\"surcharge_percentage\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 4109,
-      "length": 19,
-      "value": "\"surcharge_pending\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 4161,
-      "length": 19,
-      "value": "\"surcharge_applied\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 4295,
-      "length": 13,
-      "value": "\"pickup_card\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/KoardTransaction.swift",
-      "kind": "StringLiteral",
-      "offset": 4333,
-      "length": 11,
-      "value": "\"timed_out\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Location.swift",
-      "kind": "StringLiteral",
-      "offset": 696,
-      "length": 12,
-      "value": "\"account_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Location.swift",
-      "kind": "StringLiteral",
-      "offset": 800,
-      "length": 21,
-      "value": "\"processor_config_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Location.swift",
-      "kind": "StringLiteral",
-      "offset": 849,
-      "length": 14,
-      "value": "\"country_code\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Location.swift",
-      "kind": "StringLiteral",
-      "offset": 912,
-      "length": 13,
-      "value": "\"terminal_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Location.swift",
-      "kind": "StringLiteral",
-      "offset": 973,
-      "length": 12,
-      "value": "\"created_at\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Location.swift",
-      "kind": "StringLiteral",
-      "offset": 1011,
-      "length": 12,
-      "value": "\"updated_at\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Location.swift",
-      "kind": "StringLiteral",
-      "offset": 1049,
-      "length": 12,
-      "value": "\"deleted_at\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/LoginResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 157,
-      "length": 7,
-      "value": "\"token\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/LoginResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 190,
-      "length": 12,
-      "value": "\"account_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/PaymentType.swift",
-      "kind": "StringLiteral",
-      "offset": 226,
-      "length": 12,
-      "value": "\"tip_adjust\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/PaymentType.swift",
-      "kind": "StringLiteral",
-      "offset": 266,
-      "length": 18,
-      "value": "\"incremental_auth\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/ProcessAuthRequestModel.swift",
-      "kind": "StringLiteral",
-      "offset": 286,
-      "length": 10,
-      "value": "\"event_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/ProcessCaptureRequestModel.swift",
-      "kind": "StringLiteral",
-      "offset": 272,
-      "length": 10,
-      "value": "\"event_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
-      "kind": "StringLiteral",
-      "offset": 869,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 18064,
-      "length": 12,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 18147,
-      "length": 13,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
-      "kind": "IntegerLiteral",
-      "offset": 18222,
-      "length": 7,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/RefundRequestModel.swift",
-      "kind": "StringLiteral",
-      "offset": 301,
-      "length": 10,
-      "value": "\"event_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/ReverseRequestModel.swift",
-      "kind": "StringLiteral",
-      "offset": 384,
-      "length": 16,
-      "value": "\"transaction_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/ReverseRequestModel.swift",
-      "kind": "StringLiteral",
-      "offset": 444,
-      "length": 10,
-      "value": "\"event_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/SendReceiptsRequest.swift",
-      "kind": "StringLiteral",
-      "offset": 258,
-      "length": 16,
-      "value": "\"transaction_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/Requests\/SendReceiptsRequest.swift",
-      "kind": "StringLiteral",
-      "offset": 321,
-      "length": 14,
-      "value": "\"phone_number\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/KoardLogger\/SimpleOSLogger.swift",
-      "kind": "StringLiteral",
-      "offset": 95,
-      "length": 24,
-      "value": "\"com.koard.merchant-sdk\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/KoardLogger\/SimpleOSLogger.swift",
-      "kind": "StringLiteral",
-      "offset": 131,
-      "length": 18,
-      "value": "\"KoardMerchantSDK\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 155,
-      "length": 19,
-      "value": "\"surcharge_expired\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 203,
-      "length": 19,
-      "value": "\"surcharge_pending\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 259,
-      "length": 29,
-      "value": "\"surcharge_declined_by_payer\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 314,
-      "length": 16,
-      "value": "\"payment_failed\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 351,
-      "length": 11,
-      "value": "\"timed_out\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 386,
-      "length": 14,
-      "value": "\"invalid_card\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 430,
-      "length": 20,
-      "value": "\"insufficient_funds\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 475,
-      "length": 15,
-      "value": "\"user_canceled\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 519,
-      "length": 19,
-      "value": "\"merchant_canceled\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/StatusReason.swift",
-      "kind": "StringLiteral",
-      "offset": 571,
-      "length": 25,
-      "value": "\"reversed_due_to_timeout\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 409,
-      "length": 14,
-      "value": "\"access_token\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 555,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 880,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 928,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1038,
-      "length": 4,
-      "value": "3600"
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1454,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2283,
-      "length": 2,
-      "value": "90"
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2288,
-      "length": 2,
-      "value": "60"
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 3253,
-      "length": 75,
-      "value": "\"Requesting card reader token for Tap to Pay: \""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 3327,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 3390,
-      "length": 25,
-      "value": "\"v1\/merchant\/apple-token\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 3462,
-      "length": 25,
-      "value": "\"CardReaderTokenProvider\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3495,
-      "length": 1,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 3536,
-      "length": 13,
-      "value": "\"Invalid URL\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 3647,
-      "length": 6,
-      "value": "\"POST\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 3733,
-      "length": 16,
-      "value": "\"X-Koard-Apikey\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 3940,
-      "length": 61,
-      "value": "\"Including merchant login token in card reader token request\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4036,
-      "length": 64,
-      "value": "\"Bearer \""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4099,
-      "length": 24,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4122,
-      "length": 15,
-      "value": "\"Authorization\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4191,
-      "length": 66,
-      "value": "\"No merchant login token available for card reader token request!\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4303,
-      "length": 18,
-      "value": "\"application\/json\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4343,
-      "length": 14,
-      "value": "\"Content-Type\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4516,
-      "length": 75,
-      "value": "\"Including locationID in card reader token request: \""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4584,
-      "length": 5,
-      "value": "\"nil\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4590,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 4769,
-      "length": 15,
-      "value": "\"X-Location-ID\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 5153,
-      "length": 73,
-      "value": "\"Received card reader token for Tap to Pay: \""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/TapToPhone\/TokenProvider.swift",
-      "kind": "StringLiteral",
-      "offset": 5225,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2015,
-      "length": 16,
-      "value": "\"transaction_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2055,
-      "length": 10,
-      "value": "\"event_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2114,
-      "length": 15,
-      "value": "\"status_reason\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2162,
-      "length": 19,
-      "value": "\"surcharge_applied\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2211,
-      "length": 16,
-      "value": "\"surcharge_rate\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2259,
-      "length": 18,
-      "value": "\"surcharge_amount\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2366,
-      "length": 15,
-      "value": "\"processor_mid\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2410,
-      "length": 15,
-      "value": "\"processor_tid\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2451,
-      "length": 12,
-      "value": "\"account_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
-      "kind": "StringLiteral",
-      "offset": 2488,
-      "length": 11,
-      "value": "\"device_id\""
-    },
-    {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 2592,
       "length": 13,
       "value": "\"location_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 2642,
       "length": 24,
       "value": "\"gateway_transaction_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 2714,
       "length": 12,
       "value": "\"tip_amount\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 2750,
       "length": 10,
       "value": "\"tip_type\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 2786,
       "length": 12,
       "value": "\"tax_amount\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 2822,
       "length": 10,
       "value": "\"tax_rate\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 2860,
       "length": 14,
       "value": "\"total_amount\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 2907,
+      "length": 19,
+      "value": "\"surcharge_applied\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 2958,
+      "length": 18,
+      "value": "\"surcharge_amount\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3006,
+      "length": 16,
+      "value": "\"surcharge_rate\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3078,
+      "length": 10,
+      "value": "\"owner_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3121,
+      "length": 20,
+      "value": "\"parent_account_ids\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3167,
+      "length": 12,
+      "value": "\"created_at\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3228,
+      "length": 15,
+      "value": "\"status_reason\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3273,
+      "length": 16,
+      "value": "\"payment_method\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3314,
+      "length": 11,
+      "value": "\"card_type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3351,
+      "length": 12,
+      "value": "\"card_brand\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3415,
+      "length": 20,
+      "value": "\"additional_details\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3478,
+      "length": 30,
+      "value": "\"gateway_transaction_response\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3546,
+      "length": 25,
+      "value": "\"processor_response_code\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3612,
+      "length": 28,
+      "value": "\"processor_response_message\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3672,
+      "length": 18,
+      "value": "\"transaction_type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3725,
+      "length": 22,
+      "value": "\"apple_transaction_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3780,
+      "length": 19,
+      "value": "\"reader_identifier\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3835,
+      "length": 22,
+      "value": "\"surcharge_disclosure\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3890,
+      "length": 19,
+      "value": "\"surcharge_allowed\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 3945,
+      "length": 22,
+      "value": "\"surcharge_percentage\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 4116,
+      "length": 19,
+      "value": "\"surcharge_pending\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 4168,
+      "length": 19,
+      "value": "\"surcharge_applied\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 4302,
+      "length": 13,
+      "value": "\"pickup_card\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
+      "kind": "StringLiteral",
+      "offset": 4340,
+      "length": 11,
+      "value": "\"timed_out\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Location.swift",
+      "kind": "StringLiteral",
+      "offset": 696,
+      "length": 12,
+      "value": "\"account_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Location.swift",
+      "kind": "StringLiteral",
+      "offset": 800,
+      "length": 21,
+      "value": "\"processor_config_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Location.swift",
+      "kind": "StringLiteral",
+      "offset": 849,
+      "length": 14,
+      "value": "\"country_code\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Location.swift",
+      "kind": "StringLiteral",
+      "offset": 912,
+      "length": 13,
+      "value": "\"terminal_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Location.swift",
+      "kind": "StringLiteral",
+      "offset": 973,
+      "length": 12,
+      "value": "\"created_at\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Location.swift",
+      "kind": "StringLiteral",
+      "offset": 1011,
+      "length": 12,
+      "value": "\"updated_at\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Location.swift",
+      "kind": "StringLiteral",
+      "offset": 1049,
+      "length": 12,
+      "value": "\"deleted_at\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/LoginResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 157,
+      "length": 7,
+      "value": "\"token\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/LoginResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 190,
+      "length": 12,
+      "value": "\"account_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/PaymentType.swift",
+      "kind": "StringLiteral",
+      "offset": 226,
+      "length": 12,
+      "value": "\"tip_adjust\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/PaymentType.swift",
+      "kind": "StringLiteral",
+      "offset": 266,
+      "length": 18,
+      "value": "\"incremental_auth\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/ProcessAuthRequestModel.swift",
+      "kind": "StringLiteral",
+      "offset": 286,
+      "length": 10,
+      "value": "\"event_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/ProcessCaptureRequestModel.swift",
+      "kind": "StringLiteral",
+      "offset": 272,
+      "length": 10,
+      "value": "\"event_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "kind": "StringLiteral",
+      "offset": 869,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18064,
+      "length": 12,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18147,
+      "length": 13,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18222,
+      "length": 7,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/RefundRequestModel.swift",
+      "kind": "StringLiteral",
+      "offset": 301,
+      "length": 10,
+      "value": "\"event_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/ReverseRequestModel.swift",
+      "kind": "StringLiteral",
+      "offset": 384,
+      "length": 16,
+      "value": "\"transaction_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/ReverseRequestModel.swift",
+      "kind": "StringLiteral",
+      "offset": 444,
+      "length": 10,
+      "value": "\"event_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/SendReceiptsRequest.swift",
+      "kind": "StringLiteral",
+      "offset": 258,
+      "length": 16,
+      "value": "\"transaction_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/Requests\/SendReceiptsRequest.swift",
+      "kind": "StringLiteral",
+      "offset": 321,
+      "length": 14,
+      "value": "\"phone_number\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardLogger\/SimpleOSLogger.swift",
+      "kind": "StringLiteral",
+      "offset": 95,
+      "length": 24,
+      "value": "\"com.koard.merchant-sdk\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardLogger\/SimpleOSLogger.swift",
+      "kind": "StringLiteral",
+      "offset": 131,
+      "length": 18,
+      "value": "\"KoardMerchantSDK\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 155,
+      "length": 19,
+      "value": "\"surcharge_expired\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 203,
+      "length": 19,
+      "value": "\"surcharge_pending\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 259,
+      "length": 29,
+      "value": "\"surcharge_declined_by_payer\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 314,
+      "length": 16,
+      "value": "\"payment_failed\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 351,
+      "length": 11,
+      "value": "\"timed_out\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 386,
+      "length": 14,
+      "value": "\"invalid_card\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 430,
+      "length": 20,
+      "value": "\"insufficient_funds\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 475,
+      "length": 15,
+      "value": "\"user_canceled\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 519,
+      "length": 19,
+      "value": "\"merchant_canceled\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/StatusReason.swift",
+      "kind": "StringLiteral",
+      "offset": 571,
+      "length": 25,
+      "value": "\"reversed_due_to_timeout\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 409,
+      "length": 14,
+      "value": "\"access_token\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 555,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 880,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 928,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1038,
+      "length": 4,
+      "value": "3600"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1454,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2283,
+      "length": 2,
+      "value": "90"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2288,
+      "length": 2,
+      "value": "60"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 3253,
+      "length": 75,
+      "value": "\"Requesting card reader token for Tap to Pay: \""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 3327,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 3390,
+      "length": 25,
+      "value": "\"v1\/merchant\/apple-token\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 3462,
+      "length": 25,
+      "value": "\"CardReaderTokenProvider\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3495,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 3536,
+      "length": 13,
+      "value": "\"Invalid URL\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 3647,
+      "length": 6,
+      "value": "\"POST\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 3733,
+      "length": 16,
+      "value": "\"X-Koard-Apikey\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 3940,
+      "length": 61,
+      "value": "\"Including merchant login token in card reader token request\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4036,
+      "length": 64,
+      "value": "\"Bearer \""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4099,
+      "length": 24,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4122,
+      "length": 15,
+      "value": "\"Authorization\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4191,
+      "length": 66,
+      "value": "\"No merchant login token available for card reader token request!\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4303,
+      "length": 18,
+      "value": "\"application\/json\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4343,
+      "length": 14,
+      "value": "\"Content-Type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4516,
+      "length": 75,
+      "value": "\"Including locationID in card reader token request: \""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4584,
+      "length": 5,
+      "value": "\"nil\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4590,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 4769,
+      "length": 15,
+      "value": "\"X-Location-ID\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 5153,
+      "length": 73,
+      "value": "\"Received card reader token for Tap to Pay: \""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
+      "kind": "StringLiteral",
+      "offset": 5225,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2015,
+      "length": 16,
+      "value": "\"transaction_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2055,
+      "length": 10,
+      "value": "\"event_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2114,
+      "length": 15,
+      "value": "\"status_reason\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2162,
+      "length": 19,
+      "value": "\"surcharge_applied\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2211,
+      "length": 16,
+      "value": "\"surcharge_rate\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2259,
+      "length": 18,
+      "value": "\"surcharge_amount\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2366,
+      "length": 15,
+      "value": "\"processor_mid\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2410,
+      "length": 15,
+      "value": "\"processor_tid\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2451,
+      "length": 12,
+      "value": "\"account_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2488,
+      "length": 11,
+      "value": "\"device_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2592,
+      "length": 13,
+      "value": "\"location_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2642,
+      "length": 24,
+      "value": "\"gateway_transaction_id\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2714,
+      "length": 12,
+      "value": "\"tip_amount\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2750,
+      "length": 10,
+      "value": "\"tip_type\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2786,
+      "length": 12,
+      "value": "\"tax_amount\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2822,
+      "length": 10,
+      "value": "\"tax_rate\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 2860,
+      "length": 14,
+      "value": "\"total_amount\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2900,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2942,
       "length": 16,
       "value": "\"payment_method\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2983,
       "length": 11,
       "value": "\"card_type\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3020,
       "length": 12,
       "value": "\"card_brand\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3088,
       "length": 25,
       "value": "\"processor_response_code\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3154,
       "length": 28,
       "value": "\"processor_response_message\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3214,
       "length": 18,
       "value": "\"transaction_type\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3267,
       "length": 22,
       "value": "\"apple_transaction_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3322,
       "length": 19,
       "value": "\"reader_identifier\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3410,
       "length": 10,
       "value": "\"owner_id\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3453,
       "length": 20,
       "value": "\"parent_account_ids\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionStatus.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionStatus.swift",
       "kind": "StringLiteral",
       "offset": 171,
       "length": 19,
       "value": "\"surcharge_applied\""
     },
     {
-      "filePath": "\/Users\/ryanvanalstine\/Desktop\/Projects\/VCG\/Koard\/Sources\/Models\/TransactionStatus.swift",
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionStatus.swift",
       "kind": "StringLiteral",
       "offset": 219,
       "length": 19,
