@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F4CBF042E25E2A900CE5CEA /* KoardSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5F4CBF032E25E2A900CE5CEA /* KoardSDK */; };
 		5FE28EA02E21ACC400C14AD2 /* KoardSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5FE28E9F2E21ACC400C14AD2 /* KoardSDK */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FE28EA02E21ACC400C14AD2 /* KoardSDK in Frameworks */,
+				5F4CBF042E25E2A900CE5CEA /* KoardSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +73,7 @@
 			name = "KoardMerchantSDK-Demo";
 			packageProductDependencies = (
 				5FE28E9F2E21ACC400C14AD2 /* KoardSDK */,
+				5F4CBF032E25E2A900CE5CEA /* KoardSDK */,
 			);
 			productName = "KoardMerchantSDK-Demo";
 			productReference = 5F81592D2E14785800F70DE6 /* Koard Demo.app */;
@@ -101,7 +104,7 @@
 			mainGroup = 5F8159242E14785800F70DE6;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				5FE28E9E2E21ACC400C14AD2 /* XCLocalSwiftPackageReference "../../Koard-public" */,
+				5F4CBF022E25E2A900CE5CEA /* XCRemoteSwiftPackageReference "koard-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5F81592E2E14785800F70DE6 /* Products */;
@@ -344,14 +347,23 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		5FE28E9E2E21ACC400C14AD2 /* XCLocalSwiftPackageReference "../../Koard-public" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../Koard-public";
+/* Begin XCRemoteSwiftPackageReference section */
+		5F4CBF022E25E2A900CE5CEA /* XCRemoteSwiftPackageReference "koard-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/koardlabs/koard-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F4CBF032E25E2A900CE5CEA /* KoardSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F4CBF022E25E2A900CE5CEA /* XCRemoteSwiftPackageReference "koard-sdk" */;
+			productName = KoardSDK;
+		};
 		5FE28E9F2E21ACC400C14AD2 /* KoardSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KoardSDK;

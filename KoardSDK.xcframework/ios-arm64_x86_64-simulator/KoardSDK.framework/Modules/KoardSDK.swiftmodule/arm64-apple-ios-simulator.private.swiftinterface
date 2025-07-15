@@ -377,7 +377,6 @@ extension KoardSDK.KoardMerchantSDKError.TTPPaymentError : KoardSDK.KoardDescrib
   }
 }
 public enum KoardEnvironment {
-  case dev
   case uat
   case production
   public static func == (a: KoardSDK.KoardEnvironment, b: KoardSDK.KoardEnvironment) -> Swift.Bool

@@ -28,7 +28,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
     /// Initializes any internal state or configuration required before SDK usage begins.
     public func setup() {
         let options = KoardOptions(
-            environment: .dev, // or .dev, .production
+            environment: .uat, // .uat, .production
             loggingLevel: .debug // .debug, .info, .warning, .error, .none
         )
 

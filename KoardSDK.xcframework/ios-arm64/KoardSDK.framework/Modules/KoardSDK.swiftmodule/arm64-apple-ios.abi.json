@@ -12117,43 +12117,6 @@
         "children": [
           {
             "kind": "Var",
-            "name": "dev",
-            "printedName": "dev",
-            "children": [
-              {
-                "kind": "TypeFunc",
-                "name": "Function",
-                "printedName": "(KoardSDK.KoardEnvironment.Type) -> KoardSDK.KoardEnvironment",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "KoardEnvironment",
-                    "printedName": "KoardSDK.KoardEnvironment",
-                    "usr": "s:8KoardSDK0A11EnvironmentO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Metatype",
-                    "printedName": "KoardSDK.KoardEnvironment.Type",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "KoardEnvironment",
-                        "printedName": "KoardSDK.KoardEnvironment",
-                        "usr": "s:8KoardSDK0A11EnvironmentO"
-                      }
-                    ]
-                  }
-                ]
-              }
-            ],
-            "declKind": "EnumElement",
-            "usr": "s:8KoardSDK0A11EnvironmentO3devyA2CmF",
-            "mangledName": "$s8KoardSDK0A11EnvironmentO3devyA2CmF",
-            "moduleName": "KoardSDK"
-          },
-          {
-            "kind": "Var",
             "name": "uat",
             "printedName": "uat",
             "children": [
@@ -27388,35 +27351,35 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 689,
+      "offset": 676,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 700,
+      "offset": 687,
       "length": 5,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 715,
+      "offset": 702,
       "length": 7,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 732,
+      "offset": 719,
       "length": 5,
       "value": "3"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 747,
+      "offset": 734,
       "length": 7,
       "value": "4"
     },
