@@ -254,6 +254,7 @@ extension KoardSDK.KoardMerchantSDK {
   public func getMerchantAccount() async throws -> KoardSDK.AccountBase
   public func isAccountLinked() async throws -> Swift.Bool
   public func linkAccount() throws
+  public func linkAccount() async throws
   public func locations(request: KoardSDK.GetLocationsRequest = GetLocationsRequest()) async throws -> [KoardSDK.Location]
 }
 @available(iOS 17.0, *)

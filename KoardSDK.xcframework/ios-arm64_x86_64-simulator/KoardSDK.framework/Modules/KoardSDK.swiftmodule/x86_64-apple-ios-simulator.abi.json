@@ -9257,6 +9257,28 @@
           },
           {
             "kind": "Function",
+            "name": "linkAccount",
+            "printedName": "linkAccount()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:8KoardSDK0a8MerchantB0C11linkAccountyyYaKF",
+            "mangledName": "$s8KoardSDK0a8MerchantB0C11linkAccountyyYaKF",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "locations",
             "printedName": "locations(request:)",
             "children": [
