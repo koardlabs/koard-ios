@@ -9257,8 +9257,8 @@
           },
           {
             "kind": "Function",
-            "name": "linkAccount",
-            "printedName": "linkAccount()",
+            "name": "linkAccountAsync",
+            "printedName": "linkAccountAsync()",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -9267,8 +9267,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:8KoardSDK0a8MerchantB0C11linkAccountyyYaKF",
-            "mangledName": "$s8KoardSDK0a8MerchantB0C11linkAccountyyYaKF",
+            "usr": "s:8KoardSDK0a8MerchantB0C16linkAccountAsyncyyYaKF",
+            "mangledName": "$s8KoardSDK0a8MerchantB0C16linkAccountAsyncyyYaKF",
             "moduleName": "KoardSDK",
             "declAttributes": [
               "RawDocComment"
@@ -27765,21 +27765,21 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 19873,
+      "offset": 19878,
       "length": 12,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 19956,
+      "offset": 19961,
       "length": 13,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 20031,
+      "offset": 20036,
       "length": 7,
       "value": "3"
     },
