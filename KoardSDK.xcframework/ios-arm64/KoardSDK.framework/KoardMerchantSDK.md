@@ -32,6 +32,7 @@ This SDK allows merchants to authenticate, process transactions, manage location
 ### Transactions
 - ``sale(amount:breakdown:currency:eventId:type:)``
 - ``refund(transactionId:amount:eventId:)``
+- ``tipAdjust(transactionId:amount:tipType:eventId:)``
 - ``reverse(transactionId:amount:eventId:)``
 - ``capture(transactionId:amount:breakdown:eventId:)``
 - ``preauth(amount:breakdown:currency:eventId:)``
