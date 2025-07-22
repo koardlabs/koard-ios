@@ -20881,100 +20881,54 @@
             "moduleName": "KoardSDK"
           },
           {
-            "kind": "Function",
-            "name": "==",
-            "printedName": "==(_:_:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "KoardEnvironment",
-                "printedName": "KoardSDK.KoardEnvironment",
-                "usr": "s:8KoardSDK0A11EnvironmentO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "KoardEnvironment",
-                "printedName": "KoardSDK.KoardEnvironment",
-                "usr": "s:8KoardSDK0A11EnvironmentO"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8KoardSDK0A11EnvironmentO2eeoiySbAC_ACtFZ",
-            "mangledName": "$s8KoardSDK0A11EnvironmentO2eeoiySbAC_ACtFZ",
-            "moduleName": "KoardSDK",
-            "static": true,
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
             "kind": "Var",
-            "name": "hashValue",
-            "printedName": "hashValue",
+            "name": "custom",
+            "printedName": "custom",
             "children": [
               {
-                "kind": "TypeNominal",
-                "name": "Int",
-                "printedName": "Swift.Int",
-                "usr": "s:Si"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:8KoardSDK0A11EnvironmentO9hashValueSivp",
-            "mangledName": "$s8KoardSDK0A11EnvironmentO9hashValueSivp",
-            "moduleName": "KoardSDK",
-            "implicit": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(KoardSDK.KoardEnvironment.Type) -> (Swift.String) -> KoardSDK.KoardEnvironment",
                 "children": [
                   {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.String) -> KoardSDK.KoardEnvironment",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "KoardEnvironment",
+                        "printedName": "KoardSDK.KoardEnvironment",
+                        "usr": "s:8KoardSDK0A11EnvironmentO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ]
+                  },
+                  {
                     "kind": "TypeNominal",
-                    "name": "Int",
-                    "printedName": "Swift.Int",
-                    "usr": "s:Si"
+                    "name": "Metatype",
+                    "printedName": "KoardSDK.KoardEnvironment.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "KoardEnvironment",
+                        "printedName": "KoardSDK.KoardEnvironment",
+                        "usr": "s:8KoardSDK0A11EnvironmentO"
+                      }
+                    ]
                   }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8KoardSDK0A11EnvironmentO9hashValueSivg",
-                "mangledName": "$s8KoardSDK0A11EnvironmentO9hashValueSivg",
-                "moduleName": "KoardSDK",
-                "implicit": true,
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Function",
-            "name": "hash",
-            "printedName": "hash(into:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Hasher",
-                "printedName": "Swift.Hasher",
-                "paramValueOwnership": "InOut",
-                "usr": "s:s6HasherV"
+                ]
               }
             ],
-            "declKind": "Func",
-            "usr": "s:8KoardSDK0A11EnvironmentO4hash4intoys6HasherVz_tF",
-            "mangledName": "$s8KoardSDK0A11EnvironmentO4hash4intoys6HasherVz_tF",
-            "moduleName": "KoardSDK",
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
+            "declKind": "EnumElement",
+            "usr": "s:8KoardSDK0A11EnvironmentO6customyACSScACmF",
+            "mangledName": "$s8KoardSDK0A11EnvironmentO6customyACSScACmF",
+            "moduleName": "KoardSDK"
           }
         ],
         "declKind": "Enum",
@@ -20999,20 +20953,6 @@
             "printedName": "Escapable",
             "usr": "s:s9EscapableP",
             "mangledName": "$ss9EscapableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
           }
         ]
       },
@@ -28263,35 +28203,35 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 676,
+      "offset": 700,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 687,
+      "offset": 711,
       "length": 5,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 702,
+      "offset": 726,
       "length": 7,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 719,
+      "offset": 743,
       "length": 5,
       "value": "3"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
-      "offset": 734,
+      "offset": 758,
       "length": 7,
       "value": "4"
     },

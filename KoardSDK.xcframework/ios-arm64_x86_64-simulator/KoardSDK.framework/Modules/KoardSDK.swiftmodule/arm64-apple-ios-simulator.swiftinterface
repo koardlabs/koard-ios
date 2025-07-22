@@ -537,11 +537,7 @@ public enum ReaderReadinessEvent : Swift.Sendable {
 public enum KoardEnvironment {
   case uat
   case production
-  public static func == (a: KoardSDK.KoardEnvironment, b: KoardSDK.KoardEnvironment) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
+  case custom(Swift.String)
 }
 public struct KoardOptions {
   public var environment: KoardSDK.KoardEnvironment
@@ -766,8 +762,6 @@ extension KoardSDK.PaymentBreakdown.TipType : Swift.RawRepresentable {}
 extension KoardSDK.StatusReason : Swift.Equatable {}
 extension KoardSDK.StatusReason : Swift.Hashable {}
 extension KoardSDK.StatusReason : Swift.RawRepresentable {}
-extension KoardSDK.KoardEnvironment : Swift.Equatable {}
-extension KoardSDK.KoardEnvironment : Swift.Hashable {}
 extension KoardSDK.KoardLoggingLevel : Swift.Equatable {}
 extension KoardSDK.KoardLoggingLevel : Swift.Hashable {}
 extension KoardSDK.KoardLoggingLevel : Swift.RawRepresentable {}
