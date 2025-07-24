@@ -18523,6 +18523,178 @@
           },
           {
             "kind": "Var",
+            "name": "gatewayTransactionResponse",
+            "printedName": "gatewayTransactionResponse",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8KoardSDK19TransactionResponseV07gatewaycD0SDySSypGSgvp",
+            "mangledName": "$s8KoardSDK19TransactionResponseV07gatewaycD0SDySSypGSgvp",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8KoardSDK19TransactionResponseV07gatewaycD0SDySSypGSgvg",
+                "mangledName": "$s8KoardSDK19TransactionResponseV07gatewaycD0SDySSypGSgvg",
+                "moduleName": "KoardSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "additionalDetails",
+            "printedName": "additionalDetails",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8KoardSDK19TransactionResponseV17additionalDetailsSDySSypGSgvp",
+            "mangledName": "$s8KoardSDK19TransactionResponseV17additionalDetailsSDySSypGSgvp",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[Swift.String : Any]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8KoardSDK19TransactionResponseV17additionalDetailsSDySSypGSgvg",
+                "mangledName": "$s8KoardSDK19TransactionResponseV17additionalDetailsSDySSypGSgvg",
+                "moduleName": "KoardSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "transaction",
             "printedName": "transaction",
             "children": [
@@ -18580,7 +18752,35 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(transactionId:eventId:status:statusReason:surchargeApplied:surchargeRate:surchargeAmount:surcharging:mid:tid:processorMid:processorTid:accountId:deviceId:processor:gateway:currency:locationId:gatewayTransactionId:subtotal:tipAmount:tipType:taxAmount:taxRate:totalAmount:createdAt:paymentMethod:cardType:cardBrand:card:processorResponseCode:processorResponseMessage:transactionType:appleTransactionId:readerIdentifier:refunded:reversed:ownerId:parentAccountIds:)",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "TransactionResponse",
+                "printedName": "KoardSDK.TransactionResponse",
+                "usr": "s:8KoardSDK19TransactionResponseV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8KoardSDK19TransactionResponseV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s8KoardSDK19TransactionResponseV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(transactionId:eventId:status:statusReason:surchargeApplied:surchargeRate:surchargeAmount:surcharging:mid:tid:processorMid:processorTid:accountId:deviceId:processor:gateway:currency:locationId:gatewayTransactionId:subtotal:tipAmount:tipType:taxAmount:taxRate:totalAmount:createdAt:paymentMethod:cardType:cardBrand:card:processorResponseCode:processorResponseMessage:transactionType:appleTransactionId:readerIdentifier:refunded:reversed:ownerId:parentAccountIds:gatewayTransactionResponse:additionalDetails:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -19141,16 +19341,149 @@
                   }
                 ],
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:8KoardSDK19TransactionResponseV13transactionId05eventF06status0H6Reason16surchargeApplied0J4Rate0J6Amount11surcharging3mid3tid12processorMid0Q3Tid07accountF006deviceF00Q07gateway8currency08locationF00vcF08subtotal03tipM00Z4Type03taxM003taxL005totalM09createdAt13paymentMethod8cardType9cardBrand4card0qD4Code0qD7Message0E4Type05applecF016readerIdentifier8refunded8reversed05ownerF016parentAccountIdsACSSSg_A15_A15_A15_SbSgSdSgSiSgAA9SurchargeVSgA15_A15_A15_A15_A15_A15_A15_A15_A15_A15_A15_A18_A18_A15_A18_A18_A18_A18_A15_A15_A15_A15_A15_A15_A15_A15_A15_A18_A18_A15_SaySSGSgtcfc",
-            "mangledName": "$s8KoardSDK19TransactionResponseV13transactionId05eventF06status0H6Reason16surchargeApplied0J4Rate0J6Amount11surcharging3mid3tid12processorMid0Q3Tid07accountF006deviceF00Q07gateway8currency08locationF00vcF08subtotal03tipM00Z4Type03taxM003taxL005totalM09createdAt13paymentMethod8cardType9cardBrand4card0qD4Code0qD7Message0E4Type05applecF016readerIdentifier8refunded8reversed05ownerF016parentAccountIdsACSSSg_A15_A15_A15_SbSgSdSgSiSgAA9SurchargeVSgA15_A15_A15_A15_A15_A15_A15_A15_A15_A15_A15_A18_A18_A15_A18_A18_A18_A18_A15_A15_A15_A15_A15_A15_A15_A15_A15_A18_A18_A15_SaySSGSgtcfc",
+            "usr": "s:8KoardSDK19TransactionResponseV13transactionId05eventF06status0H6Reason16surchargeApplied0J4Rate0J6Amount11surcharging3mid3tid12processorMid0Q3Tid07accountF006deviceF00Q07gateway8currency08locationF00vcF08subtotal03tipM00Z4Type03taxM003taxL005totalM09createdAt13paymentMethod8cardType9cardBrand4card0qD4Code0qD7Message0E4Type05applecF016readerIdentifier8refunded8reversed05ownerF016parentAccountIds0vcD017additionalDetailsACSSSg_A17_A17_A17_SbSgSdSgSiSgAA9SurchargeVSgA17_A17_A17_A17_A17_A17_A17_A17_A17_A17_A17_A20_A20_A17_A20_A20_A20_A20_A17_A17_A17_A17_A17_A17_A17_A17_A17_A20_A20_A17_SaySSGSgSDySSypGSgA27_tcfc",
+            "mangledName": "$s8KoardSDK19TransactionResponseV13transactionId05eventF06status0H6Reason16surchargeApplied0J4Rate0J6Amount11surcharging3mid3tid12processorMid0Q3Tid07accountF006deviceF00Q07gateway8currency08locationF00vcF08subtotal03tipM00Z4Type03taxM003taxL005totalM09createdAt13paymentMethod8cardType9cardBrand4card0qD4Code0qD7Message0E4Type05applecF016readerIdentifier8refunded8reversed05ownerF016parentAccountIds0vcD017additionalDetailsACSSSg_A17_A17_A17_SbSgSdSgSiSgAA9SurchargeVSgA17_A17_A17_A17_A17_A17_A17_A17_A17_A17_A17_A20_A20_A17_A20_A20_A20_A20_A17_A17_A17_A17_A17_A17_A17_A17_A17_A20_A20_A17_SaySSGSgSDySSypGSgA27_tcfc",
             "moduleName": "KoardSDK",
             "declAttributes": [
               "AccessControl"
             ],
             "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:8KoardSDK19TransactionResponseV",
+        "mangledName": "$s8KoardSDK19TransactionResponseV",
+        "moduleName": "KoardSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AnyDecodable",
+        "printedName": "AnyDecodable",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "value",
+            "printedName": "value",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ProtocolComposition",
+                "printedName": "Any"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8KoardSDK12AnyDecodableV5valueypvp",
+            "mangledName": "$s8KoardSDK12AnyDecodableV5valueypvp",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8KoardSDK12AnyDecodableV5valueypvg",
+                "mangledName": "$s8KoardSDK12AnyDecodableV5valueypvg",
+                "moduleName": "KoardSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
           },
           {
             "kind": "Constructor",
@@ -19159,9 +19492,9 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TransactionResponse",
-                "printedName": "KoardSDK.TransactionResponse",
-                "usr": "s:8KoardSDK19TransactionResponseV"
+                "name": "AnyDecodable",
+                "printedName": "KoardSDK.AnyDecodable",
+                "usr": "s:8KoardSDK12AnyDecodableV"
               },
               {
                 "kind": "TypeNominal",
@@ -19171,17 +19504,19 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:8KoardSDK19TransactionResponseV4fromACs7Decoder_p_tKcfc",
-            "mangledName": "$s8KoardSDK19TransactionResponseV4fromACs7Decoder_p_tKcfc",
+            "usr": "s:8KoardSDK12AnyDecodableV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s8KoardSDK12AnyDecodableV4fromACs7Decoder_p_tKcfc",
             "moduleName": "KoardSDK",
-            "implicit": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
             "throwing": true,
             "init_kind": "Designated"
           }
         ],
         "declKind": "Struct",
-        "usr": "s:8KoardSDK19TransactionResponseV",
-        "mangledName": "$s8KoardSDK19TransactionResponseV",
+        "usr": "s:8KoardSDK12AnyDecodableV",
+        "mangledName": "$s8KoardSDK12AnyDecodableV",
         "moduleName": "KoardSDK",
         "declAttributes": [
           "AccessControl"
@@ -20130,6 +20465,137 @@
         "printedName": "ProximityReader",
         "declKind": "Import",
         "moduleName": "KoardSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ProximityReaderViewModel",
+        "printedName": "ProximityReaderViewModel",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "reader",
+            "printedName": "reader",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "PaymentCardReader",
+                "printedName": "ProximityReader.PaymentCardReader",
+                "usr": "s:15ProximityReader011PaymentCardB0C"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8KoardSDK24ProximityReaderViewModelC6reader0cD0011PaymentCardD0Cvp",
+            "mangledName": "$s8KoardSDK24ProximityReaderViewModelC6reader0cD0011PaymentCardD0Cvp",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PaymentCardReader",
+                    "printedName": "ProximityReader.PaymentCardReader",
+                    "usr": "s:15ProximityReader011PaymentCardB0C"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8KoardSDK24ProximityReaderViewModelC6reader0cD0011PaymentCardD0Cvg",
+                "mangledName": "$s8KoardSDK24ProximityReaderViewModelC6reader0cD0011PaymentCardD0Cvg",
+                "moduleName": "KoardSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PaymentCardReader",
+                    "printedName": "ProximityReader.PaymentCardReader",
+                    "usr": "s:15ProximityReader011PaymentCardB0C"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8KoardSDK24ProximityReaderViewModelC6reader0cD0011PaymentCardD0Cvs",
+                "mangledName": "$s8KoardSDK24ProximityReaderViewModelC6reader0cD0011PaymentCardD0Cvs",
+                "moduleName": "KoardSDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8KoardSDK24ProximityReaderViewModelC6reader0cD0011PaymentCardD0CvM",
+                "mangledName": "$s8KoardSDK24ProximityReaderViewModelC6reader0cD0011PaymentCardD0CvM",
+                "moduleName": "KoardSDK",
+                "implicit": true,
+                "intro_iOS": "17.0",
+                "declAttributes": [
+                  "Available"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:8KoardSDK24ProximityReaderViewModelC",
+        "mangledName": "$s8KoardSDK24ProximityReaderViewModelC",
+        "moduleName": "KoardSDK",
+        "intro_iOS": "17.0",
+        "declAttributes": [
+          "AccessControl",
+          "Available",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          }
+        ]
       },
       {
         "kind": "TypeDecl",
@@ -24403,6 +24869,54 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "readerViewModel",
+            "printedName": "readerViewModel",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ProximityReaderViewModel",
+                "printedName": "KoardSDK.ProximityReaderViewModel",
+                "usr": "s:8KoardSDK24ProximityReaderViewModelC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:8KoardSDK0a8MerchantB0C15readerViewModelAA015ProximityReadereF0Cvp",
+            "mangledName": "$s8KoardSDK0a8MerchantB0C15readerViewModelAA015ProximityReadereF0Cvp",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProximityReaderViewModel",
+                    "printedName": "KoardSDK.ProximityReaderViewModel",
+                    "usr": "s:8KoardSDK24ProximityReaderViewModelC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:8KoardSDK0a8MerchantB0C15readerViewModelAA015ProximityReadereF0Cvg",
+                "mangledName": "$s8KoardSDK0a8MerchantB0C15readerViewModelAA015ProximityReadereF0Cvg",
+                "moduleName": "KoardSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "getToken",
             "printedName": "getToken()",
@@ -27748,198 +28262,212 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2015,
+      "offset": 2122,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2055,
+      "offset": 2162,
       "length": 10,
       "value": "\"event_id\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2114,
+      "offset": 2221,
       "length": 15,
       "value": "\"status_reason\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2162,
+      "offset": 2269,
       "length": 19,
       "value": "\"surcharge_applied\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2211,
+      "offset": 2318,
       "length": 16,
       "value": "\"surcharge_rate\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2259,
+      "offset": 2366,
       "length": 18,
       "value": "\"surcharge_amount\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2366,
+      "offset": 2473,
       "length": 15,
       "value": "\"processor_mid\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2410,
+      "offset": 2517,
       "length": 15,
       "value": "\"processor_tid\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2451,
+      "offset": 2558,
       "length": 12,
       "value": "\"account_id\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2488,
+      "offset": 2595,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2592,
+      "offset": 2699,
       "length": 13,
       "value": "\"location_id\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2642,
+      "offset": 2749,
       "length": 24,
       "value": "\"gateway_transaction_id\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2714,
+      "offset": 2821,
       "length": 12,
       "value": "\"tip_amount\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2750,
+      "offset": 2857,
       "length": 10,
       "value": "\"tip_type\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2786,
+      "offset": 2893,
       "length": 12,
       "value": "\"tax_amount\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2822,
+      "offset": 2929,
       "length": 10,
       "value": "\"tax_rate\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2860,
+      "offset": 2967,
       "length": 14,
       "value": "\"total_amount\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2900,
+      "offset": 3007,
       "length": 12,
       "value": "\"created_at\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2942,
+      "offset": 3049,
       "length": 16,
       "value": "\"payment_method\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 2983,
+      "offset": 3090,
       "length": 11,
       "value": "\"card_type\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3020,
+      "offset": 3127,
       "length": 12,
       "value": "\"card_brand\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3088,
+      "offset": 3195,
       "length": 25,
       "value": "\"processor_response_code\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3154,
+      "offset": 3261,
       "length": 28,
       "value": "\"processor_response_message\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3214,
+      "offset": 3321,
       "length": 18,
       "value": "\"transaction_type\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3267,
+      "offset": 3374,
       "length": 22,
       "value": "\"apple_transaction_id\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3322,
+      "offset": 3429,
       "length": 19,
       "value": "\"reader_identifier\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3410,
+      "offset": 3517,
       "length": 10,
       "value": "\"owner_id\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
-      "offset": 3453,
+      "offset": 3560,
       "length": 20,
       "value": "\"parent_account_ids\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 3623,
+      "length": 30,
+      "value": "\"gateway_transaction_response\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionResponse.swift",
+      "kind": "StringLiteral",
+      "offset": 3687,
+      "length": 20,
+      "value": "\"additional_details\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/TransactionStatus.swift",
@@ -27972,28 +28500,28 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "StringLiteral",
-      "offset": 869,
+      "offset": 876,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 19883,
+      "offset": 19888,
       "length": 12,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 19966,
+      "offset": 19971,
       "length": 13,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 20041,
+      "offset": 20046,
       "length": 7,
       "value": "3"
     },
@@ -28336,7 +28864,7 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
       "kind": "BooleanLiteral",
-      "offset": 4212,
+      "offset": 4210,
       "length": 5,
       "value": "false"
     }

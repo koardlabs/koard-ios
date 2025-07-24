@@ -474,10 +474,16 @@ public struct TransactionResponse : Swift.Decodable {
   public let reversed: Swift.Int?
   public let ownerId: Swift.String?
   public let parentAccountIds: [Swift.String]?
+  public let gatewayTransactionResponse: [Swift.String : Any]?
+  public let additionalDetails: [Swift.String : Any]?
   public var transaction: KoardSDK.KoardTransaction? {
     get
   }
-  public init(transactionId: Swift.String?, eventId: Swift.String?, status: Swift.String?, statusReason: Swift.String?, surchargeApplied: Swift.Bool?, surchargeRate: Swift.Double?, surchargeAmount: Swift.Int?, surcharging: KoardSDK.Surcharge?, mid: Swift.String?, tid: Swift.String?, processorMid: Swift.String?, processorTid: Swift.String?, accountId: Swift.String?, deviceId: Swift.String?, processor: Swift.String?, gateway: Swift.String?, currency: Swift.String?, locationId: Swift.String?, gatewayTransactionId: Swift.String?, subtotal: Swift.Int?, tipAmount: Swift.Int?, tipType: Swift.String?, taxAmount: Swift.Int?, taxRate: Swift.Int?, totalAmount: Swift.Int?, createdAt: Swift.Int?, paymentMethod: Swift.String?, cardType: Swift.String?, cardBrand: Swift.String?, card: Swift.String?, processorResponseCode: Swift.String?, processorResponseMessage: Swift.String?, transactionType: Swift.String?, appleTransactionId: Swift.String?, readerIdentifier: Swift.String?, refunded: Swift.Int?, reversed: Swift.Int?, ownerId: Swift.String?, parentAccountIds: [Swift.String]?)
+  public init(from decoder: any Swift.Decoder) throws
+  public init(transactionId: Swift.String?, eventId: Swift.String?, status: Swift.String?, statusReason: Swift.String?, surchargeApplied: Swift.Bool?, surchargeRate: Swift.Double?, surchargeAmount: Swift.Int?, surcharging: KoardSDK.Surcharge?, mid: Swift.String?, tid: Swift.String?, processorMid: Swift.String?, processorTid: Swift.String?, accountId: Swift.String?, deviceId: Swift.String?, processor: Swift.String?, gateway: Swift.String?, currency: Swift.String?, locationId: Swift.String?, gatewayTransactionId: Swift.String?, subtotal: Swift.Int?, tipAmount: Swift.Int?, tipType: Swift.String?, taxAmount: Swift.Int?, taxRate: Swift.Int?, totalAmount: Swift.Int?, createdAt: Swift.Int?, paymentMethod: Swift.String?, cardType: Swift.String?, cardBrand: Swift.String?, card: Swift.String?, processorResponseCode: Swift.String?, processorResponseMessage: Swift.String?, transactionType: Swift.String?, appleTransactionId: Swift.String?, readerIdentifier: Swift.String?, refunded: Swift.Int?, reversed: Swift.Int?, ownerId: Swift.String?, parentAccountIds: [Swift.String]?, gatewayTransactionResponse: [Swift.String : Any]?, additionalDetails: [Swift.String : Any]?)
+}
+public struct AnyDecodable : Swift.Decodable {
+  public let value: Any
   public init(from decoder: any Swift.Decoder) throws
 }
 public struct PaymentResult : Swift.Sendable {
@@ -502,6 +508,11 @@ extension KoardSDK.PaymentType {
   public var displayName: Swift.String {
     get
   }
+}
+@_hasMissingDesignatedInitializers @available(iOS 17.0, *)
+public class ProximityReaderViewModel : @unchecked Swift.Sendable {
+  public var reader: ProximityReader.PaymentCardReader
+  @objc deinit
 }
 @available(iOS 15.4, *)
 public typealias TransactionType = ProximityReader.PaymentCardTransactionRequest.TransactionType
@@ -739,6 +750,7 @@ public class KoardMerchantSDK : ObjectiveC.NSObject {
   public var isReaderSupported: Swift.Bool {
     get
   }
+  final public let readerViewModel: KoardSDK.ProximityReaderViewModel
   @objc deinit
 }
 extension KoardSDK.KoardTransaction.Status : Swift.Equatable {}
