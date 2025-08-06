@@ -353,7 +353,7 @@
 			repositoryURL = "https://github.com/koardlabs/koard-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
+				minimumVersion = 1.0.8;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

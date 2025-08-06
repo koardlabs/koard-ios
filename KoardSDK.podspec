@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'KoardSDK'
-  s.version          = '1.0.6'
+  s.version          = '1.0.8'
   s.summary          = 'A modern Tap to Pay and merchant transaction SDK for iOS'
   s.description      = <<-DESC
     KoardSDK enables merchants to authenticate, process transactions,

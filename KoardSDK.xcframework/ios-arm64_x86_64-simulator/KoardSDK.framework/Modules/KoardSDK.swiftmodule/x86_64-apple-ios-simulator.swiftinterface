@@ -47,6 +47,234 @@ public enum KoardDeviceRegistrationEvent : Swift.Sendable {
   case registrationError(any Swift.Error)
   case registrationCompleted
 }
+public enum KoardEnvironment {
+  case uat
+  case production
+  case custom(Swift.String)
+}
+public struct KoardOptions {
+  public var environment: KoardSDK.KoardEnvironment
+  public var loggingLevel: KoardSDK.KoardLoggingLevel
+  public init(environment: KoardSDK.KoardEnvironment, loggingLevel: KoardSDK.KoardLoggingLevel)
+}
+public enum KoardLoggingLevel : Swift.Int {
+  case none
+  case error
+  case warning
+  case debug
+  case verbose
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum KoardPaymentProcessingEvent : Swift.Sendable {
+  case ttpPaymentStarted
+  case ttpPaymentEvent
+  case paymentError(any Swift.Error)
+  case paymentCompleted(KoardSDK.PaymentResult)
+}
+extension Foundation.Date {
+  public static var currentFormattedTime: Swift.String {
+    get
+  }
+}
+extension Foundation.DateFormatter {
+  public static var iso8601DateFormatter: Foundation.DateFormatter {
+    get
+  }
+  public static var iso8601ZuluDateFormatter: Foundation.DateFormatter {
+    get
+  }
+  public static var mediumDateFormatter: Foundation.DateFormatter {
+    get
+  }
+  public static func currentTimeFormatter(in timeZone: Foundation.TimeZone = TimeZone(identifier: "America/New_York")!) -> Foundation.DateFormatter
+}
+@available(iOS 17.0, *)
+extension KoardSDK.KoardMerchantSDK {
+  public func deinitializeCardReader()
+  public func initialize(options: KoardSDK.KoardOptions, apiKey: Swift.String)
+  public func prepare() async throws
+}
+@available(iOS 17.0, *)
+extension KoardSDK.KoardMerchantSDK {
+  public func transactionHistory(request: KoardSDK.GetTransactionHistoryRequest = GetTransactionHistoryRequest()) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByStatus(_ status: Swift.String) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByStatuses(_ statuses: [Swift.String]) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByType(_ type: KoardSDK.PaymentType) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByTypeString(_ type: Swift.String) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByTypes(_ types: [KoardSDK.PaymentType]) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByTypeStrings(_ types: [Swift.String]) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByStatusesAndTypes(statuses: [KoardSDK.KoardTransaction.Status], types: [KoardSDK.PaymentType]) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByStatusAndTypeStrings(statuses: [Swift.String], types: [Swift.String]) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByDateRange(startDate: Foundation.Date, endDate: Foundation.Date) async throws -> KoardSDK.TransactionHistoryResponse
+  public func transactionsByCardNumber(_ cardNumber: Swift.String) async throws -> KoardSDK.TransactionHistoryResponse
+  public func searchTransactions(_ searchTerm: Swift.String) async throws -> KoardSDK.TransactionHistoryResponse
+  public func searchTransactionsAdvanced(searchTerm: Swift.String? = nil, startDate: Foundation.Date? = nil, endDate: Foundation.Date? = nil, statuses: [Swift.String]? = nil, types: [Swift.String]? = nil, cardNumber: Swift.String? = nil, minAmount: Swift.Int? = nil, maxAmount: Swift.Int? = nil, eventId: Swift.String? = nil, limit: Swift.Int = 100, offset: Swift.Int = 0, sortBy: Swift.String = "created_at", sortOrder: Swift.String = "desc") async throws -> KoardSDK.TransactionHistoryResponse
+}
+public enum HttpMethod : Swift.String {
+  case get
+  case post
+  case put
+  case delete
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers @available(iOS 16.0, *)
+public class ApiCallsHandler : ObjectiveC.NSObject {
+  public func login(merchantCode: Swift.String, merchantPin: Swift.String) async throws
+  public func refreshTokenIfNeeded() async throws
+  public func initialize(environment: KoardSDK.KoardEnvironment)
+  public func makeAsyncApiCall<T>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil) async throws -> T where T : Swift.Decodable
+  public func makeAsyncApiCall<T, Parameters>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil, bodyParameters: Parameters?) async throws -> T where T : Swift.Decodable, Parameters : Swift.Encodable
+  @objc deinit
+}
+public protocol KoardDescribableError : Swift.Error {
+  var errorDescription: Swift.String { get }
+}
+public enum KoardMerchantSDKError : Swift.Error, KoardSDK.KoardDescribableError {
+  case network(description: Swift.String, underlying: (any Swift.Error)? = nil)
+  case unauthorized
+  case blockedAccount
+  case invalidRequest
+  case server(message: Swift.String?)
+  case decodingFailure
+  case unsupportedPlatform(requiredVersion: Swift.String)
+  case unknown(underlying: (any Swift.Error)? = nil)
+  case TTPConfigurationFailed(KoardSDK.KoardMerchantSDKError.TTPConfigurationError)
+  case TTPPaymentFailed(KoardSDK.KoardMerchantSDKError.TTPPaymentError)
+  case missingTerminalID
+  case missingLocationID
+  case invalidTransactionResponse
+  case failedToConfirmSurcharge(any Swift.Error)
+  case invalidParameters(Swift.String)
+  public enum TTPConfigurationError : Swift.Error {
+    case noReader
+    case noReaderIdentifier(any Swift.Error)
+    case accountLinkingError(any Swift.Error)
+    case noPSPToken
+    case deviceConfigurationFailed
+    case notAuthenticated
+  }
+  public enum TTPPaymentError : Swift.Error {
+    case noPaymentResult
+    case paymentCardReaderError(any Swift.Error)
+    case paymentCardReaderNilResult
+  }
+}
+extension KoardSDK.KoardMerchantSDKError {
+  public var errorDescription: Swift.String {
+    get
+  }
+}
+extension KoardSDK.KoardMerchantSDKError.TTPConfigurationError : KoardSDK.KoardDescribableError {
+  public var errorDescription: Swift.String {
+    get
+  }
+}
+extension KoardSDK.KoardMerchantSDKError.TTPPaymentError : KoardSDK.KoardDescribableError {
+  public var errorDescription: Swift.String {
+    get
+  }
+}
+@available(iOS 15.4, *)
+extension ProximityReader.PaymentCardReaderError {
+  public var description: Swift.String {
+    get
+  }
+}
+@available(iOS 15.4, *)
+extension ProximityReader.PaymentCardReaderSession.ReadError {
+  public var description: Swift.String {
+    get
+  }
+}
+@available(iOS 17.0, *)
+extension KoardSDK.KoardMerchantSDK {
+  public func reverse(transactionId: Swift.String, amount: Swift.Int? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
+  public func refund(transactionId: Swift.String, amount: Swift.Int? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
+  public func refund(transactionID: Swift.String, amount: Swift.Int?, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
+  public func tipAdjust(transactionId: Swift.String, amount: Swift.Int, tipType: KoardSDK.PaymentBreakdown.TipType?, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
+  public func capture(transactionId: Swift.String, amount: Swift.Int? = nil, breakdown: KoardSDK.PaymentBreakdown? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
+  public func preauth(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown? = nil, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
+  public func sale(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .sale) async throws -> KoardSDK.TransactionResponse
+  public func confirm(transaction transactionID: Swift.String, confirm: Swift.Bool) async throws -> KoardSDK.KoardTransaction
+}
+@available(iOS 18.0, *)
+extension KoardSDK.KoardMerchantSDK {
+  public func presentTutorial(from viewController: UIKit.UIViewController) throws
+}
+@available(iOS 17.0, *)
+extension KoardSDK.KoardMerchantSDK {
+  public func setActiveLocationID(_ locationId: Swift.String)
+  public func getActiveLocationID() -> Swift.String?
+  public func sendReceipts(transactionId: Swift.String, email: Swift.String? = nil, phoneNumber: Swift.String? = nil) async throws -> KoardSDK.SendReceiptsResponse
+  public func createFallbackLink(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?) async throws -> KoardSDK.FallbackResponse
+}
+public struct PaymentResult : Swift.Sendable {
+  public let paymentId: Swift.String?
+  public let paymentCardData: Swift.String?
+}
+public enum PaymentType : Swift.String, Swift.Codable {
+  case sale
+  case refund
+  case auth
+  case capture
+  case reverse
+  case tipAdjust
+  case incrementalAuth
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension KoardSDK.PaymentType {
+  public var displayName: Swift.String {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 17.0, *)
+public class ProximityReaderViewModel : @unchecked Swift.Sendable {
+  public var reader: ProximityReader.PaymentCardReader
+  @objc deinit
+}
+@available(iOS 15.4, *)
+public typealias TransactionType = ProximityReader.PaymentCardTransactionRequest.TransactionType
+@available(iOS 15.4, *)
+extension ProximityReader.PaymentCardTransactionRequest.TransactionType {
+  public var displayName: Swift.String {
+    get
+  }
+}
+@available(iOS 15.4, *)
+public enum ProximityReaderStatus {
+  case notReady
+  case preparing
+  case configuring(Swift.Int)
+  case linked
+  case ready
+  case cardReaderError(ProximityReader.PaymentCardReaderError)
+  case error(any Swift.Error)
+  public var isReady: Swift.Bool {
+    get
+  }
+  public var info: Swift.String {
+    get
+  }
+}
+public enum ReaderReadinessEvent : Swift.Sendable {
+  case ready
+  case notReady
+  case configuring
+  case progressing(Swift.Double)
+  case unavailable
+}
 public struct GetLocationsRequest : Swift.Encodable {
   public var locationId: Swift.String?
   public var locationName: Swift.String?
@@ -220,6 +448,19 @@ public struct FallbackResponse : Swift.Decodable {
   public let fallbackLink: Swift.String
   public init(from decoder: any Swift.Decoder) throws
 }
+public struct GatewayTransactionResponse : Swift.Codable {
+  public let type: Swift.String?
+  public let status: Swift.String?
+  public let currency: Swift.String?
+  public let approvalCode: Swift.String?
+  public let responseCode: Swift.String?
+  public let responseMessage: Swift.String?
+  public let authorizedAmount: Swift.Int?
+  public let processorResponseCode: Swift.String?
+  public init(type: Swift.String? = nil, status: Swift.String? = nil, currency: Swift.String? = nil, approvalCode: Swift.String? = nil, responseCode: Swift.String? = nil, responseMessage: Swift.String? = nil, authorizedAmount: Swift.Int? = nil, processorResponseCode: Swift.String? = nil)
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
 public struct KoardTransaction : Swift.Decodable {
   public let transactionId: Swift.String
   public let eventId: Swift.String
@@ -252,7 +493,7 @@ public struct KoardTransaction : Swift.Decodable {
   public let cardType: Swift.String
   public let cardBrand: Swift.String
   public let card: Swift.String
-  public let gatewayTransactionResponse: [Swift.String : KoardSDK.AnyCodable]?
+  public let gatewayTransactionResponse: KoardSDK.GatewayTransactionResponse?
   public let processorResponseCode: Swift.String?
   public let processorResponseMessage: Swift.String?
   public let transactionType: Swift.String?
@@ -262,13 +503,15 @@ public struct KoardTransaction : Swift.Decodable {
   public var hasSurchargeInfo: Swift.Bool {
     get
   }
+  public var additionalDetails: [Swift.String : Any]? {
+    get
+  }
   public enum Status : Swift.String, Swift.Codable {
     case pending
     case authorized
     case captured
     case surchargePending
     case surchargeApplied
-    case approved
     case declined
     case refunded
     case reversed
@@ -277,6 +520,7 @@ public struct KoardTransaction : Swift.Decodable {
     case canceled
     case cancelled
     case error
+    case settled
     case unknown
     public init(from decoder: any Swift.Decoder) throws
     public init?(rawValue: Swift.String)
@@ -285,7 +529,7 @@ public struct KoardTransaction : Swift.Decodable {
       get
     }
   }
-  public init(transactionId: Swift.String, eventId: Swift.String, mid: Swift.String, tid: Swift.String, processorMid: Swift.String, processorTid: Swift.String, accountId: Swift.String, deviceId: Swift.String?, processor: Swift.String?, gateway: Swift.String?, currency: Swift.String, locationId: Swift.String?, gatewayTransactionId: Swift.String?, subtotal: Swift.Int, tipAmount: Swift.Int, tipType: KoardSDK.PaymentBreakdown.TipType?, taxAmount: Swift.Int, taxRate: Swift.Int, totalAmount: Swift.Int, surchargeApplied: Swift.Bool, surchargeAmount: Swift.Int?, surchargeRate: Swift.Double?, refunded: Swift.Int?, reversed: Swift.Int?, ownerId: Swift.String?, parentAccountIds: [Swift.String]?, createdAt: Swift.Int, status: KoardSDK.KoardTransaction.Status, statusReason: Swift.String?, paymentMethod: Swift.String, cardType: Swift.String, cardBrand: Swift.String, card: Swift.String, additionalDetails: [Swift.String : KoardSDK.AnyCodable]?, gatewayTransactionResponse: [Swift.String : KoardSDK.AnyCodable]?, processorResponseCode: Swift.String?, processorResponseMessage: Swift.String?, transactionType: Swift.String?, appleTransactionId: Swift.String?, readerIdentifier: Swift.String?, surchargeDisclosure: Swift.String?, surchargeAllowed: Swift.Bool?, surchargePercentage: Swift.Double?)
+  public init(transactionId: Swift.String, eventId: Swift.String, mid: Swift.String, tid: Swift.String, processorMid: Swift.String, processorTid: Swift.String, accountId: Swift.String, deviceId: Swift.String?, processor: Swift.String?, gateway: Swift.String?, currency: Swift.String, locationId: Swift.String?, gatewayTransactionId: Swift.String?, subtotal: Swift.Int, tipAmount: Swift.Int, tipType: KoardSDK.PaymentBreakdown.TipType?, taxAmount: Swift.Int, taxRate: Swift.Int, totalAmount: Swift.Int, surchargeApplied: Swift.Bool, surchargeAmount: Swift.Int?, surchargeRate: Swift.Double?, refunded: Swift.Int?, reversed: Swift.Int?, ownerId: Swift.String?, parentAccountIds: [Swift.String]?, createdAt: Swift.Int, status: KoardSDK.KoardTransaction.Status, statusReason: Swift.String?, paymentMethod: Swift.String, cardType: Swift.String, cardBrand: Swift.String, card: Swift.String, additionalDetails: [Swift.String : Any]?, gatewayTransactionResponse: KoardSDK.GatewayTransactionResponse?, processorResponseCode: Swift.String?, processorResponseMessage: Swift.String?, transactionType: Swift.String?, appleTransactionId: Swift.String?, readerIdentifier: Swift.String?, surchargeDisclosure: Swift.String?, surchargeAllowed: Swift.Bool?, surchargePercentage: Swift.Double?)
   public init(from decoder: any Swift.Decoder) throws
 }
 extension KoardSDK.KoardTransaction {
@@ -297,6 +541,10 @@ extension KoardSDK.KoardTransaction.Status {
   public var string: Swift.String {
     get
   }
+}
+extension KoardSDK.KoardTransaction {
+  public func rawEmvTags() -> Swift.String?
+  public func emvTags() -> [Swift.String : [Swift.String : Swift.String]]?
 }
 public struct Location : Swift.Codable {
   public let id: Swift.String
@@ -474,248 +722,25 @@ public struct TransactionResponse : Swift.Decodable {
   public let reversed: Swift.Int?
   public let ownerId: Swift.String?
   public let parentAccountIds: [Swift.String]?
-  public let gatewayTransactionResponse: [Swift.String : Any]?
-  public let additionalDetails: [Swift.String : Any]?
+  public let gatewayTransactionResponse: KoardSDK.GatewayTransactionResponse?
+  public var additionalDetails: [Swift.String : Any]? {
+    get
+  }
   public var transaction: KoardSDK.KoardTransaction? {
     get
   }
   public init(from decoder: any Swift.Decoder) throws
-  public init(transactionId: Swift.String?, eventId: Swift.String?, status: Swift.String?, statusReason: Swift.String?, surchargeApplied: Swift.Bool?, surchargeRate: Swift.Double?, surchargeAmount: Swift.Int?, surcharging: KoardSDK.Surcharge?, mid: Swift.String?, tid: Swift.String?, processorMid: Swift.String?, processorTid: Swift.String?, accountId: Swift.String?, deviceId: Swift.String?, processor: Swift.String?, gateway: Swift.String?, currency: Swift.String?, locationId: Swift.String?, gatewayTransactionId: Swift.String?, subtotal: Swift.Int?, tipAmount: Swift.Int?, tipType: Swift.String?, taxAmount: Swift.Int?, taxRate: Swift.Int?, totalAmount: Swift.Int?, createdAt: Swift.Int?, paymentMethod: Swift.String?, cardType: Swift.String?, cardBrand: Swift.String?, card: Swift.String?, processorResponseCode: Swift.String?, processorResponseMessage: Swift.String?, transactionType: Swift.String?, appleTransactionId: Swift.String?, readerIdentifier: Swift.String?, refunded: Swift.Int?, reversed: Swift.Int?, ownerId: Swift.String?, parentAccountIds: [Swift.String]?, gatewayTransactionResponse: [Swift.String : Any]?, additionalDetails: [Swift.String : Any]?)
+  public init(transactionId: Swift.String?, eventId: Swift.String?, status: Swift.String?, statusReason: Swift.String?, surchargeApplied: Swift.Bool?, surchargeRate: Swift.Double?, surchargeAmount: Swift.Int?, surcharging: KoardSDK.Surcharge?, mid: Swift.String?, tid: Swift.String?, processorMid: Swift.String?, processorTid: Swift.String?, accountId: Swift.String?, deviceId: Swift.String?, processor: Swift.String?, gateway: Swift.String?, currency: Swift.String?, locationId: Swift.String?, gatewayTransactionId: Swift.String?, subtotal: Swift.Int?, tipAmount: Swift.Int?, tipType: Swift.String?, taxAmount: Swift.Int?, taxRate: Swift.Int?, totalAmount: Swift.Int?, createdAt: Swift.Int?, paymentMethod: Swift.String?, cardType: Swift.String?, cardBrand: Swift.String?, card: Swift.String?, processorResponseCode: Swift.String?, processorResponseMessage: Swift.String?, transactionType: Swift.String?, appleTransactionId: Swift.String?, readerIdentifier: Swift.String?, refunded: Swift.Int?, reversed: Swift.Int?, ownerId: Swift.String?, parentAccountIds: [Swift.String]?, gatewayTransactionResponse: KoardSDK.GatewayTransactionResponse?, additionalDetails: [Swift.String : Any]?)
 }
 public struct AnyDecodable : Swift.Decodable {
   public let value: Any
   public init(from decoder: any Swift.Decoder) throws
 }
-public struct PaymentResult : Swift.Sendable {
-  public let paymentId: Swift.String?
-  public let paymentCardData: Swift.String?
-}
-public enum PaymentType : Swift.String, Swift.Codable {
-  case sale
-  case refund
-  case auth
-  case capture
-  case reverse
-  case tipAdjust
-  case incrementalAuth
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
-extension KoardSDK.PaymentType {
-  public var displayName: Swift.String {
-    get
-  }
-}
-@_hasMissingDesignatedInitializers @available(iOS 17.0, *)
-public class ProximityReaderViewModel : @unchecked Swift.Sendable {
-  public var reader: ProximityReader.PaymentCardReader
-  @objc deinit
-}
-@available(iOS 15.4, *)
-public typealias TransactionType = ProximityReader.PaymentCardTransactionRequest.TransactionType
-@available(iOS 15.4, *)
-extension ProximityReader.PaymentCardTransactionRequest.TransactionType {
-  public var displayName: Swift.String {
-    get
-  }
-}
-@available(iOS 15.4, *)
-public enum ProximityReaderStatus {
-  case notReady
-  case preparing
-  case configuring(Swift.Int)
-  case linked
-  case ready
-  case cardReaderError(ProximityReader.PaymentCardReaderError)
-  case error(any Swift.Error)
-  public var isReady: Swift.Bool {
-    get
-  }
-  public var info: Swift.String {
-    get
-  }
-}
-public enum ReaderReadinessEvent : Swift.Sendable {
-  case ready
-  case notReady
-  case configuring
-  case progressing(Swift.Double)
-  case unavailable
-}
-public enum KoardEnvironment {
-  case uat
-  case production
-  case custom(Swift.String)
-}
-public struct KoardOptions {
-  public var environment: KoardSDK.KoardEnvironment
-  public var loggingLevel: KoardSDK.KoardLoggingLevel
-  public init(environment: KoardSDK.KoardEnvironment, loggingLevel: KoardSDK.KoardLoggingLevel)
-}
-public enum KoardLoggingLevel : Swift.Int {
-  case none
-  case error
-  case warning
-  case debug
-  case verbose
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-public enum KoardPaymentProcessingEvent : Swift.Sendable {
-  case ttpPaymentStarted
-  case ttpPaymentEvent
-  case paymentError(any Swift.Error)
-  case paymentCompleted(KoardSDK.PaymentResult)
-}
-extension Foundation.Date {
-  public static var currentFormattedTime: Swift.String {
-    get
-  }
-}
-extension Foundation.DateFormatter {
-  public static var iso8601DateFormatter: Foundation.DateFormatter {
-    get
-  }
-  public static var iso8601ZuluDateFormatter: Foundation.DateFormatter {
-    get
-  }
-  public static var mediumDateFormatter: Foundation.DateFormatter {
-    get
-  }
-  public static func currentTimeFormatter(in timeZone: Foundation.TimeZone = TimeZone(identifier: "America/New_York")!) -> Foundation.DateFormatter
-}
-@available(iOS 17.0, *)
-extension KoardSDK.KoardMerchantSDK {
-  public func deinitializeCardReader()
-  public func initialize(options: KoardSDK.KoardOptions, apiKey: Swift.String)
-  public func prepare() async throws
-}
-@available(iOS 17.0, *)
-extension KoardSDK.KoardMerchantSDK {
-  public func transactionHistory(request: KoardSDK.GetTransactionHistoryRequest = GetTransactionHistoryRequest()) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByStatus(_ status: Swift.String) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByStatuses(_ statuses: [Swift.String]) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByType(_ type: KoardSDK.PaymentType) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByTypeString(_ type: Swift.String) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByTypes(_ types: [KoardSDK.PaymentType]) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByTypeStrings(_ types: [Swift.String]) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByStatusesAndTypes(statuses: [KoardSDK.KoardTransaction.Status], types: [KoardSDK.PaymentType]) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByStatusAndTypeStrings(statuses: [Swift.String], types: [Swift.String]) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByDateRange(startDate: Foundation.Date, endDate: Foundation.Date) async throws -> KoardSDK.TransactionHistoryResponse
-  public func transactionsByCardNumber(_ cardNumber: Swift.String) async throws -> KoardSDK.TransactionHistoryResponse
-  public func searchTransactions(_ searchTerm: Swift.String) async throws -> KoardSDK.TransactionHistoryResponse
-  public func searchTransactionsAdvanced(searchTerm: Swift.String? = nil, startDate: Foundation.Date? = nil, endDate: Foundation.Date? = nil, statuses: [Swift.String]? = nil, types: [Swift.String]? = nil, cardNumber: Swift.String? = nil, minAmount: Swift.Int? = nil, maxAmount: Swift.Int? = nil, eventId: Swift.String? = nil, limit: Swift.Int = 100, offset: Swift.Int = 0, sortBy: Swift.String = "created_at", sortOrder: Swift.String = "desc") async throws -> KoardSDK.TransactionHistoryResponse
-}
-public enum HttpMethod : Swift.String {
-  case get
-  case post
-  case put
-  case delete
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
-@objc @_hasMissingDesignatedInitializers @available(iOS 16.0, *)
-public class ApiCallsHandler : ObjectiveC.NSObject {
-  public func login(merchantCode: Swift.String, merchantPin: Swift.String) async throws
-  public func refreshTokenIfNeeded() async throws
-  public func initialize(environment: KoardSDK.KoardEnvironment)
-  public func makeAsyncApiCall<T>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil) async throws -> T where T : Swift.Decodable
-  public func makeAsyncApiCall<T, Parameters>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil, bodyParameters: Parameters?) async throws -> T where T : Swift.Decodable, Parameters : Swift.Encodable
-  @objc deinit
-}
-public protocol KoardDescribableError : Swift.Error {
-  var errorDescription: Swift.String { get }
-}
-public enum KoardMerchantSDKError : Swift.Error, KoardSDK.KoardDescribableError {
-  case network(description: Swift.String, underlying: (any Swift.Error)? = nil)
-  case unauthorized
-  case blockedAccount
-  case invalidRequest
-  case server(message: Swift.String?)
-  case decodingFailure
-  case unsupportedPlatform(requiredVersion: Swift.String)
-  case unknown(underlying: (any Swift.Error)? = nil)
-  case TTPConfigurationFailed(KoardSDK.KoardMerchantSDKError.TTPConfigurationError)
-  case TTPPaymentFailed(KoardSDK.KoardMerchantSDKError.TTPPaymentError)
-  case missingTerminalID
-  case missingLocationID
-  case invalidTransactionResponse
-  case failedToConfirmSurcharge(any Swift.Error)
-  case invalidParameters(Swift.String)
-  public enum TTPConfigurationError : Swift.Error {
-    case noReader
-    case noReaderIdentifier(any Swift.Error)
-    case accountLinkingError(any Swift.Error)
-    case noPSPToken
-    case deviceConfigurationFailed
-    case notAuthenticated
-  }
-  public enum TTPPaymentError : Swift.Error {
-    case noPaymentResult
-    case paymentCardReaderError(any Swift.Error)
-    case paymentCardReaderNilResult
-  }
-}
-extension KoardSDK.KoardMerchantSDKError {
-  public var errorDescription: Swift.String {
-    get
-  }
-}
-extension KoardSDK.KoardMerchantSDKError.TTPConfigurationError : KoardSDK.KoardDescribableError {
-  public var errorDescription: Swift.String {
-    get
-  }
-}
-extension KoardSDK.KoardMerchantSDKError.TTPPaymentError : KoardSDK.KoardDescribableError {
-  public var errorDescription: Swift.String {
-    get
-  }
-}
-@available(iOS 15.4, *)
-extension ProximityReader.PaymentCardReaderError {
-  public var description: Swift.String {
-    get
-  }
-}
-@available(iOS 15.4, *)
-extension ProximityReader.PaymentCardReaderSession.ReadError {
-  public var description: Swift.String {
-    get
-  }
-}
-@available(iOS 17.0, *)
-extension KoardSDK.KoardMerchantSDK {
-  public func reverse(transactionId: Swift.String, amount: Swift.Int? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func refund(transactionId: Swift.String, amount: Swift.Int? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func refund(transactionID: Swift.String, amount: Swift.Int?, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func tipAdjust(transactionId: Swift.String, amount: Swift.Int, tipType: KoardSDK.PaymentBreakdown.TipType?, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func capture(transactionId: Swift.String, amount: Swift.Int? = nil, breakdown: KoardSDK.PaymentBreakdown? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func preauth(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown? = nil, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func sale(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .sale) async throws -> KoardSDK.TransactionResponse
-  public func confirm(transaction transactionID: Swift.String, confirm: Swift.Bool) async throws -> KoardSDK.KoardTransaction
-}
-@available(iOS 18.0, *)
-extension KoardSDK.KoardMerchantSDK {
-  public func presentTutorial(from viewController: UIKit.UIViewController) throws
-}
-@available(iOS 17.0, *)
-extension KoardSDK.KoardMerchantSDK {
-  public func setActiveLocationID(_ locationId: Swift.String)
-  public func getActiveLocationID() -> Swift.String?
-  public func sendReceipts(transactionId: Swift.String, email: Swift.String? = nil, phoneNumber: Swift.String? = nil) async throws -> KoardSDK.SendReceiptsResponse
-  public func createFallbackLink(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?) async throws -> KoardSDK.FallbackResponse
-}
 public struct AnyCodable : Swift.Decodable {
   public init(from decoder: any Swift.Decoder) throws
+  public var stringValue: Swift.String? {
+    get
+  }
 }
 extension KoardSDK.AnyCodable {
   public init(_ value: Any)
@@ -735,6 +760,10 @@ extension ProximityReader.PaymentCardReader.Event {
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 17.0, *)
 public class KoardMerchantSDK : ObjectiveC.NSObject {
   public static let shared: KoardSDK.KoardMerchantSDK
+  public var readerEventsPublisher: Combine.AnyPublisher<ProximityReader.PaymentCardReader.Event, Swift.Never> {
+    get
+  }
+  public func startListeningToReaderEvents()
   public var readerEvents: _Concurrency.AsyncStream<ProximityReader.PaymentCardReader.Event> {
     get
   }
@@ -753,12 +782,18 @@ public class KoardMerchantSDK : ObjectiveC.NSObject {
   final public let readerViewModel: KoardSDK.ProximityReaderViewModel
   @objc deinit
 }
-extension KoardSDK.KoardTransaction.Status : Swift.Equatable {}
-extension KoardSDK.KoardTransaction.Status : Swift.Hashable {}
-extension KoardSDK.KoardTransaction.Status : Swift.RawRepresentable {}
+extension KoardSDK.KoardLoggingLevel : Swift.Equatable {}
+extension KoardSDK.KoardLoggingLevel : Swift.Hashable {}
+extension KoardSDK.KoardLoggingLevel : Swift.RawRepresentable {}
+extension KoardSDK.HttpMethod : Swift.Equatable {}
+extension KoardSDK.HttpMethod : Swift.Hashable {}
+extension KoardSDK.HttpMethod : Swift.RawRepresentable {}
 extension KoardSDK.PaymentType : Swift.Equatable {}
 extension KoardSDK.PaymentType : Swift.Hashable {}
 extension KoardSDK.PaymentType : Swift.RawRepresentable {}
+extension KoardSDK.KoardTransaction.Status : Swift.Equatable {}
+extension KoardSDK.KoardTransaction.Status : Swift.Hashable {}
+extension KoardSDK.KoardTransaction.Status : Swift.RawRepresentable {}
 extension KoardSDK.ProcessorGateway : Swift.Equatable {}
 extension KoardSDK.ProcessorGateway : Swift.Hashable {}
 extension KoardSDK.ProcessorGateway : Swift.RawRepresentable {}
@@ -774,9 +809,3 @@ extension KoardSDK.PaymentBreakdown.TipType : Swift.RawRepresentable {}
 extension KoardSDK.StatusReason : Swift.Equatable {}
 extension KoardSDK.StatusReason : Swift.Hashable {}
 extension KoardSDK.StatusReason : Swift.RawRepresentable {}
-extension KoardSDK.KoardLoggingLevel : Swift.Equatable {}
-extension KoardSDK.KoardLoggingLevel : Swift.Hashable {}
-extension KoardSDK.KoardLoggingLevel : Swift.RawRepresentable {}
-extension KoardSDK.HttpMethod : Swift.Equatable {}
-extension KoardSDK.HttpMethod : Swift.Hashable {}
-extension KoardSDK.HttpMethod : Swift.RawRepresentable {}
