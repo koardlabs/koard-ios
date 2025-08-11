@@ -506,7 +506,7 @@ public struct KoardTransaction : Swift.Decodable {
   public var additionalDetails: [Swift.String : Any]? {
     get
   }
-  public enum Status : Swift.String, Swift.Codable {
+  public enum Status : Swift.String, Swift.Codable, Swift.CaseIterable {
     case pending
     case authorized
     case captured
@@ -524,7 +524,11 @@ public struct KoardTransaction : Swift.Decodable {
     case unknown
     public init(from decoder: any Swift.Decoder) throws
     public init?(rawValue: Swift.String)
+    public typealias AllCases = [KoardSDK.KoardTransaction.Status]
     public typealias RawValue = Swift.String
+    nonisolated public static var allCases: [KoardSDK.KoardTransaction.Status] {
+      get
+    }
     public var rawValue: Swift.String {
       get
     }
@@ -619,6 +623,7 @@ public typealias RefundResponse = KoardSDK.KoardTransaction
 public typealias KoardRefundResponse = KoardSDK.RefundResponse
 public struct SendReceiptsResponse : Swift.Codable {
   public let message: Swift.String
+  public init(message: Swift.String)
   public func encode(to encoder: any Swift.Encoder) throws
   public init(from decoder: any Swift.Decoder) throws
 }
