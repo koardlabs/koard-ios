@@ -16236,6 +16236,66 @@
               },
               {
                 "kind": "Var",
+                "name": "allCases",
+                "printedName": "allCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[KoardSDK.KoardTransaction.Status]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Status",
+                        "printedName": "KoardSDK.KoardTransaction.Status",
+                        "usr": "s:8KoardSDK0A11TransactionV6StatusO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Var",
+                "usr": "s:8KoardSDK0A11TransactionV6StatusO8allCasesSayAEGvpZ",
+                "mangledName": "$s8KoardSDK0A11TransactionV6StatusO8allCasesSayAEGvpZ",
+                "moduleName": "KoardSDK",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Nonisolated"
+                ],
+                "accessors": [
+                  {
+                    "kind": "Accessor",
+                    "name": "Get",
+                    "printedName": "Get()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[KoardSDK.KoardTransaction.Status]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Status",
+                            "printedName": "KoardSDK.KoardTransaction.Status",
+                            "usr": "s:8KoardSDK0A11TransactionV6StatusO"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "declKind": "Accessor",
+                    "usr": "s:8KoardSDK0A11TransactionV6StatusO8allCasesSayAEGvgZ",
+                    "mangledName": "$s8KoardSDK0A11TransactionV6StatusO8allCasesSayAEGvgZ",
+                    "moduleName": "KoardSDK",
+                    "static": true,
+                    "implicit": true,
+                    "accessorKind": "get"
+                  }
+                ]
+              },
+              {
+                "kind": "Var",
                 "name": "successful",
                 "printedName": "successful",
                 "children": [
@@ -16674,6 +16734,36 @@
                 "printedName": "Encodable",
                 "usr": "s:SE",
                 "mangledName": "$sSE"
+              },
+              {
+                "kind": "Conformance",
+                "name": "CaseIterable",
+                "printedName": "CaseIterable",
+                "children": [
+                  {
+                    "kind": "TypeWitness",
+                    "name": "AllCases",
+                    "printedName": "AllCases",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[KoardSDK.KoardTransaction.Status]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Status",
+                            "printedName": "KoardSDK.KoardTransaction.Status",
+                            "usr": "s:8KoardSDK0A11TransactionV6StatusO"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:s12CaseIterableP",
+                "mangledName": "$ss12CaseIterableP"
               }
             ]
           },
@@ -19781,6 +19871,33 @@
                 "accessorKind": "get"
               }
             ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(message:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SendReceiptsResponse",
+                "printedName": "KoardSDK.SendReceiptsResponse",
+                "usr": "s:8KoardSDK20SendReceiptsResponseV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:8KoardSDK20SendReceiptsResponseV7messageACSS_tcfc",
+            "mangledName": "$s8KoardSDK20SendReceiptsResponseV7messageACSS_tcfc",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
           },
           {
             "kind": "Constructor",
@@ -29367,35 +29484,35 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 4257,
+      "offset": 4271,
       "length": 19,
       "value": "\"surcharge_pending\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 4309,
+      "offset": 4323,
       "length": 19,
       "value": "\"surcharge_applied\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 4421,
+      "offset": 4435,
       "length": 13,
       "value": "\"pickup_card\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
-      "offset": 4459,
+      "offset": 4473,
       "length": 11,
       "value": "\"timed_out\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/Models\/KoardTransaction.swift",
       "kind": "Dictionary",
-      "offset": 9105,
+      "offset": 9119,
       "length": 1561,
       "value": "[(\"5A\", \"Application Primary Account Number (PAN)\"), (\"82\", \"Application Interchange Profile\"), (\"84\", \"Dedicated File (DF) Name\"), (\"95\", \"Terminal Verification Results\"), (\"9A\", \"Transaction Date\"), (\"9C\", \"Transaction Type\"), (\"5F2A\", \"Transaction Currency Code\"), (\"5F34\", \"Application Primary Account Number (PAN) Sequence Number\"), (\"9F02\", \"Amount, Authorised (Numeric)\"), (\"9F03\", \"Amount, Other (Numeric)\"), (\"9F10\", \"Issuer Application Data\"), (\"9F1A\", \"Terminal Country Code\"), (\"9F1E\", \"Interface Device (IFD) Serial Number\"), (\"9F26\", \"Application Cryptogram\"), (\"9F27\", \"Cryptogram Information Data\"), (\"9F34\", \"Cardholder Verification Method (CVM) Results\"), (\"9F35\", \"Terminal Type\"), (\"9F36\", \"Application Transaction Counter (ATC)\"), (\"9F37\", \"Unpredictable Number\"), (\"8E\", \"Cardholder Verification Method (CVM) List\"), (\"9F07\", \"Application Usage Control\"), (\"9F0D\", \"Issuer Action Code – Default\"), (\"9F0E\", \"Issuer Action Code – Denial\"), (\"9F0F\", \"Issuer Action Code – Online\"), (\"9F09\", \"Application Version Number\"), (\"9F08\", \"Application Version Number\"), (\"9B\", \"Transaction Status Information\"), (\"50\", \"Application Label\"), (\"9F12\", \"Application Preferred Name\"), (\"9F06\", \"Application Identifier (AID) – terminal\"), (\"5F25\", \"Application Effective Date\"), (\"5F24\", \"Application Expiration Date\"), (\"9F33\", \"Terminal Capabilities\"), (\"4F\", \"Application Identifier (AID) – card\"), (\"9F15\", \"Merchant Category Code\"), (\"5F2D\", \"Language Preference\")]"
     },
