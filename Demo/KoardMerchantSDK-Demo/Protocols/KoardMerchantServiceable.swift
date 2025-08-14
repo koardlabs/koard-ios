@@ -29,12 +29,18 @@ import KoardSDK
 public protocol KoardMerchantServiceable {
     var isAuthenticated: Bool { get }
     var isReaderSetupSupported: Bool { get }
-
+    var activeLocation: Location? { get }
+    
     func setup()
     func authenticateMerchant() async throws
     func setupLocation() async throws
     func prepareCardReader() async throws
     func monitorReaderStatus()
+    func fetchLocations() async throws -> [Location]
+   
+    func preauthorize(
+        amount: Int,
+        currency: CurrencyCode) async throws -> TransactionResponse
     
     func processSale(
         subtotal: Int,
@@ -80,6 +86,18 @@ public protocol KoardMerchantServiceable {
         tipAmount: Int,
         tipType: PaymentBreakdown.TipType,
         finalAmount: Int
+    ) async throws -> TransactionResponse
+    
+    func sendReceipts(
+        transactionId: String,
+        email: String?,
+        phoneNumber: String?
+    ) async throws -> SendReceiptsResponse
+    
+    func refund(
+        transactionID: String,
+        amount: Int?,
+        eventId: String?
     ) async throws -> TransactionResponse
     
     func logout()

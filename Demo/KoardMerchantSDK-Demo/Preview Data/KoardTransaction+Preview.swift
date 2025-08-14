@@ -31,14 +31,14 @@ extension KoardTransaction {
             ownerId: "owner_999",
             parentAccountIds: ["acct_parentA", "acct_parentB"],
             createdAt: Int(Date().timeIntervalSince1970 * 1000),
-            status: .approved,
+            status: .captured,
             statusReason: nil,
             paymentMethod: "card",
             cardType: "credit",
             cardBrand: "Visa",
             card: "**** 4242",
             additionalDetails: ["note": AnyCodable("Test transaction for preview")],
-            gatewayTransactionResponse: ["status": AnyCodable("authorized")],
+            gatewayTransactionResponse: .approvedGatewayTransactionResponse,
             processorResponseCode: "00",
             processorResponseMessage: "Approved",
             transactionType: "sale",
@@ -86,7 +86,7 @@ extension KoardTransaction {
             cardBrand: "Mastercard",
             card: "**** 1111",
             additionalDetails: ["error": AnyCodable("Insufficient funds")],
-            gatewayTransactionResponse: ["status": AnyCodable("declined")],
+            gatewayTransactionResponse: .declinedGatewayTransactionResponse,
             processorResponseCode: "51",
             processorResponseMessage: "Insufficient funds",
             transactionType: "sale",
@@ -134,7 +134,7 @@ extension KoardTransaction {
             cardBrand: "Visa",
             card: "**** 5678",
             additionalDetails: ["refundReason": AnyCodable("Customer returned item")],
-            gatewayTransactionResponse: ["status": AnyCodable("refunded")],
+            gatewayTransactionResponse: .refundedGatewayTransactionResponse,
             processorResponseCode: "00",
             processorResponseMessage: "Approved",
             transactionType: "refund",
@@ -146,3 +146,4 @@ extension KoardTransaction {
         )
     }
 }
+

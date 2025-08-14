@@ -7,9 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F4CBF042E25E2A900CE5CEA /* KoardSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5F4CBF032E25E2A900CE5CEA /* KoardSDK */; };
-		5FE28EA02E21ACC400C14AD2 /* KoardSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5FE28E9F2E21ACC400C14AD2 /* KoardSDK */; };
+		5F313E182E4D729900D904D4 /* KoardSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5F313E172E4D729900D904D4 /* KoardSDK */; };
+		5F61C3752E484A5D00DC0468 /* KoardSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 5F61C3742E484A5D00DC0468 /* KoardSDK */; };
+		5F61C3922E490FD600DC0468 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5F61C3912E490FD600DC0468 /* PhoneNumberKit */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5F511ABC2E45040D00D78D22 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5F81592D2E14785800F70DE6 /* Koard Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Koard Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,8 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FE28EA02E21ACC400C14AD2 /* KoardSDK in Frameworks */,
-				5F4CBF042E25E2A900CE5CEA /* KoardSDK in Frameworks */,
+				5F313E182E4D729900D904D4 /* KoardSDK in Frameworks */,
+				5F61C3752E484A5D00DC0468 /* KoardSDK in Frameworks */,
+				5F61C3922E490FD600DC0468 /* PhoneNumberKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +77,7 @@
 				5F8159292E14785800F70DE6 /* Sources */,
 				5F81592A2E14785800F70DE6 /* Frameworks */,
 				5F81592B2E14785800F70DE6 /* Resources */,
+				5F511ABC2E45040D00D78D22 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -72,8 +88,9 @@
 			);
 			name = "KoardMerchantSDK-Demo";
 			packageProductDependencies = (
-				5FE28E9F2E21ACC400C14AD2 /* KoardSDK */,
-				5F4CBF032E25E2A900CE5CEA /* KoardSDK */,
+				5F61C3742E484A5D00DC0468 /* KoardSDK */,
+				5F61C3912E490FD600DC0468 /* PhoneNumberKit */,
+				5F313E172E4D729900D904D4 /* KoardSDK */,
 			);
 			productName = "KoardMerchantSDK-Demo";
 			productReference = 5F81592D2E14785800F70DE6 /* Koard Demo.app */;
@@ -104,7 +121,8 @@
 			mainGroup = 5F8159242E14785800F70DE6;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				5F4CBF022E25E2A900CE5CEA /* XCRemoteSwiftPackageReference "koard-sdk" */,
+				5F61C3902E490FD600DC0468 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
+				5F313E162E4D729900D904D4 /* XCRemoteSwiftPackageReference "koard-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5F81592E2E14785800F70DE6 /* Products */;
@@ -348,7 +366,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5F4CBF022E25E2A900CE5CEA /* XCRemoteSwiftPackageReference "koard-sdk" */ = {
+		5F313E162E4D729900D904D4 /* XCRemoteSwiftPackageReference "koard-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/koardlabs/koard-sdk.git";
 			requirement = {
@@ -356,17 +374,30 @@
 				minimumVersion = 1.0.10;
 			};
 		};
+		5F61C3902E490FD600DC0468 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5F4CBF032E25E2A900CE5CEA /* KoardSDK */ = {
+		5F313E172E4D729900D904D4 /* KoardSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5F4CBF022E25E2A900CE5CEA /* XCRemoteSwiftPackageReference "koard-sdk" */;
+			package = 5F313E162E4D729900D904D4 /* XCRemoteSwiftPackageReference "koard-sdk" */;
 			productName = KoardSDK;
 		};
-		5FE28E9F2E21ACC400C14AD2 /* KoardSDK */ = {
+		5F61C3742E484A5D00DC0468 /* KoardSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = KoardSDK;
+		};
+		5F61C3912E490FD600DC0468 /* PhoneNumberKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5F61C3902E490FD600DC0468 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
+			productName = PhoneNumberKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

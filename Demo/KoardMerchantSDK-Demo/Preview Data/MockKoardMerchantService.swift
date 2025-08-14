@@ -36,6 +36,10 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
         true // Simulate reader support available for previews
     }
 
+    public var activeLocation: Location? {
+        .downtownCoffee
+    }
+
     public func setup() {}
 
     public func authenticateMerchant() async throws {}
@@ -43,6 +47,16 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
     public func setupLocation() async throws {}
 
     public func prepareCardReader() async throws {}
+
+    public func preauthorize(
+        amount: Int,
+        currency: CurrencyCode) async throws -> TransactionResponse {
+            .mockPreauthorizedTransaction
+    }
+
+    public func fetchLocations() async throws -> [Location] {
+        [.downtownCoffee, .theBookLoft, .seasideGrill]
+    }
 
     public func monitorReaderStatus() {}
 
@@ -68,7 +82,7 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
             transactions: [
                 .mockApprovedTransaction,
                 .mockDeclinedTransction,
-                .mockRefundedTransction
+                .mockRefundedTransction,
             ],
             total: 3,
             limit: 25,
@@ -82,7 +96,7 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
             transactions: [
                 .mockApprovedTransaction,
                 .mockDeclinedTransction,
-                .mockRefundedTransction
+                .mockRefundedTransction,
             ],
             total: 3,
             limit: 25,
@@ -94,7 +108,7 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
     public func fetchTransactionsByStatus(status: KoardTransaction.Status) async throws -> TransactionHistoryResponse {
         .init(
             transactions: [
-                .mockApprovedTransaction
+                .mockApprovedTransaction,
             ],
             total: 3,
             limit: 25,
@@ -138,5 +152,21 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
         .mockCapturedTransaction
     }
 
+    public func sendReceipts(
+        transactionId: String,
+        email: String? = nil,
+        phoneNumber: String? = nil
+    ) async throws -> SendReceiptsResponse {
+        .mockReceiptResponse
+    }
+    
+    public func refund(
+        transactionID: String,
+        amount: Int?,
+        eventId: String? = nil
+    ) async throws -> TransactionResponse {
+        .mockCapturedTransaction
+    }
+    
     public func logout() {}
 }
