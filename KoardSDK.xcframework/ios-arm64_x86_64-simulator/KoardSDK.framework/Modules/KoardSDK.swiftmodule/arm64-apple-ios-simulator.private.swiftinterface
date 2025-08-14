@@ -512,6 +512,7 @@ public struct KoardTransaction : Swift.Decodable {
     case captured
     case surchargePending
     case surchargeApplied
+    case approved
     case declined
     case refunded
     case reversed
