@@ -242,7 +242,6 @@ extension KoardSDK.PaymentType {
 @_hasMissingDesignatedInitializers @available(iOS 17.0, *)
 public class ProximityReaderViewModel : @unchecked Swift.Sendable {
   public var reader: ProximityReader.PaymentCardReader
-  final public let readerEventsSubject: Combine.PassthroughSubject<ProximityReader.PaymentCardReader.Event, Swift.Never>
   @objc deinit
 }
 @available(iOS 15.4, *)
@@ -767,10 +766,6 @@ extension ProximityReader.PaymentCardReader.Event {
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 17.0, *)
 public class KoardMerchantSDK : ObjectiveC.NSObject {
   public static let shared: KoardSDK.KoardMerchantSDK
-  public var readerEventsPublisher: Combine.AnyPublisher<ProximityReader.PaymentCardReader.Event, Swift.Never> {
-    get
-  }
-  public func startListeningToReaderEvents()
   public var readerEvents: _Concurrency.AsyncStream<ProximityReader.PaymentCardReader.Event> {
     get
   }

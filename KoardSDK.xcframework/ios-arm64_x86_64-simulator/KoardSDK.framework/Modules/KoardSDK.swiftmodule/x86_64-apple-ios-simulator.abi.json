@@ -4646,84 +4646,6 @@
                 "accessorKind": "_modify"
               }
             ]
-          },
-          {
-            "kind": "Var",
-            "name": "readerEventsSubject",
-            "printedName": "readerEventsSubject",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "PassthroughSubject",
-                "printedName": "Combine.PassthroughSubject<ProximityReader.PaymentCardReader.Event, Swift.Never>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Event",
-                    "printedName": "ProximityReader.PaymentCardReader.Event",
-                    "usr": "s:15ProximityReader011PaymentCardB0C5EventO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Never",
-                    "printedName": "Swift.Never",
-                    "usr": "s:s5NeverO"
-                  }
-                ],
-                "usr": "s:7Combine18PassthroughSubjectC"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:8KoardSDK24ProximityReaderViewModelC19readerEventsSubject7Combine011PassthroughI0Cy0cD0011PaymentCardD0C5EventOs5NeverOGvp",
-            "mangledName": "$s8KoardSDK24ProximityReaderViewModelC19readerEventsSubject7Combine011PassthroughI0Cy0cD0011PaymentCardD0C5EventOs5NeverOGvp",
-            "moduleName": "KoardSDK",
-            "declAttributes": [
-              "HasInitialValue",
-              "Final",
-              "HasStorage",
-              "AccessControl",
-              "RawDocComment"
-            ],
-            "isLet": true,
-            "hasStorage": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "PassthroughSubject",
-                    "printedName": "Combine.PassthroughSubject<ProximityReader.PaymentCardReader.Event, Swift.Never>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Event",
-                        "printedName": "ProximityReader.PaymentCardReader.Event",
-                        "usr": "s:15ProximityReader011PaymentCardB0C5EventO"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Never",
-                        "printedName": "Swift.Never",
-                        "usr": "s:s5NeverO"
-                      }
-                    ],
-                    "usr": "s:7Combine18PassthroughSubjectC"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8KoardSDK24ProximityReaderViewModelC19readerEventsSubject7Combine011PassthroughI0Cy0cD0011PaymentCardD0C5EventOs5NeverOGvg",
-                "mangledName": "$s8KoardSDK24ProximityReaderViewModelC19readerEventsSubject7Combine011PassthroughI0Cy0cD0011PaymentCardD0C5EventOs5NeverOGvg",
-                "moduleName": "KoardSDK",
-                "implicit": true,
-                "declAttributes": [
-                  "Final"
-                ],
-                "accessorKind": "get"
-              }
-            ]
           }
         ],
         "declKind": "Class",
@@ -25655,13 +25577,6 @@
       },
       {
         "kind": "Import",
-        "name": "Combine",
-        "printedName": "Combine",
-        "declKind": "Import",
-        "moduleName": "KoardSDK"
-      },
-      {
-        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -25736,94 +25651,6 @@
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Var",
-            "name": "readerEventsPublisher",
-            "printedName": "readerEventsPublisher",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "AnyPublisher",
-                "printedName": "Combine.AnyPublisher<ProximityReader.PaymentCardReader.Event, Swift.Never>",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Event",
-                    "printedName": "ProximityReader.PaymentCardReader.Event",
-                    "usr": "s:15ProximityReader011PaymentCardB0C5EventO"
-                  },
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Never",
-                    "printedName": "Swift.Never",
-                    "usr": "s:s5NeverO"
-                  }
-                ],
-                "usr": "s:7Combine12AnyPublisherV"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:8KoardSDK0a8MerchantB0C21readerEventsPublisher7Combine03AnyF0Vy15ProximityReader011PaymentCardJ0C5EventOs5NeverOGvp",
-            "mangledName": "$s8KoardSDK0a8MerchantB0C21readerEventsPublisher7Combine03AnyF0Vy15ProximityReader011PaymentCardJ0C5EventOs5NeverOGvp",
-            "moduleName": "KoardSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "AnyPublisher",
-                    "printedName": "Combine.AnyPublisher<ProximityReader.PaymentCardReader.Event, Swift.Never>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Event",
-                        "printedName": "ProximityReader.PaymentCardReader.Event",
-                        "usr": "s:15ProximityReader011PaymentCardB0C5EventO"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Never",
-                        "printedName": "Swift.Never",
-                        "usr": "s:s5NeverO"
-                      }
-                    ],
-                    "usr": "s:7Combine12AnyPublisherV"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:8KoardSDK0a8MerchantB0C21readerEventsPublisher7Combine03AnyF0Vy15ProximityReader011PaymentCardJ0C5EventOs5NeverOGvg",
-                "mangledName": "$s8KoardSDK0a8MerchantB0C21readerEventsPublisher7Combine03AnyF0Vy15ProximityReader011PaymentCardJ0C5EventOs5NeverOGvg",
-                "moduleName": "KoardSDK",
-                "accessorKind": "get"
-              }
-            ]
-          },
-          {
-            "kind": "Function",
-            "name": "startListeningToReaderEvents",
-            "printedName": "startListeningToReaderEvents()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:8KoardSDK0a8MerchantB0C28startListeningToReaderEventsyyF",
-            "mangledName": "$s8KoardSDK0a8MerchantB0C28startListeningToReaderEventsyyF",
-            "moduleName": "KoardSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
           },
           {
             "kind": "Var",
@@ -28913,21 +28740,21 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 20296,
+      "offset": 19931,
       "length": 12,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 20379,
+      "offset": 20014,
       "length": 13,
       "value": "2"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 20454,
+      "offset": 20089,
       "length": 7,
       "value": "3"
     },
@@ -30054,14 +29881,14 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
       "kind": "BooleanLiteral",
-      "offset": 4666,
+      "offset": 3987,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
       "kind": "BooleanLiteral",
-      "offset": 4889,
+      "offset": 4210,
       "length": 5,
       "value": "false"
     }

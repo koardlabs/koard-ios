@@ -13,6 +13,8 @@ public class KoardMerchantService: KoardMerchantServiceable {
     private var locations: [Location] = []
     private var cancellables: Set<AnyCancellable> = []
 
+    private var task: Task<Void, Never>?
+    
     public var isAuthenticated: Bool {
         KoardMerchantSDK.shared.isAuthenticated
     }
@@ -143,11 +145,21 @@ public class KoardMerchantService: KoardMerchantServiceable {
 
     /// Begins listening to card reader status changes and handles updates in real time.
     public func monitorReaderStatus() {
-        KoardMerchantSDK.shared.readerEventsPublisher
-            .sink { event in
-                print("Reader event: \(event)")
+        // Cancel any old task if already running
+        task?.cancel()
+
+        task = Task {
+            for await event in KoardMerchantSDK.shared.readerEvents {
+                await MainActor.run {
+                    print("Received reader event: \(event)")
+                }
             }
-            .store(in: &cancellables)
+        }
+    }
+
+    public func stopListening() {
+        task?.cancel()
+        task = nil
     }
 
     /// Initiates a Tap to Pay sale transaction with the provided subtotal, tax rate, and tip.
