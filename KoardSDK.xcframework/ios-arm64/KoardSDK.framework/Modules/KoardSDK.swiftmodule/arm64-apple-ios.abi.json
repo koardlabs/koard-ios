@@ -1418,6 +1418,13 @@
         "moduleName": "KoardSDK"
       },
       {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "KoardSDK"
+      },
+      {
         "kind": "TypeDecl",
         "name": "HttpMethod",
         "printedName": "HttpMethod",
@@ -1746,17 +1753,24 @@
           {
             "kind": "Function",
             "name": "refreshTokenIfNeeded",
-            "printedName": "refreshTokenIfNeeded()",
+            "printedName": "refreshTokenIfNeeded(forceRefresh:)",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Void",
                 "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               }
             ],
             "declKind": "Func",
-            "usr": "s:8KoardSDK15ApiCallsHandlerC20refreshTokenIfNeededyyYaKF",
-            "mangledName": "$s8KoardSDK15ApiCallsHandlerC20refreshTokenIfNeededyyYaKF",
+            "usr": "s:8KoardSDK15ApiCallsHandlerC20refreshTokenIfNeeded12forceRefreshySb_tYaKF",
+            "mangledName": "$s8KoardSDK15ApiCallsHandlerC20refreshTokenIfNeeded12forceRefreshySb_tYaKF",
             "moduleName": "KoardSDK",
             "declAttributes": [
               "AccessControl",
@@ -28670,51 +28684,58 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
-      "offset": 67,
+      "offset": 80,
       "length": 5,
       "value": "\"GET\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
-      "offset": 89,
+      "offset": 102,
       "length": 6,
       "value": "\"POST\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
-      "offset": 111,
+      "offset": 124,
       "length": 5,
       "value": "\"PUT\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
-      "offset": 135,
+      "offset": 148,
       "length": 8,
       "value": "\"DELETE\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
-      "offset": 1504,
+      "offset": 1517,
       "length": 19,
       "value": "\"v1\/merchant\/login\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 2233,
+      "offset": 2246,
       "length": 4,
       "value": "3600"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
-      "offset": 2361,
+      "offset": 2374,
       "length": 38,
       "value": "\"[Auth] Login successful, token saved\""
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3916,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/PaymentType.swift",
@@ -28796,168 +28817,168 @@
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "BooleanLiteral",
-      "offset": 1454,
+      "offset": 1481,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "IntegerLiteral",
-      "offset": 2283,
+      "offset": 2310,
       "length": 2,
       "value": "90"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "IntegerLiteral",
-      "offset": 2288,
+      "offset": 2315,
       "length": 2,
       "value": "60"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 3253,
+      "offset": 3280,
       "length": 75,
       "value": "\"Requesting card reader token for Tap to Pay: \""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 3327,
+      "offset": 3354,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 3390,
+      "offset": 3417,
       "length": 25,
       "value": "\"v1\/merchant\/apple-token\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 3462,
+      "offset": 3489,
       "length": 25,
       "value": "\"CardReaderTokenProvider\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "IntegerLiteral",
-      "offset": 3495,
+      "offset": 3522,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 3536,
+      "offset": 3563,
       "length": 13,
       "value": "\"Invalid URL\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 3647,
+      "offset": 3674,
       "length": 6,
       "value": "\"POST\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 3733,
+      "offset": 3760,
       "length": 16,
       "value": "\"X-Koard-Apikey\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 3940,
+      "offset": 3967,
       "length": 61,
       "value": "\"Including merchant login token in card reader token request\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4036,
+      "offset": 4063,
       "length": 64,
       "value": "\"Bearer \""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4099,
+      "offset": 4126,
       "length": 24,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4122,
+      "offset": 4149,
       "length": 15,
       "value": "\"Authorization\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4191,
+      "offset": 4218,
       "length": 66,
       "value": "\"No merchant login token available for card reader token request!\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4303,
+      "offset": 4330,
       "length": 18,
       "value": "\"application\/json\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4343,
+      "offset": 4370,
       "length": 14,
       "value": "\"Content-Type\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4516,
+      "offset": 4543,
       "length": 75,
       "value": "\"Including locationID in card reader token request: \""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4584,
+      "offset": 4611,
       "length": 5,
       "value": "\"nil\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4590,
+      "offset": 4617,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 4769,
+      "offset": 4796,
       "length": 15,
       "value": "\"X-Location-ID\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 5153,
+      "offset": 5180,
       "length": 73,
       "value": "\"Received card reader token for Tap to Pay: \""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
-      "offset": 5225,
+      "offset": 5252,
       "length": 2,
       "value": "\"\""
     },
