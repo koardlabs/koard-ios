@@ -130,8 +130,8 @@ public class ApiCallsHandler : ObjectiveC.NSObject {
   public func login(merchantCode: Swift.String, merchantPin: Swift.String) async throws
   public func refreshTokenIfNeeded(forceRefresh: Swift.Bool = false) async throws
   public func initialize(environment: KoardSDK.KoardEnvironment)
-  public func makeAsyncApiCall<T>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil) async throws -> T where T : Swift.Decodable
-  public func makeAsyncApiCall<T, Parameters>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil, bodyParameters: Parameters?) async throws -> T where T : Swift.Decodable, Parameters : Swift.Encodable
+  public func makeAsyncApiCall<T>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil, bypassRefreshToken: Swift.Bool = false) async throws -> T where T : Swift.Decodable
+  public func makeAsyncApiCall<T, Parameters>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil, bodyParameters: Parameters?, bypassRefreshToken: Swift.Bool = false) async throws -> T where T : Swift.Decodable, Parameters : Swift.Encodable
   @objc deinit
 }
 public protocol KoardDescribableError : Swift.Error {

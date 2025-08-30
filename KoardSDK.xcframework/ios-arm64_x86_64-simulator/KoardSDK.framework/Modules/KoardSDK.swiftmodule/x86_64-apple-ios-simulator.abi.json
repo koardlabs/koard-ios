@@ -1809,7 +1809,7 @@
           {
             "kind": "Function",
             "name": "makeAsyncApiCall",
-            "printedName": "makeAsyncApiCall(of:endpoint:method:queryParameters:)",
+            "printedName": "makeAsyncApiCall(of:endpoint:method:queryParameters:bypassRefreshToken:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1876,11 +1876,18 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               }
             ],
             "declKind": "Func",
-            "usr": "s:8KoardSDK15ApiCallsHandlerC09makeAsyncC4Call2of8endpoint6method15queryParametersxxm_SSAA10HttpMethodOSDySSypSgGSgtYaKSeRzlF",
-            "mangledName": "$s8KoardSDK15ApiCallsHandlerC09makeAsyncC4Call2of8endpoint6method15queryParametersxxm_SSAA10HttpMethodOSDySSypSgGSgtYaKSeRzlF",
+            "usr": "s:8KoardSDK15ApiCallsHandlerC09makeAsyncC4Call2of8endpoint6method15queryParameters18bypassRefreshTokenxxm_SSAA10HttpMethodOSDySSypSgGSgSbtYaKSeRzlF",
+            "mangledName": "$s8KoardSDK15ApiCallsHandlerC09makeAsyncC4Call2of8endpoint6method15queryParameters18bypassRefreshTokenxxm_SSAA10HttpMethodOSDySSypSgGSgSbtYaKSeRzlF",
             "moduleName": "KoardSDK",
             "genericSig": "<τ_0_0 where τ_0_0 : Swift.Decodable>",
             "sugared_genericSig": "<T where T : Swift.Decodable>",
@@ -1894,7 +1901,7 @@
           {
             "kind": "Function",
             "name": "makeAsyncApiCall",
-            "printedName": "makeAsyncApiCall(of:endpoint:method:queryParameters:bodyParameters:)",
+            "printedName": "makeAsyncApiCall(of:endpoint:method:queryParameters:bodyParameters:bypassRefreshToken:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1974,11 +1981,18 @@
                   }
                 ],
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
               }
             ],
             "declKind": "Func",
-            "usr": "s:8KoardSDK15ApiCallsHandlerC09makeAsyncC4Call2of8endpoint6method15queryParameters04bodyM0xxm_SSAA10HttpMethodOSDySSypSgGSgq_SgtYaKSeRzSER_r0_lF",
-            "mangledName": "$s8KoardSDK15ApiCallsHandlerC09makeAsyncC4Call2of8endpoint6method15queryParameters04bodyM0xxm_SSAA10HttpMethodOSDySSypSgGSgq_SgtYaKSeRzSER_r0_lF",
+            "usr": "s:8KoardSDK15ApiCallsHandlerC09makeAsyncC4Call2of8endpoint6method15queryParameters04bodyM018bypassRefreshTokenxxm_SSAA10HttpMethodOSDySSypSgGSgq_SgSbtYaKSeRzSER_r0_lF",
+            "mangledName": "$s8KoardSDK15ApiCallsHandlerC09makeAsyncC4Call2of8endpoint6method15queryParameters04bodyM018bypassRefreshTokenxxm_SSAA10HttpMethodOSDySSypSgGSgq_SgSbtYaKSeRzSER_r0_lF",
             "moduleName": "KoardSDK",
             "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Decodable, τ_0_1 : Swift.Encodable>",
             "sugared_genericSig": "<T, Parameters where T : Swift.Decodable, Parameters : Swift.Encodable>",
@@ -28718,22 +28732,43 @@
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1634,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "IntegerLiteral",
-      "offset": 2246,
+      "offset": 2284,
       "length": 4,
       "value": "3600"
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
-      "offset": 2374,
+      "offset": 2412,
       "length": 38,
       "value": "\"[Auth] Login successful, token saved\""
     },
     {
       "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "BooleanLiteral",
-      "offset": 3916,
+      "offset": 3954,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7252,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/runner\/work\/koard-ios\/koard-ios\/Sources\/API\/ApiCallsHandler.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8359,
       "length": 5,
       "value": "false"
     },
