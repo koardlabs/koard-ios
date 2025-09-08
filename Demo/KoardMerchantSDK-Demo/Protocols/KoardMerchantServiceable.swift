@@ -37,7 +37,8 @@ public protocol KoardMerchantServiceable {
     func prepareCardReader() async throws
     func monitorReaderStatus()
     func fetchLocations() async throws -> [Location]
-   
+    func updateLocation(location: Location)
+    
     func preauthorize(
         amount: Int,
         currency: CurrencyCode) async throws -> TransactionResponse

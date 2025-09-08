@@ -58,6 +58,8 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
         [.downtownCoffee, .theBookLoft, .seasideGrill]
     }
 
+    public func updateLocation(location: Location) { }
+    
     public func monitorReaderStatus() {}
 
     public func processSale(

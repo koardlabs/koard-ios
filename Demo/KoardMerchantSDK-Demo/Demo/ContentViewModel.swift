@@ -67,6 +67,7 @@ public final class ContentViewModel {
             delegate: .init(
                 onLocationSelected: { [weak self] location in
                     self?.selectedLocation = location
+                    self?.koardMerchantService.updateLocation(location: location)
                     self?.destination = nil
                 }
             )

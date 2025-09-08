@@ -77,6 +77,18 @@ public class KoardMerchantService: KoardMerchantServiceable {
         }
     }
 
+    /// Fetches the list of available merchant locations from the Koard SDK.
+    ///
+    /// This function asynchronously retrieves the list of `Location` objects
+    /// from the `KoardMerchantSDK`. The result is stored locally and returned
+    /// to the caller. If no locations are found, a `MerchantError.noLocationsAvailable`
+    /// error is thrown.
+    ///
+    /// - Returns: An array of `Location` objects representing the merchant’s
+    ///   available locations.
+    /// - Throws:
+    ///   - `MerchantError.noLocationsAvailable` if the SDK returns an empty list.
+    ///   - Any other error encountered while fetching locations from the SDK.
     public func fetchLocations() async throws -> [Location] {
         do {
             locations = try await KoardMerchantSDK.shared.locations()
@@ -90,6 +102,18 @@ public class KoardMerchantService: KoardMerchantServiceable {
         }
     }
 
+    /// Updates the currently active merchant location in the Koard SDK.
+    ///
+    /// This function sets the provided `Location` as the active location within the
+    /// `KoardMerchantSDK`. The active location ID will be used by the SDK to
+    /// associate transactions and other merchant activity with the correct location.
+    ///
+    /// - Parameter location: The `Location` object representing the merchant
+    ///   location to activate. Its `id` will be passed to the SDK.
+    public func updateLocation(location: Location) {
+        KoardMerchantSDK.shared.setActiveLocationID(location.id)
+    }
+    
     /// Fetches and configures the merchant location context used for transactions.
     /// - Throws: An error if the operation fails
     public func setupLocation() async throws {
