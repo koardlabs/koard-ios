@@ -32,6 +32,7 @@ public protocol KoardMerchantServiceable {
     var activeLocation: Location? { get }
     
     func setup()
+    func loadActiveLocation() async -> Location?
     func authenticateMerchant() async throws
     func setupLocation() async throws
     func prepareCardReader() async throws
@@ -41,26 +42,37 @@ public protocol KoardMerchantServiceable {
     
     func preauthorize(
         amount: Int,
-        currency: CurrencyCode) async throws -> TransactionResponse
+        breakdown: PaymentBreakdown?,
+        currency: CurrencyCode
+    ) async throws -> TransactionResponse
     
     func processSale(
         subtotal: Int,
         taxRate: Double,
         tipAmount: Int?,
-        tipType: PaymentBreakdown.TipType
+        tipType: PaymentBreakdown.TipType,
+        surcharge: PaymentBreakdown.Surcharge?
     ) async throws -> KoardTransaction
     
     func getTransactionHistory(
-        startDate: Date,
+        startDate: Date?,
         endDate: Date?,
-        statuses: [KoardTransaction.Status],
-        types: [PaymentType],
-        minAmount: Int,
-        maxAmount: Int,
+        statuses: [KoardTransaction.Status]?,
+        types: [PaymentType]?,
+        minAmount: Int?,
+        maxAmount: Int?,
         limit: Int?
     ) async throws -> TransactionHistoryResponse
     
-    func transactionConfirmed(transactionId: String, confirm: Bool) async throws -> KoardTransaction
+    func fetchTransaction(transactionId: String) async throws -> KoardTransaction
+    
+    func transactionConfirmed(
+        transactionId: String,
+        confirm: Bool,
+        amount: Int?,
+        breakdown: PaymentBreakdown?,
+        eventId: String?
+    ) async throws -> KoardTransaction
     func searchTransactions(searchTerm: String) async throws -> TransactionHistoryResponse
     func fetchTransactionsByStatus(status: KoardTransaction.Status) async throws -> TransactionHistoryResponse
     
@@ -71,7 +83,17 @@ public protocol KoardMerchantServiceable {
         tipAmount: Int?,
         tipType: PaymentBreakdown.TipType,
         finalAmount: Int?
-    ) async throws -> String
+    ) async throws -> TransactionResponse
+    
+    func incrementalAuth(
+        transactionId: String,
+        amount: Int
+    ) async throws -> TransactionResponse
+    
+    func reverse(
+        transactionId: String,
+        amount: Int?
+    ) async throws -> TransactionResponse
     
     func preauthCaptureWorkflow(
         subtotal: Int,
@@ -98,7 +120,8 @@ public protocol KoardMerchantServiceable {
     func refund(
         transactionID: String,
         amount: Int?,
-        eventId: String?
+        eventId: String?,
+        withTap: Bool
     ) async throws -> TransactionResponse
     
     func logout()

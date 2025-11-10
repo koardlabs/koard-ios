@@ -378,7 +378,7 @@ struct TransactionReceiptStatusView: View {
             koardMerchantService: .mockMerchantService,
             transaction: .mockApprovedTransaction,
             delegate: .init(
-                onRefundSuccess: {}
+                onTransactionUpdate: {}
             )
         )
     )

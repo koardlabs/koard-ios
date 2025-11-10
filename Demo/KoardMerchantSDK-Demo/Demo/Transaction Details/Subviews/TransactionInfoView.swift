@@ -13,6 +13,7 @@ struct TransactionInfoView: View {
     var surchargeApplied: Bool?
     var date: Date?
     var cardInfo: String?
+    var cardBrand: String?
 
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -55,6 +56,11 @@ struct TransactionInfoView: View {
 
             if let date {
                 InfoRowView(titleText: "Date", valueText: dateFormatter.string(from: date))
+                Divider()
+            }
+
+            if let cardBrand, !cardBrand.isEmpty {
+                InfoRowView(titleText: "Card Brand", valueText: cardBrand)
                 Divider()
             }
 

@@ -11,15 +11,20 @@ public class KoardMerchantService: KoardMerchantServiceable {
     private var merchantCode: String?
     private var merchantPin: String?
     private var locations: [Location] = []
+    private var cachedActiveLocation: Location?
     private var cancellables: Set<AnyCancellable> = []
 
     private var task: Task<Void, Never>?
-    
+
     public var isAuthenticated: Bool {
         KoardMerchantSDK.shared.isAuthenticated
     }
 
     public var activeLocation: Location? {
+        if let cachedActiveLocation {
+            return cachedActiveLocation
+        }
+
         guard let activeLocationID = KoardMerchantSDK.shared.getActiveLocationID() else {
             return nil
         }
@@ -41,9 +46,10 @@ public class KoardMerchantService: KoardMerchantServiceable {
     /// Initializes any internal state or configuration required before SDK usage begins.
     public func setup() {
         let options = KoardOptions(
-            environment: .uat, // .uat, .production, .custom("https://api.example.com")
+            environment: .uat,
             loggingLevel: .debug // .debug, .info, .warning, .error, .none
         )
+        
 
         // Initialize with your API key
         KoardMerchantSDK.shared.initialize(
@@ -112,6 +118,25 @@ public class KoardMerchantService: KoardMerchantServiceable {
     ///   location to activate. Its `id` will be passed to the SDK.
     public func updateLocation(location: Location) {
         KoardMerchantSDK.shared.setActiveLocationID(location.id)
+        cachedActiveLocation = location
+    }
+    
+    public func loadActiveLocation() async -> Location? {
+        do {
+            let location = try await KoardMerchantSDK.shared.getActiveLocation()
+            cachedActiveLocation = location
+
+            if let index = locations.firstIndex(where: { $0.id == location.id }) {
+                locations[index] = location
+            } else {
+                locations.append(location)
+            }
+
+            return location
+        } catch {
+            print("Failed to load active location: \(error)")
+            return nil
+        }
     }
     
     /// Fetches and configures the merchant location context used for transactions.
@@ -128,6 +153,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
 
             // Set the active location
             KoardMerchantSDK.shared.setActiveLocationID(activeLocation.id)
+            cachedActiveLocation = activeLocation
 
             print("Active location set: \(activeLocation.name)")
 
@@ -154,6 +180,12 @@ public class KoardMerchantService: KoardMerchantServiceable {
             }
 
             // Prepare the card reader session
+            #if canImport(ProximityReader)
+                if #available(iOS 17.0, *) {
+                    _ = try await KoardMerchantSDK.shared.getToken()
+                }
+            #endif
+
             try await KoardMerchantSDK.shared.prepare()
 
             print("Card reader prepared and ready")
@@ -202,9 +234,21 @@ public class KoardMerchantService: KoardMerchantServiceable {
         subtotal: Int,
         taxRate: Double,
         tipAmount: Int? = 0,
-        tipType: PaymentBreakdown.TipType = .fixed
+        tipType: PaymentBreakdown.TipType = .fixed,
+        surcharge: PaymentBreakdown.Surcharge? = nil
     ) async throws -> KoardTransaction {
         let taxAmount = Int((Double(subtotal) * taxRate / 100.0).rounded())
+        let surchargeAmount: Int = {
+            guard let surcharge else { return 0 }
+            if surcharge.bypass { return 0 }
+            if let amount = surcharge.amount {
+                return amount
+            }
+            if let percentage = surcharge.percentage {
+                return Int((Double(subtotal) * percentage / 100.0).rounded())
+            }
+            return 0
+        }()
 
         // Create payment breakdown (optional)
         let breakdown = PaymentBreakdown(
@@ -212,7 +256,8 @@ public class KoardMerchantService: KoardMerchantServiceable {
             taxRate: Int(taxRate * 100),
             taxAmount: taxAmount,
             tipAmount: tipAmount ?? 0,
-            tipType: tipType
+            tipType: tipType,
+            surcharge: surcharge
         )
 
         // To ensure idempotency in sale requests, use the optional eventID parameter.
@@ -222,7 +267,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
 
         // Create currency
         let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-        let amount = subtotal + taxAmount + (tipAmount ?? 0)
+        let amount = subtotal + taxAmount + (tipAmount ?? 0) + surchargeAmount
         do {
             // Process the sale
             let response = try await KoardMerchantSDK.shared.sale(
@@ -260,34 +305,35 @@ public class KoardMerchantService: KoardMerchantServiceable {
     /// - Returns: A list of transactions that match the given filters.
     /// - Throws: An error if the transaction history or filtered query fails.
     public func getTransactionHistory(
-        startDate: Date,
-        endDate: Date? = Date(),
-        statuses: [KoardTransaction.Status],
-        types: [PaymentType],
-        minAmount: Int,
-        maxAmount: Int,
-        limit: Int? = 50
+        startDate: Date?,
+        endDate: Date?,
+        statuses: [KoardTransaction.Status]?,
+        types: [PaymentType]?,
+        minAmount: Int?,
+        maxAmount: Int?,
+        limit: Int?
     ) async throws -> TransactionHistoryResponse {
         do {
-            // Get recent transactions
-            let history = try await KoardMerchantSDK.shared.transactionHistory()
-
-            print("Found \(history.transactions.count) transactions")
-
-            // Advanced filtering
-            return try await KoardMerchantSDK.shared.searchTransactionsAdvanced(
-                startDate: startDate,
-                endDate: endDate,
-                statuses: statuses.map { $0.rawValue.lowercased() },
-                types: types.map { $0.rawValue.lowercased() },
+            let request = GetTransactionHistoryRequest(
+                storeId: KoardMerchantSDK.shared.getActiveLocationID(),
+                statuses: statuses?.map { $0.rawValue.lowercased() },
+                types: types?.map { $0.rawValue.lowercased() },
                 minAmount: minAmount,
                 maxAmount: maxAmount,
-                limit: limit ?? 50
+                startDate: startDate,
+                endDate: endDate,
+                limit: limit ?? 100
             )
+
+            return try await KoardMerchantSDK.shared.transactionHistory(request: request)
         } catch {
             print("Transaction history failed: \(error)")
             throw error
         }
+    }
+
+    public func fetchTransaction(transactionId: String) async throws -> KoardTransaction {
+        try await KoardMerchantSDK.shared.getTransaction(transactionId: transactionId)
     }
 
     /// Searches for transactions that match the given term across available metadata (e.g., card number, status, etc.).
@@ -324,8 +370,20 @@ public class KoardMerchantService: KoardMerchantServiceable {
     ///   - confirm: A Boolean value indicating whether to confirm (`true`) or reject (`false`) the transaction.
     /// - Returns: The updated `KoardTransaction` reflecting the confirmation result.
     /// - Throws: An error if the confirmation fails or the transaction is not in a confirmable state.
-    public func transactionConfirmed(transactionId: String, confirm: Bool) async throws -> KoardTransaction {
-        try await KoardMerchantSDK.shared.confirm(transaction: transactionId, confirm: confirm)
+    public func transactionConfirmed(
+        transactionId: String,
+        confirm: Bool,
+        amount: Int? = nil,
+        breakdown: PaymentBreakdown?,
+        eventId: String? = nil
+    ) async throws -> KoardTransaction {
+        try await KoardMerchantSDK.shared.confirm(
+            transaction: transactionId,
+            confirm: confirm,
+            amount: amount,
+            breakdown: breakdown,
+            eventId: eventId
+        )
     }
 
     /// Logs out the currently authenticated merchant and clears session data.
@@ -347,7 +405,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
     /// - Parameter transactionId: Description
     /// - Parameter amount: Description
     /// - Throws: An error if the operation fails
-    public func processRefund(transactionId: String, amount: Int? = nil) async throws {
+    public func processRefund(transactionId: String, amount: Int? = nil, withTap: Bool = false) async throws {
         do {
             // To ensure idempotency in sale requests, use the optional eventID parameter.
             // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
@@ -357,7 +415,8 @@ public class KoardMerchantService: KoardMerchantServiceable {
             let response = try await KoardMerchantSDK.shared.refund(
                 transactionId: transactionId,
                 amount: amount, // nil for full refund
-                eventId: eventId
+                eventId: eventId,
+                withTap: withTap
             )
 
             print("Refund successful: \(response.transactionId ?? "Unknown")")
@@ -369,36 +428,49 @@ public class KoardMerchantService: KoardMerchantServiceable {
     }
 
     /// Adds an additional authorized amount to an existing pre-authorized transaction.
-    /// - Parameter transactionId: Description
-    /// - Parameter additionalAmount: Description
-    /// - Throws: An error if the operation fails
-    public func incrementalAuth(transactionId: String, additionalAmount: Int) async throws {
-        // Optional: Add breakdown for the additional amount
-        let breakdown = PaymentBreakdown(
-            subtotal: additionalAmount,
-            taxRate: 875, // 8.75%
-            taxAmount: Int(Double(additionalAmount) * 0.0875),
-            tipAmount: 0,
-            tipType: .fixed
-        )
-
-        // To ensure idempotency in sale requests, use the optional eventID parameter.
-        // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
-        // return the original result instead of initiating a new charge.
+    /// - Parameters:
+    ///   - transactionId: The identifier of the transaction to increment.
+    ///   - amount: The additional amount in cents to authorize.
+    /// - Returns: A `TransactionResponse` describing the incremental authorization result.
+    /// - Throws: An error if the operation fails.
+    public func incrementalAuth(transactionId: String, amount: Int) async throws -> TransactionResponse {
         let eventId = UUID().uuidString
 
         do {
             let response = try await KoardMerchantSDK.shared.auth(
                 transactionId: transactionId,
-                amount: additionalAmount,
-                breakdown: breakdown, // Optional
+                amount: amount,
                 eventId: eventId
             )
 
             print("Incremental auth successful: \(response.transactionId ?? "Unknown")")
-
+            return response
         } catch {
             print("Incremental auth failed: \(error)")
+            throw error
+        }
+    }
+
+    /// Cancels or reduces a preauthorized transaction, optionally with a specific amount.
+    /// - Parameters:
+    ///   - transactionId: The identifier of the transaction to reverse.
+    ///   - amount: An optional amount in cents to reverse. Omit to reverse the full authorization.
+    /// - Returns: A `TransactionResponse` describing the reversal result.
+    /// - Throws: An error if the operation fails.
+    public func reverse(transactionId: String, amount: Int? = nil) async throws -> TransactionResponse {
+        let eventId = UUID().uuidString
+
+        do {
+            let response = try await KoardMerchantSDK.shared.reverse(
+                transactionId: transactionId,
+                amount: amount,
+                eventId: eventId
+            )
+
+            print("Reversal successful: \(response.transactionId ?? "Unknown")")
+            return response
+        } catch {
+            print("Reversal failed: \(error)")
             throw error
         }
     }
@@ -408,24 +480,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
     /// - Parameter amount: Description
     /// - Throws: An error if the operation fails
     public func reversePreauth(transactionId: String, amount: Int? = nil) async throws {
-        do {
-            // To ensure idempotency in sale requests, use the optional eventID parameter.
-            // This unique identifier allows Koard to recognize repeat attempts of the same transaction and
-            // return the original result instead of initiating a new charge.
-            let eventId = UUID().uuidString
-
-            let response = try await KoardMerchantSDK.shared.reverse(
-                transactionId: transactionId,
-                amount: amount, // nil for full reversal
-                eventId: eventId
-            )
-
-            print("Reversal successful: \(response.transactionId ?? "Unknown")")
-
-        } catch {
-            print("Reversal failed: \(error)")
-            throw error
-        }
+        _ = try await reverse(transactionId: transactionId, amount: amount)
     }
 
     /// Finalizes a previously authorized transaction by capturing funds from the cardholder.
@@ -445,7 +500,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
     ///   - tipAmount: An optional tip amount in cents. Defaults to `0`.
     ///   - tipType: The tip type, such as `.fixed` or `.percent`. Defaults to `.fixed`.
     ///   - finalAmount: An optional override for the final amount to capture. If `nil`, the full preauthorized amount is captured.
-    /// - Returns: A `String` representing the generated `eventId` used for this capture.
+    /// - Returns: A `TransactionResponse` representing the capture result.
     /// - Throws: An error if the capture fails or if the transaction is not in a capturable state.
     public func captureTransaction(
         transactionId: String,
@@ -454,7 +509,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
         tipAmount: Int? = 0,
         tipType: PaymentBreakdown.TipType = .fixed,
         finalAmount: Int? = nil
-    ) async throws -> String {
+    ) async throws -> TransactionResponse {
         let taxAmount = Int((Double(subtotal) * taxRate / 100.0).rounded())
 
         // Optional: Update breakdown with final tip amount
@@ -471,21 +526,15 @@ public class KoardMerchantService: KoardMerchantServiceable {
         // return the original result instead of initiating a new charge.
         let eventId = UUID().uuidString
 
-        do {
-            let response = try await KoardMerchantSDK.shared.capture(
-                transactionId: transactionId,
-                amount: finalAmount, // nil to capture full authorized amount
-                breakdown: finalBreakdown, // Optional: updated breakdown with final tip
-                eventId: eventId
-            )
+        let response = try await KoardMerchantSDK.shared.capture(
+            transactionId: transactionId,
+            amount: finalAmount, // nil to capture full authorized amount
+            breakdown: finalBreakdown, // Optional: updated breakdown with final tip
+            eventId: eventId
+        )
 
-            print("Capture successful: \(response.transactionId ?? "Unknown")")
-            return eventId
-
-        } catch {
-            print("Capture failed: \(error)")
-            throw error
-        }
+        print("Capture successful: \(response.transactionId ?? "Unknown")")
+        return response
     }
 
     /// Executes a complete pre-authorization and capture workflow for a card-present transaction.
@@ -516,6 +565,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
         // Step 1: Preauthorize base amount
         let preauthResponse = try await KoardMerchantSDK.shared.preauth(
             amount: subtotal,
+            breakdown: nil,
             currency: currency
         )
 
@@ -553,9 +603,12 @@ public class KoardMerchantService: KoardMerchantServiceable {
 
     public func preauthorize(
         amount: Int,
-        currency: CurrencyCode) async throws -> TransactionResponse {
+        breakdown: PaymentBreakdown?,
+        currency: CurrencyCode
+    ) async throws -> TransactionResponse {
         try await KoardMerchantSDK.shared.preauth(
             amount: amount,
+            breakdown: breakdown,
             currency: currency
         )
     }
@@ -584,6 +637,7 @@ public class KoardMerchantService: KoardMerchantServiceable {
         // Step 1: Initial preauth
         let preauthResponse = try await KoardMerchantSDK.shared.preauth(
             amount: initialAmount,
+            breakdown: nil,
             currency: currency
         )
 
@@ -643,11 +697,14 @@ public class KoardMerchantService: KoardMerchantServiceable {
     public func refund(
         transactionID: String,
         amount: Int?,
-        eventId: String? = nil
+        eventId: String? = nil,
+        withTap: Bool = false
     ) async throws -> TransactionResponse {
         try await KoardMerchantSDK.shared.refund(
-            transactionID: transactionID,
-            amount: amount
+            transactionId: transactionID,
+            amount: amount,
+            eventId: eventId,
+            withTap: withTap
         )
     }
 }
@@ -674,7 +731,10 @@ extension KoardMerchantService {
                 // Confirm or deny the surcharge
                 let confirmedTransaction = try await KoardMerchantSDK.shared.confirm(
                     transaction: transaction.transactionId,
-                    confirm: approved
+                    confirm: approved,
+                    amount: nil,
+                    breakdown: nil,
+                    eventId: nil
                 )
 
                 print("Final transaction status: \(confirmedTransaction.status)")

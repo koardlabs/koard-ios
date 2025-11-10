@@ -41,44 +41,51 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
     }
 
     public func setup() {}
+    
+    public func loadActiveLocation() async -> Location? {
+        .downtownCoffee
+    }
 
     public func authenticateMerchant() async throws {}
 
     public func setupLocation() async throws {}
 
+    public func updateLocation(location: Location) { }
+    
     public func prepareCardReader() async throws {}
 
     public func preauthorize(
         amount: Int,
-        currency: CurrencyCode) async throws -> TransactionResponse {
-            .mockPreauthorizedTransaction
+        breakdown: PaymentBreakdown?,
+        currency: CurrencyCode
+    ) async throws -> TransactionResponse {
+        .mockPreauthorizedTransaction
     }
 
     public func fetchLocations() async throws -> [Location] {
         [.downtownCoffee, .theBookLoft, .seasideGrill]
     }
 
-    public func updateLocation(location: Location) { }
-    
     public func monitorReaderStatus() {}
 
     public func processSale(
         subtotal: Int,
         taxRate: Double,
         tipAmount: Int? = 0,
-        tipType: PaymentBreakdown.TipType = .fixed
+        tipType: PaymentBreakdown.TipType = .fixed,
+        surcharge: PaymentBreakdown.Surcharge? = nil
     ) async throws -> KoardTransaction {
         .mockApprovedTransaction
     }
 
     public func getTransactionHistory(
-        startDate: Date,
-        endDate: Date? = Date(),
-        statuses: [KoardTransaction.Status],
-        types: [PaymentType],
-        minAmount: Int,
-        maxAmount: Int,
-        limit: Int? = 50
+        startDate: Date?,
+        endDate: Date?,
+        statuses: [KoardTransaction.Status]?,
+        types: [PaymentType]?,
+        minAmount: Int?,
+        maxAmount: Int?,
+        limit: Int?
     ) async throws -> TransactionHistoryResponse {
         .init(
             transactions: [
@@ -119,7 +126,17 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
         )
     }
 
-    public func transactionConfirmed(transactionId: String, confirm: Bool) async throws -> KoardTransaction {
+    public func transactionConfirmed(
+        transactionId: String,
+        confirm: Bool,
+        amount: Int?,
+        breakdown: PaymentBreakdown?,
+        eventId: String?
+    ) async throws -> KoardTransaction {
+        .mockApprovedTransaction
+    }
+
+    public func fetchTransaction(transactionId: String) async throws -> KoardTransaction {
         .mockApprovedTransaction
     }
 
@@ -130,8 +147,22 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
         tipAmount: Int? = 0,
         tipType: PaymentBreakdown.TipType = .fixed,
         finalAmount: Int? = nil
-    ) async throws -> String {
-        "sample-event-id"
+    ) async throws -> TransactionResponse {
+        .mockCapturedTransaction
+    }
+    
+    public func incrementalAuth(
+        transactionId: String,
+        amount: Int
+    ) async throws -> TransactionResponse {
+        .mockCapturedTransaction
+    }
+    
+    public func reverse(
+        transactionId: String,
+        amount: Int?
+    ) async throws -> TransactionResponse {
+        .mockCapturedTransaction
     }
 
     public func preauthCaptureWorkflow(
@@ -165,7 +196,8 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
     public func refund(
         transactionID: String,
         amount: Int?,
-        eventId: String? = nil
+        eventId: String? = nil,
+        withTap: Bool = false
     ) async throws -> TransactionResponse {
         .mockCapturedTransaction
     }

@@ -76,6 +76,62 @@ Or press **⌘U** in Xcode after opening `Package.swift`.
 
 ---
 
+
+# Koard SDK 1.0.15 Migration Guide
+
+This release introduces two important updates that may require minor adjustments to your integration.
+
+---
+
+## 1. Added `batchID` to `Transaction` Model
+
+A new optional property `batchID` has been added to the `Transaction` model.  
+This value can be used to associate a transaction with a settlement batch or batch reporting record.
+
+**Example:**
+```swift
+let transaction = Transaction(
+    id: "abc123",
+    amount: 12.00,
+    currency: .usd,
+    batchID: "batch-09242025"
+)
+```
+
+If your implementation does not rely on batching or settlement tracking, you do **not** need to modify your existing code.  
+The property is optional and defaults to `nil`.
+
+---
+
+## 2. Floating-Point Transaction Amounts
+
+All transaction APIs (`sale`, `refund`, `capture`, `void`, and `authorize`) now take `Double` or `Float` values for the `amount` parameter instead of `Int`.
+
+**Old (1.14):**
+```swift
+let sale = ProcessSaleRequestModel(amount: 1200, currency: .usd) // cents
+```
+
+**New (1.15):**
+```swift
+let sale = TransactionSaleRequest(amount: 12.00, currency: .usd) // dollars
+```
+
+### Migration Notes
+- Update any amount values that were represented in cents to use decimal currency units (e.g., `1200` → `12.00`).
+- The SDK rounds amounts to two decimal places following standard financial rounding rules.
+
+---
+
+### Summary
+
+| Change | Impact |
+|--------|---------|
+| `batchID` added to `Transaction` | Optional, no breaking change |
+| Transaction amounts now `Double`/`Float` | Breaking for apps passing `Int` values |
+
+---
+
 ## KoardMerchantSDK Usage Guide
 
 This comprehensive guide covers everything you need to know about integrating and using the KoardMerchantSDK in your iOS application.

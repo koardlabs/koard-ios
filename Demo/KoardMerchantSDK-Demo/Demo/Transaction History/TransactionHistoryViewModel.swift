@@ -33,10 +33,10 @@ public final class TransactionHistoryViewModel: Identifiable {
             let transactionResponse = try await koardMerchantService.getTransactionHistory(
                 startDate: Date().addingTimeInterval(-86400 * 180), // Last 180 days
                 endDate: Date(), // Up to now
-                statuses: [], // [.captured, .declined, .authorized, .settled, .refunded],
-                types: [.sale, .refund, .auth],
-                minAmount: 100, // $1.00
-                maxAmount: 10000, // $100.00
+                statuses: nil,
+                types: nil,
+                minAmount: nil,
+                maxAmount: nil,
                 limit: 50
             )
 
@@ -53,7 +53,7 @@ public final class TransactionHistoryViewModel: Identifiable {
             koardMerchantService: koardMerchantService,
             transaction: transaction,
             delegate: .init(
-                onRefundSuccess: { [weak self] in
+                onTransactionUpdate: { [weak self] in
                     Task {
                         await self?.getTransactions()
                     }

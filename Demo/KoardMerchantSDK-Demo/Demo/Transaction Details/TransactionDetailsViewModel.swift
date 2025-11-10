@@ -13,31 +13,79 @@ public final class TransactionDetailsViewModel: Identifiable {
         case sentError
     }
 
-    public enum RefundState {
-        case confirmation
-        case processing
-        case success
-        case failure
+    public enum OperationKind: Hashable {
+        case refund(useTap: Bool)
+        case reverse
+        case capture
+
+        var title: String {
+            switch self {
+            case .refund(let useTap):
+                return useTap ? "Tap Refund" : "Refund"
+            case .reverse:
+                return "Reverse"
+            case .capture:
+                return "Capture"
+            }
+        }
+
+        var progressMessage: String {
+            switch self {
+            case .refund(let useTap):
+                return useTap ? "Processing tap refund…" : "Processing refund…"
+            case .reverse:
+                return "Reversing transaction…"
+            case .capture:
+                return "Capturing transaction…"
+            }
+        }
+    }
+
+    public struct OperationPresentation: Identifiable {
+        public enum Phase {
+            case processing
+            case success(TransactionResponse)
+            case failure(String)
+        }
+
+        public let id: UUID
+        public let kind: OperationKind
+        public let amount: Int
+        public let currency: CurrencyCode
+        public var phase: Phase
+
+        init(
+            id: UUID = UUID(),
+            kind: OperationKind,
+            amount: Int,
+            currency: CurrencyCode,
+            phase: Phase
+        ) {
+            self.id = id
+            self.kind = kind
+            self.amount = amount
+            self.currency = currency
+            self.phase = phase
+        }
     }
 
     public private(set) var transaction: KoardTransaction
     public var receiptContent: ReceiptContent = .selection
-    public var refundState: RefundState = .confirmation
     public var isLoading: Bool = false
     public private(set) var responseMessage: String = ""
-    public private(set) var resultMessage: String = ""
+    public var operationPresentation: OperationPresentation?
 
     @ObservationIgnored public let id: UUID = UUID()
     @ObservationIgnored public var delegate: Delegate
     @ObservationIgnored private let koardMerchantService: KoardMerchantServiceable
 
     public struct Delegate {
-        public var onRefundSuccess: () -> Void
+        public var onTransactionUpdate: () -> Void
 
         public init(
-            onRefundSuccess: @escaping () -> Void
+            onTransactionUpdate: @escaping () -> Void
         ) {
-            self.onRefundSuccess = onRefundSuccess
+            self.onTransactionUpdate = onTransactionUpdate
         }
     }
 
@@ -104,46 +152,79 @@ public final class TransactionDetailsViewModel: Identifiable {
         }
     }
 
-    public func performRefund() async {
-        refundState = .processing
+    public func performOperation(kind: OperationKind, amount: Int) {
+        let currency = CurrencyCode(currencyCode: transaction.currency, displayName: nil)
+        let identifier = UUID()
+        operationPresentation = OperationPresentation(
+            id: identifier,
+            kind: kind,
+            amount: amount,
+            currency: currency,
+            phase: .processing
+        )
 
-        do {
-            let response = try await koardMerchantService.refund(
-                transactionID: transaction.transactionId,
-                amount: transaction.totalAmount,
-                eventId: nil
-            )
+        Task {
+            do {
+                let response = try await executeOperation(kind: kind, amount: amount)
+                await MainActor.run {
+                    operationPresentation = OperationPresentation(
+                        id: identifier,
+                        kind: kind,
+                        amount: amount,
+                        currency: currency,
+                        phase: .success(response)
+                    )
 
-            await MainActor.run {
-                if let refundTransaction = response.transaction {
-                    switch refundTransaction.status {
-                    case .refunded, .captured, .authorized:
-                        resultMessage = "The refund has been processed successfully."
-                        refundState = .success
-                        delegate.onRefundSuccess()
-
-                    case .declined:
-                        resultMessage = "The refund was declined."
-                        refundState = .failure
-
-                    case .error, .canceled:
-                        resultMessage = "The refund could not be processed."
-                        refundState = .failure
-
-                    default:
-                        resultMessage = "Unknown refund status: \(refundTransaction.status)"
-                        refundState = .failure
+                    if let updatedTransaction = response.transaction {
+                        transaction = updatedTransaction
                     }
-                } else {
-                    resultMessage = "No transaction data received from refund."
-                    refundState = .failure
+
+                    delegate.onTransactionUpdate()
+                }
+            } catch {
+                await MainActor.run {
+                    operationPresentation = OperationPresentation(
+                        id: identifier,
+                        kind: kind,
+                        amount: amount,
+                        currency: currency,
+                        phase: .failure(error.localizedDescription)
+                    )
                 }
             }
-        } catch {
-            await MainActor.run {
-                resultMessage = error.localizedDescription
-                refundState = .failure
-            }
+        }
+    }
+
+    public func dismissOperation() {
+        operationPresentation = nil
+    }
+
+    private func executeOperation(kind: OperationKind, amount: Int) async throws -> TransactionResponse {
+        switch kind {
+        case .refund(let useTap):
+            return try await koardMerchantService.refund(
+                transactionID: transaction.transactionId,
+                amount: amount,
+                eventId: UUID().uuidString,
+                withTap: useTap
+            )
+
+        case .reverse:
+            return try await koardMerchantService.reverse(
+                transactionId: transaction.transactionId,
+                amount: amount
+            )
+
+        case .capture:
+            let tipType = transaction.tipType ?? .fixed
+            return try await koardMerchantService.captureTransaction(
+                transactionId: transaction.transactionId,
+                subtotal: transaction.subtotal,
+                taxRate: Double(transaction.taxRate) / 100.0,
+                tipAmount: transaction.tipAmount,
+                tipType: tipType,
+                finalAmount: amount
+            )
         }
     }
 }

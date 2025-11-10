@@ -35,6 +35,14 @@ public final class ContentViewModel {
     public func onAppear() {
         isAuthenticated = koardMerchantService.isAuthenticated
         isReaderSetupSupported = koardMerchantService.isReaderSetupSupported
+        selectedLocation = koardMerchantService.activeLocation
+
+        Task { [weak self] in
+            guard let self else { return }
+            if let refreshed = await self.koardMerchantService.loadActiveLocation() {
+                self.selectedLocation = refreshed
+            }
+        }
     }
 
     public func authenticateMerchantButtonTapped() async {
@@ -100,8 +108,6 @@ extension ContentViewModel {
             isAuthenticated = true
             isReaderSetupSupported = koardMerchantService.isReaderSetupSupported
             selectedLocation = koardMerchantService.activeLocation
-
-            // selectedLocation = try await koardMerchantService.setupLocation()
         } catch let merchantError as KoardDescribableError {
             authenticationError = merchantError.errorDescription
         } catch {
