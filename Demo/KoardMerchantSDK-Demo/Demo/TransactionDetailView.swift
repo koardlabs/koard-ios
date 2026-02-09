@@ -135,7 +135,7 @@ struct TransactionDetailView: View {
             return .blue
         case .refunded:
             return .purple
-        @unknown default:
+        default:
             return .gray
         }
     }

@@ -1,11 +1,22 @@
 import KoardSDK
+import Observation
 import SwiftUI
 
 struct TransactionView: View {
     @State private var viewModel: TransactionViewModel
+    @FocusState private var focusedField: Field?
+
+    enum Field: Hashable {
+        case amount, taxRate, taxAmount, tipAmount, tipPercentage
+        case surchargeAmount, surchargePercentage
+    }
 
     init(viewModel: TransactionViewModel) {
         self.viewModel = viewModel
+    }
+
+    private func dismissKeyboard() {
+        focusedField = nil
     }
 
     var body: some View {
@@ -21,18 +32,40 @@ struct TransactionView: View {
 
                     CurrencyField(value: $viewModel.transactionAmount)
                         .frame(width: 100)
+                        .focused($focusedField, equals: .amount)
                 }
 
                 HStack(alignment: .lastTextBaseline) {
-                    Text("Tax Rate")
+                    Text("Tax")
 
                     DottedLine()
                         .frame(height: 1)
                         .padding(.horizontal, 4)
                         .alignmentGuide(.lastTextBaseline) { $0[.bottom] }
 
-                    PercentageField(value: $viewModel.taxRate)
+                    Picker("Options", selection: $viewModel.taxTypeSelection) {
+                        ForEach(viewModel.tipTypes, id: \.self) { taxType in
+                            Text(taxType.displayName)
+                                .tag(taxType)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+
+                    if viewModel.taxTypeSelection == .fixed {
+                        CurrencyField(
+                            value: $viewModel.taxAmount,
+                            placeholder: "8.75"
+                        )
                         .frame(width: 100)
+                        .focused($focusedField, equals: .taxAmount)
+                    } else {
+                        PercentageField(
+                            value: $viewModel.taxRate,
+                            placeholder: "8.75"
+                        )
+                        .frame(width: 100)
+                        .focused($focusedField, equals: .taxRate)
+                    }
                 }
 
                 HStack(alignment: .lastTextBaseline) {
@@ -57,12 +90,14 @@ struct TransactionView: View {
                             placeholder: "20.00"
                         )
                         .frame(width: 100)
+                        .focused($focusedField, equals: .tipAmount)
                     } else {
                         PercentageField(
                             value: $viewModel.tipPercentage,
                             placeholder: "15"
                         )
                         .frame(width: 100)
+                        .focused($focusedField, equals: .tipPercentage)
                     }
                 }
             }
@@ -94,12 +129,14 @@ struct TransactionView: View {
                             placeholder: "2.50"
                         )
                         .frame(width: 100)
+                        .focused($focusedField, equals: .surchargeAmount)
                     } else {
                         PercentageField(
                             value: $viewModel.surchargePercentage,
                             placeholder: "3"
                         )
                         .frame(width: 100)
+                        .focused($focusedField, equals: .surchargePercentage)
                     }
                 }
             }
@@ -119,6 +156,7 @@ struct TransactionView: View {
 
             HStack(spacing: 12) {
                 AsyncButton {
+                    dismissKeyboard()
                     await viewModel.preauthorize()
                 } label: {
                     Text("Auth")
@@ -134,6 +172,7 @@ struct TransactionView: View {
                 }
 
                 AsyncButton {
+                    dismissKeyboard()
                     await viewModel.processTransaction()
                 } label: {
                     VStack(spacing: 2) {
@@ -174,134 +213,202 @@ struct TransactionView: View {
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            dismissKeyboard()
+        }
         .navigationTitle("Transaction")
         .toolbarRole(.editor)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    viewModel.showLocationSelection = true
+                } label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "mappin.circle.fill")
+                        Text(viewModel.selectedLocationName)
+                    }
+                    .foregroundColor(.koardGreen)
+                }
+            }
+        }
         .background {
             KoardBackgroundView()
                 .ignoresSafeArea()
         }
-        .popover(isPresented: $viewModel.isSummaryPresented) {
-            if let summary = viewModel.transactionSummary {
-                TransactionSummaryPopover(summary: summary)
-            } else {
-                Text("No transaction details available.")
-                    .padding()
-            }
+        .task {
+            await viewModel.loadActiveLocation()
         }
-        .sheet(
+        .sheet(isPresented: $viewModel.showLocationSelection) {
+            LocationSelectionView(viewModel: viewModel.locationSelectionViewModel)
+        }
+        .popover(
+            item: Binding(
+                get: { viewModel.transactionSummary },
+                set: { _ in viewModel.clearTransactionSummary() }
+            )
+        ) { summary in
+            TransactionSummaryPopover(summary: summary)
+        }
+        .fullScreenCover(
             item: Binding(
                 get: { viewModel.surchargePrompt },
                 set: { viewModel.surchargePrompt = $0 }
             )
         ) { prompt in
-            SurchargeConfirmationSheet(
-                prompt: prompt,
-                isProcessing: viewModel.isProcessingSale,
-                onDecision: { confirm in
-                    Task {
-                        await viewModel.handleSurchargeDecision(confirm: confirm)
-                    }
-                }
+            SurchargeConfirmationView(
+                viewModel: viewModel,
+                prompt: prompt
             )
-            .presentationDetents(Set([PresentationDetent.medium]))
-            .presentationDragIndicator(Visibility.visible)
-            .interactiveDismissDisabled(true)
         }
     }
 }
 
 
-private struct SurchargeConfirmationSheet: View {
+private struct SurchargeConfirmationView: View {
+    @Bindable var viewModel: TransactionViewModel
     let prompt: TransactionViewModel.SurchargePrompt
-    let isProcessing: Bool
-    let onDecision: (Bool) -> Void
 
     private var currency: CurrencyCode {
         CurrencyCode(currencyCode: prompt.transaction.currency, displayName: nil)
     }
 
-    private var totalAmount: String {
-        MoneyUtils.centsToStringWithCurrency(prompt.transaction.totalAmount, currency: currency)
+    private func formatted(_ cents: Int) -> String {
+        MoneyUtils.centsToStringWithCurrency(cents, currency: currency)
     }
 
-    private var surchargeAmount: String? {
-        guard let amount = prompt.transaction.surchargeAmount, amount > 0 else { return nil }
-        return MoneyUtils.centsToStringWithCurrency(amount, currency: currency)
+    private var summary: TransactionViewModel.PendingSurchargeSummary? {
+        viewModel.pendingSurchargeSummary()
     }
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 24) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("\(prompt.flow.title) Pending Confirmation")
-                        .font(.title3)
-                        .fontWeight(.semibold)
-                    Text(prompt.disclosure)
-                        .font(.body)
-                        .foregroundStyle(.primary)
-                }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("\(prompt.flow.title) Pending Confirmation")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                        Text(prompt.disclosure)
+                            .font(.body)
+                            .foregroundStyle(.primary)
+                    }
 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Transaction Summary")
-                        .font(.headline)
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("Transaction Summary")
+                            .font(.headline)
 
-                    SummaryRow(
-                        title: "Total Amount",
-                        value: totalAmount
-                    )
-
-                    if let surchargeAmount {
                         SummaryRow(
-                            title: "Surcharge",
-                            value: surchargeAmount
+                            title: "Status",
+                            value: prompt.transaction.status.displayName
+                        )
+
+                        SummaryRow(
+                            title: "Transaction ID",
+                            value: prompt.transaction.transactionId
                         )
                     }
 
-                    SummaryRow(
-                        title: "Status",
-                        value: prompt.transaction.status.displayName
-                    )
+                    if let summary {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Totals")
+                                .font(.headline)
+                            SummaryRow(
+                                title: "Original Amount",
+                                value: formatted(summary.baseCents)
+                            )
+                            SummaryRow(
+                                title: summary.isOverride ? "Override Surcharge" : "Surcharge",
+                                value: formatted(summary.surchargeCents)
+                            )
+                            SummaryRow(
+                                title: summary.isOverride ? "Override Total" : "Total Amount",
+                                value: formatted(summary.totalCents)
+                            )
+                        }
+                    }
 
-                    SummaryRow(
-                        title: "Transaction ID",
-                        value: prompt.transaction.transactionId
-                    )
-                }
+                    VStack(alignment: .leading, spacing: 12) {
+                        Toggle("Override Surcharge", isOn: $viewModel.isPendingSurchargeOverrideOn)
+                            .toggleStyle(SwitchToggleStyle(tint: .koardGreen))
 
-                if isProcessing {
-                    HStack(spacing: 8) {
-                        ProgressView()
-                        Text("Submitting decision…")
-                            .font(.footnote)
-                            .foregroundStyle(.secondary)
+                        if viewModel.isPendingSurchargeOverrideOn {
+                            Picker("Type", selection: $viewModel.pendingSurchargeTypeSelection) {
+                                ForEach(viewModel.tipTypes, id: \.self) { type in
+                                    Text(type.displayName)
+                                        .tag(type)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+
+                            if viewModel.pendingSurchargeTypeSelection == .fixed {
+                                CurrencyField(
+                                    value: $viewModel.pendingSurchargeAmount,
+                                    placeholder: "2.50"
+                                )
+                                .frame(width: 140)
+                            } else {
+                                PercentageField(
+                                    value: $viewModel.pendingSurchargePercentage,
+                                    placeholder: "3"
+                                )
+                                .frame(width: 140)
+                            }
+                        }
+
+                        if viewModel.isPendingSurchargeOverrideOn && !viewModel.canConfirmPendingSurcharge {
+                            Text("Enter a valid surcharge before confirming.")
+                                .font(.footnote)
+                                .foregroundStyle(.red)
+                        }
+                    }
+
+                    if viewModel.isProcessingSale {
+                        HStack(spacing: 8) {
+                            ProgressView()
+                            Text("Submitting decision…")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+
+                    VStack(spacing: 12) {
+                        Button {
+                            Task {
+                                await viewModel.handleSurchargeDecision(confirm: false)
+                            }
+                        } label: {
+                            Text("Decline")
+                                .frame(maxWidth: .infinity, minHeight: 48)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.red)
+                        .disabled(viewModel.isProcessingSale)
+
+                        Button {
+                            Task {
+                                await viewModel.handleSurchargeDecision(confirm: true)
+                            }
+                        } label: {
+                            Text("Confirm")
+                                .frame(maxWidth: .infinity, minHeight: 48)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.koardGreen)
+                        .disabled(viewModel.isProcessingSale || !viewModel.canConfirmPendingSurcharge)
                     }
                 }
-
-                Spacer()
-
-                VStack(spacing: 12) {
-                    Button {
-                        onDecision(false)
-                    } label: {
-                        Text("Decline")
-                            .frame(maxWidth: .infinity, minHeight: 48)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+            }
+            .navigationTitle("\(prompt.flow.title) Review")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Close") {
+                        viewModel.surchargePrompt = nil
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.red)
-                    .disabled(isProcessing)
-
-                    Button {
-                        onDecision(true)
-                    } label: {
-                        Text("Confirm")
-                            .frame(maxWidth: .infinity, minHeight: 48)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.koardGreen)
-                    .disabled(isProcessing)
                 }
             }
-            .padding()
         }
     }
 }

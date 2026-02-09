@@ -34,6 +34,7 @@ public protocol KoardMerchantServiceable {
     func setup()
     func loadActiveLocation() async -> Location?
     func authenticateMerchant() async throws
+    func authenticateMerchant(code: String, pin: String) async throws
     func setupLocation() async throws
     func prepareCardReader() async throws
     func monitorReaderStatus()
@@ -48,8 +49,10 @@ public protocol KoardMerchantServiceable {
     
     func processSale(
         subtotal: Int,
-        taxRate: Double,
+        taxAmount: Int,
+        taxRate: Double?,
         tipAmount: Int?,
+        tipRate: Double?,
         tipType: PaymentBreakdown.TipType,
         surcharge: PaymentBreakdown.Surcharge?
     ) async throws -> KoardTransaction
@@ -78,11 +81,7 @@ public protocol KoardMerchantServiceable {
     
     func captureTransaction(
         transactionId: String,
-        subtotal: Int,
-        taxRate: Double,
-        tipAmount: Int?,
-        tipType: PaymentBreakdown.TipType,
-        finalAmount: Int?
+        amount: Int?
     ) async throws -> TransactionResponse
     
     func incrementalAuth(
@@ -123,6 +122,12 @@ public protocol KoardMerchantServiceable {
         eventId: String?,
         withTap: Bool
     ) async throws -> TransactionResponse
-    
+
+    func tipAdjust(
+        transactionId: String,
+        amount: Int,
+        tipType: PaymentBreakdown.TipType?
+    ) async throws -> TransactionResponse
+
     func logout()
 }

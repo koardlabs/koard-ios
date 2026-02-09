@@ -11,6 +11,8 @@ struct TransactionDetailsView: View {
         case refund
         case reverse
         case capture
+        case incrementalAuth
+        case tipAdjust
 
         var id: String { rawValue }
     }
@@ -64,6 +66,8 @@ struct TransactionDetailsView: View {
                             transactionType != "refund"
                         let canReverse = status == .authorized || status == .captured
                         let canCapture = status == .authorized
+                        let canIncrementalAuth = status == .authorized
+                        let canTipAdjust = status == .authorized || status == .captured
 
                         if isRefundable {
                             Button {
@@ -104,6 +108,34 @@ struct TransactionDetailsView: View {
                             }
                             .buttonStyle(.borderedProminent)
                             .tint(.koardGreen)
+                            .cornerRadius(8)
+                        }
+
+                        if canIncrementalAuth {
+                            Button {
+                                pendingAction = .incrementalAuth
+                            } label: {
+                                Text("Incremental Auth")
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity, minHeight: 44)
+                                    .font(.system(size: 14, weight: .semibold))
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.blue)
+                            .cornerRadius(8)
+                        }
+
+                        if canTipAdjust {
+                            Button {
+                                pendingAction = .tipAdjust
+                            } label: {
+                                Text("Tip Adjust")
+                                    .foregroundStyle(.white)
+                                    .frame(maxWidth: .infinity, minHeight: 44)
+                                    .font(.system(size: 14, weight: .semibold))
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.purple)
                             .cornerRadius(8)
                         }
                     }
@@ -197,7 +229,18 @@ private struct TransactionAmountActionSheet: View {
         self.transaction = transaction
         self.onDismiss = onDismiss
         self.onPerform = onPerform
-        _amountText = State(initialValue: MoneyUtils.centsToString(transaction.totalAmount))
+
+        // Set initial amount based on action
+        let initialAmount: Int
+        switch action {
+        case .tipAdjust:
+            initialAmount = transaction.tipAmount
+        case .incrementalAuth:
+            initialAmount = 0  // Start with 0 for incremental
+        default:
+            initialAmount = transaction.totalAmount
+        }
+        _amountText = State(initialValue: MoneyUtils.centsToString(initialAmount))
     }
 
     private var amountInCents: Int {
@@ -314,6 +357,37 @@ private struct TransactionAmountActionSheet: View {
             Text("Capture the authorized funds. Edit the amount to make partial captures.")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
+
+        case .incrementalAuth:
+            VStack(spacing: 12) {
+                Button {
+                    perform(.incrementalAuth)
+                } label: {
+                    Text("Authorize Additional Amount")
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.blue)
+                .disabled(amountInCents <= 0)
+            }
+            Text("Add an additional authorization to the existing transaction.")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+
+        case .tipAdjust:
+            VStack(spacing: 12) {
+                Button {
+                    perform(.tipAdjust)
+                } label: {
+                    Text("Adjust Tip")
+                        .frame(maxWidth: .infinity, minHeight: 48)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.purple)
+            }
+            Text("Update the tip amount for this transaction. Current tip: \(MoneyUtils.centsToStringWithCurrency(transaction.tipAmount))")
+                .font(.footnote)
+                .foregroundStyle(.secondary)
         }
     }
 
@@ -332,6 +406,10 @@ private struct TransactionAmountActionSheet: View {
             return "Reverse Authorization"
         case .capture:
             return "Capture Authorization"
+        case .incrementalAuth:
+            return "Incremental Authorization"
+        case .tipAdjust:
+            return "Adjust Tip"
         }
     }
 }
