@@ -39,6 +39,8 @@ The `Config.plist` file should contain:
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>environment</key>
+    <string>YOUR_ENVIRONMENT_HERE</string>
     <key>apiKey</key>
     <string>your_api_key</string>
     <key>merchantCode</key>

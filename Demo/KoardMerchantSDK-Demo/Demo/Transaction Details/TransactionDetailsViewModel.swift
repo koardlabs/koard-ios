@@ -17,6 +17,8 @@ public final class TransactionDetailsViewModel: Identifiable {
         case refund(useTap: Bool)
         case reverse
         case capture
+        case incrementalAuth
+        case tipAdjust
 
         var title: String {
             switch self {
@@ -26,6 +28,10 @@ public final class TransactionDetailsViewModel: Identifiable {
                 return "Reverse"
             case .capture:
                 return "Capture"
+            case .incrementalAuth:
+                return "Incremental Auth"
+            case .tipAdjust:
+                return "Tip Adjust"
             }
         }
 
@@ -37,6 +43,10 @@ public final class TransactionDetailsViewModel: Identifiable {
                 return "Reversing transaction…"
             case .capture:
                 return "Capturing transaction…"
+            case .incrementalAuth:
+                return "Authorizing additional amount…"
+            case .tipAdjust:
+                return "Adjusting tip…"
             }
         }
     }
@@ -216,14 +226,24 @@ public final class TransactionDetailsViewModel: Identifiable {
             )
 
         case .capture:
-            let tipType = transaction.tipType ?? .fixed
             return try await koardMerchantService.captureTransaction(
                 transactionId: transaction.transactionId,
-                subtotal: transaction.subtotal,
-                taxRate: Double(transaction.taxRate) / 100.0,
-                tipAmount: transaction.tipAmount,
-                tipType: tipType,
-                finalAmount: amount
+                amount: amount
+            )
+
+        case .incrementalAuth:
+            return try await koardMerchantService.incrementalAuth(
+                transactionId: transaction.transactionId,
+                amount: amount
+            )
+
+        case .tipAdjust:
+            // Tip adjust: amount is the new total tip amount in cents
+            let tipType = transaction.tipType ?? .fixed
+            return try await koardMerchantService.tipAdjust(
+                transactionId: transaction.transactionId,
+                amount: amount,
+                tipType: tipType
             )
         }
     }

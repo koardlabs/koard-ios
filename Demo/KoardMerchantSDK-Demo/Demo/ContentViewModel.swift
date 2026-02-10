@@ -18,8 +18,14 @@ public final class ContentViewModel {
     @ObservationIgnored private let koardMerchantService: KoardMerchantServiceable
 
     public enum NavigationDestination: Identifiable, Hashable {
-        public var id: Self { self }
         case sampleTransactionFlow(TransactionViewModel)
+
+        public var id: String {
+            switch self {
+            case .sampleTransactionFlow(let viewModel):
+                return "sampleTransactionFlow-\(viewModel.id)"
+            }
+        }
     }
 
     public enum Destination: Identifiable, Hashable {
@@ -88,7 +94,7 @@ public final class ContentViewModel {
         let viewModel = TransactionViewModel(koardMerchantService: koardMerchantService)
         navigationDestination = .sampleTransactionFlow(viewModel)
     }
-    
+
     public func transactionHistoryTapped() {
         let viewModel = TransactionHistoryViewModel(koardMerchantService: koardMerchantService)
         destination = .transactionHistory(viewModel)

@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var viewModel: ContentViewModel
+    @Environment(\.scenePhase) private var scenePhase
 
     init(viewModel: ContentViewModel) {
         self.viewModel = viewModel
@@ -95,6 +96,17 @@ struct ContentView: View {
             }
             .onAppear {
                 viewModel.onAppear()
+                DemoTapTransactionLogger.logShownOnScreen()
+            }
+            .onChange(of: scenePhase) { phase in
+                switch phase {
+                case .inactive:
+                    DemoTapTransactionLogger.logSceneFocusChange("Scene became inactive (system UI likely presented)")
+                case .background:
+                    DemoTapTransactionLogger.logSceneFocusChange("Scene entered background")
+                default:
+                    break
+                }
             }
             .sheet(item: $viewModel.destination) { destination in
                 switch destination {

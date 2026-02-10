@@ -4,6 +4,7 @@ import SwiftUI
 @main
 struct KoardMerchantSDK_DemoApp: App {
     private let koardMerchantService: KoardMerchantServiceable
+    @Environment(\.scenePhase) private var scenePhase
 
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = .koardGreen
@@ -23,17 +24,42 @@ struct KoardMerchantSDK_DemoApp: App {
 
         koardMerchantService = KoardMerchantService(
             apiKey: config.apiKey,
+            environment: config.environment,
+            customURL: config.customURL,
             merchantCode: config.merchantCode,
             merchantPin: config.merchantPin
         )
+
+        // Initialize SDK immediately so it can read persisted auth token from Keychain
+        koardMerchantService.setup()
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: .init(koardMerchantService: koardMerchantService))
-                .onAppear {
-                    koardMerchantService.setup()
+            RootView(koardMerchantService: koardMerchantService)
+        }
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            switch newPhase {
+            case .active:
+                print("App became active - checking auth and reader status")
+                // When app comes to foreground, refresh reader session if authenticated
+                if koardMerchantService.isAuthenticated && koardMerchantService.isReaderSetupSupported {
+                    Task {
+                        do {
+                            try await koardMerchantService.prepareCardReader()
+                            print("Card reader refreshed on app active")
+                        } catch {
+                            print("Failed to refresh card reader: \(error)")
+                        }
+                    }
                 }
+            case .background:
+                print("App moved to background")
+            case .inactive:
+                print("App became inactive")
+            @unknown default:
+                break
+            }
         }
     }
 }

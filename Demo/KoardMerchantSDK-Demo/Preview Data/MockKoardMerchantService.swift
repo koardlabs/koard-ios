@@ -48,6 +48,8 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
 
     public func authenticateMerchant() async throws {}
 
+    public func authenticateMerchant(code: String, pin: String) async throws {}
+
     public func setupLocation() async throws {}
 
     public func updateLocation(location: Location) { }
@@ -70,8 +72,10 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
 
     public func processSale(
         subtotal: Int,
-        taxRate: Double,
+        taxAmount: Int,
+        taxRate: Double? = nil,
         tipAmount: Int? = 0,
+        tipRate: Double? = nil,
         tipType: PaymentBreakdown.TipType = .fixed,
         surcharge: PaymentBreakdown.Surcharge? = nil
     ) async throws -> KoardTransaction {
@@ -142,11 +146,7 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
 
     public func captureTransaction(
         transactionId: String,
-        subtotal: Int,
-        taxRate: Double,
-        tipAmount: Int? = 0,
-        tipType: PaymentBreakdown.TipType = .fixed,
-        finalAmount: Int? = nil
+        amount: Int? = nil
     ) async throws -> TransactionResponse {
         .mockCapturedTransaction
     }
@@ -201,6 +201,14 @@ public final class MockKoardMerchantService: KoardMerchantServiceable {
     ) async throws -> TransactionResponse {
         .mockCapturedTransaction
     }
-    
+
+    public func tipAdjust(
+        transactionId: String,
+        amount: Int,
+        tipType: PaymentBreakdown.TipType?
+    ) async throws -> TransactionResponse {
+        .mockCapturedTransaction
+    }
+
     public func logout() {}
 }

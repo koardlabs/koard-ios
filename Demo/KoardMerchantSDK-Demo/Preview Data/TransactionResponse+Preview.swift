@@ -28,7 +28,7 @@ extension TransactionResponse {
             tipAmount: 300, // $3.00
             tipType: "fixed",
             taxAmount: 88, // $0.88
-            taxRate: 875, // 8.75%
+            taxRate: 875.0, // 8.75%
             totalAmount: 1388,
             createdAt: Int(Date().timeIntervalSince1970 * 1000),
             paymentMethod: "card",
@@ -75,7 +75,7 @@ extension TransactionResponse {
             tipAmount: 0,
             tipType: nil,
             taxAmount: 219, // $2.19
-            taxRate: 875, // 8.75%
+            taxRate: 875.0, // 8.75%
             totalAmount: 2719, // $27.19
             createdAt: Int(Date().timeIntervalSince1970 * 1000),
             paymentMethod: "card",
