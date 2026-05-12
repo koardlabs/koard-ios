@@ -304,6 +304,15 @@ public struct KoardTransaction : Swift.Decodable {
   public var hasSurchargeInfo: Swift.Bool {
     get
   }
+  public var isPartialApproval: Swift.Bool {
+    get
+  }
+  public var authorizedAmount: Swift.Int? {
+    get
+  }
+  public var remainingAmount: Swift.Int? {
+    get
+  }
   public var additionalDetails: [Swift.String : Any]? {
     get
   }
@@ -456,6 +465,7 @@ public enum StatusReason : Swift.String, Swift.Codable {
   case userCanceled
   case merchantCanceled
   case reversedDueToTimeout
+  case partialApproval
   case unknown
   public init(from decoder: any Swift.Decoder) throws
   public var displayName: Swift.String {
@@ -622,7 +632,7 @@ public class ApiCallsHandler : ObjectiveC.NSObject {
   public func makeAsyncApiCall<T, Parameters>(of type: T.Type = T.self, endpoint: Swift.String, method: KoardSDK.HttpMethod, queryParameters: [Swift.String : Any?]? = nil, bodyParameters: Parameters?, bypassRefreshToken: Swift.Bool = false) async throws -> T where T : Swift.Decodable, Parameters : Swift.Encodable
   @objc deinit
 }
-public protocol KoardDescribableError : Swift.Error {
+public protocol KoardDescribableError : Foundation.LocalizedError {
   var errorDescription: Swift.String { get }
 }
 public enum KoardMerchantSDKError : Swift.Error, KoardSDK.KoardDescribableError {
@@ -690,8 +700,8 @@ extension KoardSDK.KoardMerchantSDK {
   public func getTransaction(transactionId: Swift.String) async throws -> KoardSDK.KoardTransaction
   public func tipAdjust(transactionId: Swift.String, amount: Swift.Int, tipType: KoardSDK.PaymentBreakdown.TipType?, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
   public func capture(transactionId: Swift.String, amount: Swift.Int? = nil, breakdown: KoardSDK.PaymentBreakdown? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func preauth(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .auth) async throws -> KoardSDK.TransactionResponse
-  public func sale(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .sale) async throws -> KoardSDK.TransactionResponse
+  public func preauth(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .auth, partialAuthTransactionId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
+  public func sale(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .sale, partialAuthTransactionId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
   public func confirm(transaction transactionID: Swift.String, confirm: Swift.Bool, amount: Swift.Int? = nil, breakdown: KoardSDK.PaymentBreakdown? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.KoardTransaction
 }
 @available(iOS 18.0, *)
