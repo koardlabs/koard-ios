@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>environment</key>
+	<string>YOUR_ENVIRONMENT_HERE</string>
+	<key>apiKey</key>
+	<string>krd_g55-SQOaXu3_-m3BqtPjesp7ruVSZP5yxcX5PBJTu9Q</string>
+	<key>merchantCode</key>
+	<string>YOUR_MERCHANT_CODE_HERE</string>
+	<key>merchantPin</key>
+	<string>YOUR_MERCHANT_PIN_HERE</string>
+</dict>
+</plist>

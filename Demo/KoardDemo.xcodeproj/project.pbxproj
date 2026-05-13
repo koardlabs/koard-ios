@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5F61C3922E490FD600DC0468 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5F61C3912E490FD600DC0468 /* PhoneNumberKit */; };
-		5FED0B332F3A84A600F4D010 /* KoardSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FED0B322F3A84A600F4D010 /* KoardSDK.xcframework */; };
-		5FED0B342F3A84A600F4D010 /* KoardSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5FED0B322F3A84A600F4D010 /* KoardSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -19,7 +17,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5FED0B342F3A84A600F4D010 /* KoardSDK.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -28,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		5F81592D2E14785800F70DE6 /* Koard Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Koard Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5FED0B322F3A84A600F4D010 /* KoardSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = KoardSDK.xcframework; path = ../KoardSDK.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -44,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FED0B332F3A84A600F4D010 /* KoardSDK.xcframework in Frameworks */,
 				5F61C3922E490FD600DC0468 /* PhoneNumberKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				5F81592F2E14785800F70DE6 /* KoardMerchantSDK-Demo */,
-				5FED0B312F3A84A600F4D010 /* Frameworks */,
 				5F81592E2E14785800F70DE6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,14 +61,6 @@
 				5F81592D2E14785800F70DE6 /* Koard Demo.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		5FED0B312F3A84A600F4D010 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5FED0B322F3A84A600F4D010 /* KoardSDK.xcframework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -98,10 +84,7 @@
 			);
 			name = "KoardMerchantSDK-Demo";
 			packageProductDependencies = (
-				5F61C3742E484A5D00DC0468 /* KoardSDK */,
 				5F61C3912E490FD600DC0468 /* PhoneNumberKit */,
-				B90FB09E2EBA471500F08A91 /* KoardSDK */,
-				5F89D0912F27E800002556A3 /* KoardSDK */,
 			);
 			productName = "KoardMerchantSDK-Demo";
 			productReference = 5F81592D2E14785800F70DE6 /* Koard Demo.app */;
@@ -391,22 +374,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5F61C3742E484A5D00DC0468 /* KoardSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KoardSDK;
-		};
 		5F61C3912E490FD600DC0468 /* PhoneNumberKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5F61C3902E490FD600DC0468 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
 			productName = PhoneNumberKit;
-		};
-		5F89D0912F27E800002556A3 /* KoardSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KoardSDK;
-		};
-		B90FB09E2EBA471500F08A91 /* KoardSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = KoardSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
