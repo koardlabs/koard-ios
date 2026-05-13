@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target arm64-apple-ios17.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name KoardSDK
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.3.2 effective-5.10 (swiftlang-6.3.2.1.108 clang-2100.1.1.101)
+// swift-module-flags: -target arm64-apple-ios17.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name KoardSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.2
 import Combine
 import Foundation
 import ProximityReader
@@ -404,9 +404,9 @@ public struct PaymentBreakdown : Swift.Codable, Swift.Hashable, Swift.Equatable 
     public let percentage: Swift.Double?
     public let bypass: Swift.Bool
     public init(amount: Swift.Int? = nil, percentage: Swift.Double? = nil, bypass: Swift.Bool = false)
-    public func hash(into hasher: inout Swift.Hasher)
     public static func == (a: KoardSDK.PaymentBreakdown.Surcharge, b: KoardSDK.PaymentBreakdown.Surcharge) -> Swift.Bool
     public func encode(to encoder: any Swift.Encoder) throws
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
@@ -429,9 +429,9 @@ public struct PaymentBreakdown : Swift.Codable, Swift.Hashable, Swift.Equatable 
       get
     }
   }
-  public func hash(into hasher: inout Swift.Hasher)
   public static func == (a: KoardSDK.PaymentBreakdown, b: KoardSDK.PaymentBreakdown) -> Swift.Bool
   public func encode(to encoder: any Swift.Encoder) throws
+  public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
   }

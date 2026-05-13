@@ -1,4 +1,3 @@
 framework module KoardSDK {
   header "KoardSDK-Swift.h"
-  requires objc
 }
