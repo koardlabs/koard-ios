@@ -26,14 +26,14 @@ Built with Swift and modularized using Swift Package Manager, KoardSDK provides 
 Add this to your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/koardlabs/koard-sdk.git", from: "1.0.18")
+.package(url: "https://github.com/koardlabs/koard-ios.git", from: "1.0.18")
 ```
 
 Then add `KoardSDK` as a dependency in your target.
 
 ### 🔹 Manual Installation (.xcframework)
 
-1. Go to the [Releases](https://github.com/koardlabs/koardsdk-ios/releases) page
+1. Go to the [Releases](https://github.com/koardlabs/koard-ios/releases) page
 2. Download `KoardSDK.xcframework.zip`
 3. Unzip and drag `KoardSDK.xcframework` into your Xcode project
 4. In your target’s **General > Frameworks, Libraries & Embedded Content**, select "Embed & Sign"
@@ -77,58 +77,37 @@ Or press **⌘U** in Xcode after opening `Package.swift`.
 ---
 
 
-# Koard SDK 1.0.18 Migration Guide
+# What's New in 1.0.18
 
-This release introduces two important updates that may require minor adjustments to your integration.
+This release hardens session auth, Keychain handling, and the Tap to Pay reader,
+and makes error reporting more precise. **No public API signatures changed** —
+see [CHANGELOG.md](CHANGELOG.md) for the full list.
 
----
+## Highlights
 
-## 1. Added `batchID` to `Transaction` Model
+- **Keychain isolation on `logout()`.** Logout now clears only the SDK's own
+  Keychain items instead of every generic-password item under your app — it can
+  no longer wipe your app's other credentials.
+- **Reliable session expiry.** The SDK reads the login token's real expiry and
+  stops reusing an expired token (which previously surfaced as an opaque
+  card-reader token error). On expiry you get `.unauthorized` — call
+  `login(...)` again.
+- **Serialized card reader.** Overlapping reader operations (e.g. switching
+  location and tapping immediately) no longer collide with a "reader busy"
+  error; a sale waits for the reader to become ready.
+- **First-class cancellation.** When the customer cancels at the Tap to Pay
+  sheet you now get `.TTPPaymentFailed(.canceled)` rather than a generic failure.
+- **Clearer HTTP errors.** `429` → `.rateLimited`; `4xx`/`5xx` → `.server(message:)`
+  with a readable message (no more opaque decode errors); transport failures are
+  wrapped as `.network(...)`.
 
-A new optional property `batchID` has been added to the `Transaction` model.  
-This value can be used to associate a transaction with a settlement batch or batch reporting record.
+## ⚠️ Behavior changes (update your `catch` if you key off these)
 
-**Example:**
-```swift
-let transaction = Transaction(
-    id: "abc123",
-    amount: 12.00,
-    currency: .usd,
-    batchID: "batch-09242025"
-)
-```
-
-If your implementation does not rely on batching or settlement tracking, you do **not** need to modify your existing code.  
-The property is optional and defaults to `nil`.
-
----
-
-## 2. Floating-Point Transaction Amounts
-
-All transaction APIs (`sale`, `refund`, `capture`, `void`, and `authorize`) now take `Double` or `Float` values for the `amount` parameter instead of `Int`.
-
-**Old (1.14):**
-```swift
-let sale = ProcessSaleRequestModel(amount: 1200, currency: .usd) // cents
-```
-
-**New (1.15):**
-```swift
-let sale = TransactionSaleRequest(amount: 12.00, currency: .usd) // dollars
-```
-
-### Migration Notes
-- Update any amount values that were represented in cents to use decimal currency units (e.g., `1200` → `12.00`).
-- The SDK rounds amounts to two decimal places following standard financial rounding rules.
-
----
-
-### Summary
-
-| Change | Impact |
-|--------|---------|
-| `batchID` added to `Transaction` | Optional, no breaking change |
-| Transaction amounts now `Double`/`Float` | Breaking for apps passing `Int` values |
+- Tap to Pay cancellation now throws `.TTPPaymentFailed(.canceled)` (previously
+  `.paymentCardReaderNilResult`).
+- Transport/timeout errors throw `KoardMerchantSDKError.network(...)` instead of
+  a raw `URLError` (the original `URLError` is in `underlying`).
+- `429` responses throw the new `.rateLimited(message:)` case.
 
 ---
 
@@ -172,7 +151,7 @@ Multi-location merchants must set an active location before processing payments:
 Initialize the SDK early in your app lifecycle (typically in `AppDelegate` or `SceneDelegate`):
 
 ```swift
-import KoardMerchantSDK
+import KoardSDK
 
 class AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -588,25 +567,41 @@ private func getTransactionHistory() async throws {
 
 ```swift
 private func handleSDKError(_ error: Error) {
-    if let koardError = error as? KoardMerchantSDKError {
-        switch koardError {
-        case .missingLocationID:
-            print("No active location set")
-            // Prompt user to select location
-            
-        case .missingMerchantCode:
-            print("Merchant not authenticated")
-            // Redirect to login
-            
-        case .TTPPaymentFailed(let ttpError):
-            print("Tap to Pay error: \(ttpError)")
-            // Handle specific TTP errors
-            
-        default:
-            print("Koard SDK error: \(koardError)")
-        }
-    } else {
+    guard let koardError = error as? KoardMerchantSDKError else {
         print("General error: \(error)")
+        return
+    }
+    switch koardError {
+    case .unauthorized:
+        print("Not authenticated or session expired")
+        // Redirect to login
+
+    case .blockedAccount:
+        print("Merchant account is blocked")
+
+    case .rateLimited:
+        print("Too many requests — back off and retry")
+
+    case .missingLocationID:
+        print("No active location set")
+        // Prompt user to select location
+
+    case let .server(message):
+        print("Server error: \(message ?? "unknown")")
+
+    case let .network(description, _):
+        print("Network error: \(description)")
+
+    case let .TTPPaymentFailed(ttpError):
+        if case .canceled = ttpError {
+            print("Customer cancelled the tap")   // benign, not a failure
+        } else {
+            print("Tap to Pay error: \(ttpError)")
+        }
+
+    default:
+        // Every case is human-readable via errorDescription.
+        print("Koard SDK error: \(koardError.errorDescription)")
     }
 }
 ```
@@ -820,7 +815,7 @@ This guide provides a complete implementation pattern for integrating KoardMerch
 
 ## Building the Framework
 
-Follow these steps to build the `KoardMerchantSDK.xcframework` for distribution:
+Follow these steps to build the `KoardSDK.xcframework` for distribution:
 
 ### Prerequisites
 - Xcode 16.3 or later
@@ -837,7 +832,7 @@ Follow these steps to build the `KoardMerchantSDK.xcframework` for distribution:
 2. **Create iOS Device archive**:
    ```bash
    xcodebuild archive \
-     -project KoardMerchantSDK.xcodeproj \
+     -project KoardSDK.xcodeproj \
      -scheme KoardSDK \
      -destination "generic/platform=iOS" \
      -archivePath ./build/KoardSDK-iOS.xcarchive \
@@ -848,7 +843,7 @@ Follow these steps to build the `KoardMerchantSDK.xcframework` for distribution:
 3. **Create iOS Simulator archive**:
    ```bash
    xcodebuild archive \
-     -project KoardMerchantSDK.xcodeproj \
+     -project KoardSDK.xcodeproj \
      -scheme KoardSDK \
      -destination "generic/platform=iOS Simulator" \
      -archivePath ./build/KoardSDK-iOS-Simulator.xcarchive \
@@ -861,14 +856,14 @@ Follow these steps to build the `KoardMerchantSDK.xcframework` for distribution:
    xcodebuild -create-xcframework \
      -framework ./build/KoardSDK-iOS.xcarchive/Products/Library/Frameworks/KoardSDK.framework \
      -framework ./build/KoardSDK-iOS-Simulator.xcarchive/Products/Library/Frameworks/KoardSDK.framework \
-     -output ./build/KoardMerchantSDK.xcframework
+     -output ./build/KoardSDK.xcframework
    ```
 
 ### Output
 
 The built framework will be located at:
 ```
-./build/KoardMerchantSDK.xcframework
+./build/KoardSDK.xcframework
 ```
 
 This XCFramework supports:
@@ -879,14 +874,14 @@ This XCFramework supports:
 
 ### Adding to Your Project
 
-1. Drag `KoardMerchantSDK.xcframework` into your Xcode project
+1. Drag `KoardSDK.xcframework` into your Xcode project
 2. In your target's "General" tab, add it to "Frameworks, Libraries, and Embedded Content"
 3. Set the framework to "Embed & Sign"
 
 ### Usage
 
 ```swift
-import KoardMerchantSDK
+import KoardSDK
 
 class PaymentViewController: UIViewController {
     
@@ -978,55 +973,41 @@ class PaymentViewController: UIViewController {
 
 ---
 
-## 🧭 Migration Guide: `KoardMerchantSDKError` → `KoardSDKError`
+## 🧭 Error Handling
 
-As of **v1.0.0**, the old `KoardMerchantSDKError` enum has been replaced with a cleaner, developer-friendly `KoardSDKError`.
+Every throwing SDK call surfaces a **`KoardMerchantSDKError`**. It conforms to
+`KoardDescribableError`, so `error.errorDescription` always gives a
+user-presentable string.
 
-### ✅ Why we changed it:
-- Fewer error cases to manage
-- Clearer categories for UI and logging
-- Built-in `LocalizedError` support
-- Structured underlying error handling
+### Cases
 
-### 🔄 Mapping of Old → New Errors:
+| Case | When |
+|------|------|
+| `.unauthorized` | Not logged in, or the session expired (HTTP 401/403). Call `login(...)` again. |
+| `.blockedAccount` | Merchant account is blocked (HTTP 423). |
+| `.rateLimited(message:)` | Too many requests (HTTP 429). Back off and retry. |
+| `.server(message:)` | Server-side error (HTTP 400/404/5xx); `message` is human-readable. |
+| `.network(description:underlying:)` | Transport failure (offline, timeout). `underlying` is the original `URLError`. |
+| `.invalidParameters(String)` | A required argument was missing or invalid. |
+| `.missingLocationID` / `.missingTerminalID` | Required context not set before the call. |
+| `.TTPPaymentFailed(TTPPaymentError)` | Tap to Pay failure. `.canceled` = customer cancelled (benign); `.paymentCardReaderError(_)` = reader error. |
+| `.TTPConfigurationFailed(_)` | Reader/account configuration failure. |
+| `.invalidTransactionResponse` / `.decodingFailure` / `.unknown(_)` | Unexpected or uncategorized response. |
 
-| Old Error                         | New Error                        |
-|----------------------------------|----------------------------------|
-| `.urlForming`                    | `.invalidRequest`                |
-| `.notAuthorized` (401, 403)      | `.unauthorized`                  |
-| `.merchantBlocked` (423)         | `.blockedAccount`                |
-| `.apiError(ApiErrorDetail)`      | `.server(message:)`              |
-| `.unsupportedOSVersion("15.4")`  | `.unsupportedPlatform("15.4")`   |
-| `.decodingFailure`               | `.decodingFailure`               |
-| `.network(URLError)`             | `.network(...)`                  |
-| `.unknownError`                  | `.unknown(...)`                  |
-
-### 🆕 Example Usage
+### Example
 
 ```swift
 do {
-    try await sdk.login(code: "demo", pin: "1234")
-} catch let error as KoardSDKError {
-    showAlert(error.localizedDescription)
+    try await KoardMerchantSDK.shared.login(code: "demo", pin: "1234")
+} catch let error as KoardMerchantSDKError {
+    switch error {
+    case .unauthorized:        showLoginScreen()
+    case .rateLimited:         showAlert("Too many attempts. Please wait and try again.")
+    case let .server(message): showAlert(message ?? "Server error")
+    default:                   showAlert(error.errorDescription)
+    }
 }
 ```
-
-### 💡 Custom Handling Still Works
-
-```swift
-switch error {
-case .unauthorized:
-    showLoginScreen()
-case .server(let message):
-    showAlert(message ?? "Server error")
-case .unknown(let underlying):
-    logger.error("Unexpected error: \(underlying?.localizedDescription ?? "unknown")")
-default:
-    showAlert(error.localizedDescription)
-}
-```
-
-> `KoardMerchantSDKError` is deprecated and will be removed in a future version.
 
 ## 📝 License
 
