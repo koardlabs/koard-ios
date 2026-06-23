@@ -47,32 +47,10 @@ import KoardSDK
 
 ## 📚 Documentation
 
-This SDK uses DocC to generate rich developer documentation.
+Full SDK documentation: [KoardSDK Documentation](https://koardlabs.github.io/koard-ios/documentation/koardsdk/index.html).
 
-Full SDK documentation can be found here: [KoardSDK Documentation](https://koardlabs.github.io/koard-ios/documentation/koardsdk/index.html).
-
-### To preview in Xcode:
-
-1. Open `Package.swift` in Xcode (not the `.xcodeproj`)
-2. From the menu, select: **Product > Build Documentation**
-3. Or Option-click on any symbol to view its documentation
-
-You can also find grouped API overviews in:
-```
-Sources/KoardSDK/KoardSDK.docc/KoardSDK.md
-```
-
----
-
-## 🧪 Running Tests
-
-Unit tests are written using Swift Testing (iOS 17+).
-
-```bash
-swift test
-```
-
-Or press **⌘U** in Xcode after opening `Package.swift`.
+Once the package is added to your project, Option-click any symbol in Xcode to
+view its inline documentation.
 
 ---
 
