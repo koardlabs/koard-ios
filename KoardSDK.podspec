@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://www.koard.com'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Koard Labs' => 'support@koardlabs.com' }
-  s.source           = { :git => 'https://github.com/koardlabs/koard-sdk.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/koardlabs/koard-ios.git', :tag => s.version.to_s }
 
   s.swift_version    = '5.9'
   s.ios.deployment_target = '17.0'

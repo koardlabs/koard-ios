@@ -14,7 +14,8 @@ Built with Swift and modularized using Swift Package Manager, KoardSDK provides 
 - 🧾 Receipt delivery via email or SMS
 - 🔁 Fallback payment links for browser-based checkout
 - 📍 Multi-location merchant support
-- 🧪 Written with modern `@Test`-based Swift Testing (iOS 17+)
+- 🏪 Fetch merchant account & location details (profile, list and select the active location)
+- 🧩 Modern async/await Swift API (iOS 17+)
 - 📦 Distributed via SPM, CocoaPods, or as a binary XCFramework
 
 ---
@@ -206,6 +207,23 @@ private func setupLocation() async throws {
         throw error
     }
 }
+```
+
+##### Fetching Merchant & Location Details
+
+You can read the authenticated merchant's account profile and the active
+location's full details at any time after login:
+
+```swift
+// Merchant account profile
+let account = try await KoardMerchantSDK.shared.getMerchantAccount()  // AccountBase
+
+// All locations for the merchant
+let locations = try await KoardMerchantSDK.shared.locations()         // [Location]
+
+// The currently active location — id only, or the full object
+let activeId = KoardMerchantSDK.shared.getActiveLocationID()          // String?
+let activeLocation = try await KoardMerchantSDK.shared.getActiveLocation()  // Location
 ```
 
 #### Step 4: Card Reader Preparation
