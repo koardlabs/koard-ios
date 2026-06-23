@@ -640,6 +640,7 @@ public enum KoardMerchantSDKError : Swift.Error, KoardSDK.KoardDescribableError 
   case unauthorized
   case blockedAccount
   case invalidRequest
+  case rateLimited(message: Swift.String? = nil)
   case server(message: Swift.String?)
   case decodingFailure
   case unsupportedPlatform(requiredVersion: Swift.String)
@@ -663,6 +664,7 @@ public enum KoardMerchantSDKError : Swift.Error, KoardSDK.KoardDescribableError 
     case noPaymentResult
     case paymentCardReaderError(any Swift.Error)
     case paymentCardReaderNilResult
+    case canceled
   }
 }
 extension KoardSDK.KoardMerchantSDKError {
