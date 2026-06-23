@@ -299,7 +299,7 @@ private func processSale() async throws {
     // Create payment breakdown (optional)
     let breakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00 in cents
-        taxRate: 875,          // 8.75% (8.75 * 100)
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents) (8.75 * 100)
         taxAmount: 88,         // $0.88 in cents
         tipAmount: 200,        // $2.00 in cents
         tipType: .fixed        // or .percentage
@@ -308,8 +308,9 @@ private func processSale() async throws {
     // Create currency
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
     
-    // Optional: Generate UUID4 for idempotency (prevents duplicate transactions)
-    let customTransactionId = UUID().uuidString
+    // Optional: pass an `eventId` (UUID4) for idempotency — retrying with the
+    // same eventId returns the original result instead of charging twice.
+    let eventId = UUID().uuidString
     
     do {
         // Process the sale
@@ -317,7 +318,7 @@ private func processSale() async throws {
             amount: 1288,              // Total amount in cents
             breakdown: breakdown,       // Optional breakdown
             currency: currency,
-            transactionId: customTransactionId,  // Optional: Use for idempotency. If nil, Koard generates one
+            eventId: eventId,          // Optional idempotency key. If nil, Koard generates one
             type: .sale                // Transaction type
         )
         
@@ -337,15 +338,16 @@ private func processSale() async throws {
 private func processPreauth() async throws {
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
     
-    // Optional: Generate UUID4 for idempotency (prevents duplicate transactions)
-    let customTransactionId = UUID().uuidString
+    // Optional: pass an `eventId` (UUID4) for idempotency.
+    let eventId = UUID().uuidString
     
     do {
-        // Process preauthorization (no breakdown needed)
+        // Process preauthorization
         let response = try await KoardMerchantSDK.shared.preauth(
-            amount: 1000,                        // Amount to preauthorize in cents
+            amount: 1000,              // Amount to preauthorize in cents
+            breakdown: nil,            // Optional breakdown
             currency: currency,
-            transactionId: customTransactionId   // Optional: Use for idempotency. If nil, Koard generates one
+            eventId: eventId           // Optional idempotency key. If nil, Koard generates one
         )
         
         print("Preauth successful: \(response.transactionId ?? "Unknown")")
@@ -476,7 +478,7 @@ private func incrementalAuth(transactionId: String, additionalAmount: Int) async
     // Optional: Add breakdown for the additional amount
     let breakdown = PaymentBreakdown(
         subtotal: additionalAmount,
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: Int(Double(additionalAmount) * 0.0875),
         tipAmount: 0,
         tipType: .fixed
@@ -507,7 +509,7 @@ private func captureTransaction(transactionId: String, finalAmount: Int? = nil) 
     // Optional: Update breakdown with final tip amount
     let finalBreakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 88,         // $0.88
         tipAmount: 300,        // $3.00 final tip
         tipType: .fixed
@@ -653,22 +655,25 @@ This is the recommended flow for restaurants and hospitality where tip amounts a
 ```swift
 private func preauthCaptureWorkflow() async throws {
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-    let transactionId = UUID().uuidString
-    
+    let eventId = UUID().uuidString   // idempotency key for this preauth
+
     // Step 1: Preauthorize base amount
     let preauthResponse = try await KoardMerchantSDK.shared.preauth(
         amount: 1000,          // $10.00 base amount
+        breakdown: nil,
         currency: currency,
-        transactionId: transactionId
+        eventId: eventId
     )
     
+    // The real transaction id (used for follow-up capture/auth/reverse) comes
+    // back on the response — distinct from the eventId above.
     let authorizedTransactionId = preauthResponse.transactionId!
     print("Preauth completed: \(authorizedTransactionId)")
     
     // Step 2: Customer adds tip, create final breakdown
     let finalBreakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 88,         // $0.88
         tipAmount: 200,        // $2.00 tip added
         tipType: .fixed
@@ -692,13 +697,14 @@ For complex scenarios where additional authorizations are needed:
 ```swift
 private func incrementalAuthWorkflow() async throws {
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-    let transactionId = UUID().uuidString
-    
+    let eventId = UUID().uuidString   // idempotency key for this preauth
+
     // Step 1: Initial preauth
     let preauthResponse = try await KoardMerchantSDK.shared.preauth(
         amount: 1000,          // $10.00 initial amount
+        breakdown: nil,
         currency: currency,
-        transactionId: transactionId
+        eventId: eventId
     )
     
     let authorizedTransactionId = preauthResponse.transactionId!
@@ -706,7 +712,7 @@ private func incrementalAuthWorkflow() async throws {
     // Step 2: Customer orders additional items - incremental auth
     let additionalBreakdown = PaymentBreakdown(
         subtotal: 500,         // $5.00 additional items
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 44,         // $0.44 additional tax
         tipAmount: 0,
         tipType: .fixed
@@ -721,7 +727,7 @@ private func incrementalAuthWorkflow() async throws {
     // Step 3: Final capture with tip
     let finalBreakdown = PaymentBreakdown(
         subtotal: 1500,        // $15.00 total
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 131,        // $1.31 total tax
         tipAmount: 300,        // $3.00 tip
         tipType: .fixed
@@ -745,21 +751,21 @@ For simple transactions where immediate payment is required:
 private func saleWorkflow() async throws {
     let breakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 88,         // $0.88
         tipAmount: 200,        // $2.00
         tipType: .fixed
     )
     
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-    let transactionId = UUID().uuidString
-    
+    let eventId = UUID().uuidString   // idempotency key
+
     // Single sale transaction - immediate capture
     let response = try await KoardMerchantSDK.shared.sale(
         amount: 1288,          // $12.88 total
         breakdown: breakdown,
         currency: currency,
-        transactionId: transactionId
+        eventId: eventId
     )
     
     print("Sale completed: \(response.transactionId ?? "Unknown")")
@@ -775,33 +781,37 @@ private func saleWorkflow() async throws {
 5. **Location Setting**: Set active location before any payment operations
 6. **Session Preparation**: Call `prepare()` before each payment session
 7. **User Experience**: Monitor reader events for better UX feedback
-8. **Transaction Idempotency**: Use custom UUID4 transaction IDs to prevent duplicate transactions due to network issues or retries
+8. **Idempotency**: Pass a stable `eventId` (UUID4) on write operations to prevent duplicate transactions from network retries.
 
-#### Transaction Idempotency
+#### Idempotency (`eventId`)
 
-For critical payment operations, especially in unreliable network conditions, use custom transaction IDs:
+For critical payment operations, especially in unreliable network conditions,
+pass an `eventId` on the write call (`sale`, `preauth`, `capture`, `refund`,
+`reverse`, `auth`, `confirm`). It's optional — if omitted, Koard generates one.
 
 ```swift
-// Generate a UUID4 for the transaction
-let transactionId = UUID().uuidString
+// Generate a stable UUID4 once and reuse it for any retries of THIS operation.
+let eventId = UUID().uuidString
 
-// Use the same ID for retries - Koard will return the same result
 let response = try await KoardMerchantSDK.shared.sale(
     amount: 1000,
     breakdown: nil,
     currency: currency,
-    transactionId: transactionId  // This ensures idempotency
+    eventId: eventId  // retrying with the same eventId returns the original result
 )
 
-// If network fails and you retry with the same transactionId,
-// Koard will return the original transaction result instead of processing again
+// If the network fails and you retry with the same eventId, Koard returns the
+// original transaction result instead of charging again.
 ```
 
-**Important**: 
-- Use UUID4 format for transaction IDs (e.g., `UUID().uuidString`)
-- Store transaction IDs before making requests for retry scenarios
-- Same transaction ID will always return the same result
-- This prevents accidental duplicate charges during network issues
+**`eventId` vs `transactionId`** — don't confuse them:
+- **`eventId`** is *your* idempotency key for a write. Optional; reuse it on retries of the same operation.
+- **`transactionId`** is the server-assigned id of an *existing* transaction (from a response's `transactionId`). You pass it back to **reference** that transaction in follow-ups — `getTransaction`, `refund`, `reverse`, `capture`, `auth`, `confirm` — and as `partialAuthTransactionId` when completing a partial approval. It is **not** an input on a fresh `sale`/`preauth`.
+
+**Important**:
+- Use UUID4 format for `eventId` (e.g., `UUID().uuidString`).
+- Store the `eventId` before making the request so retries reuse the same value.
+- The same `eventId` always returns the same result, preventing accidental duplicate charges.
 
 ### Troubleshooting
 
@@ -813,62 +823,12 @@ let response = try await KoardMerchantSDK.shared.sale(
 
 This guide provides a complete implementation pattern for integrating KoardMerchantSDK into your iOS mPOS application.
 
-## Building the Framework
+## Distribution
 
-Follow these steps to build the `KoardSDK.xcframework` for distribution:
-
-### Prerequisites
-- Xcode 16.3 or later
-- iOS 17.0+ deployment target
-- Valid Apple Developer account for code signing
-
-### Build Steps
-
-1. **Clean previous builds** (optional but recommended):
-   ```bash
-   rm -rf build/
-   ```
-
-2. **Create iOS Device archive**:
-   ```bash
-   xcodebuild archive \
-     -project KoardSDK.xcodeproj \
-     -scheme KoardSDK \
-     -destination "generic/platform=iOS" \
-     -archivePath ./build/KoardSDK-iOS.xcarchive \
-     SKIP_INSTALL=NO \
-     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
-   ```
-
-3. **Create iOS Simulator archive**:
-   ```bash
-   xcodebuild archive \
-     -project KoardSDK.xcodeproj \
-     -scheme KoardSDK \
-     -destination "generic/platform=iOS Simulator" \
-     -archivePath ./build/KoardSDK-iOS-Simulator.xcarchive \
-     SKIP_INSTALL=NO \
-     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
-   ```
-
-4. **Create XCFramework**:
-   ```bash
-   xcodebuild -create-xcframework \
-     -framework ./build/KoardSDK-iOS.xcarchive/Products/Library/Frameworks/KoardSDK.framework \
-     -framework ./build/KoardSDK-iOS-Simulator.xcarchive/Products/Library/Frameworks/KoardSDK.framework \
-     -output ./build/KoardSDK.xcframework
-   ```
-
-### Output
-
-The built framework will be located at:
-```
-./build/KoardSDK.xcframework
-```
-
-This XCFramework supports:
-- **iOS Device** (arm64)
-- **iOS Simulator** (arm64, x86_64)
+`KoardSDK` is distributed as a prebuilt, resilient static `KoardSDK.xcframework`
+(iOS device arm64 + simulator arm64/x86_64) via Swift Package Manager,
+CocoaPods, or direct `.xcframework` download — see [Installation](#-installation).
+You don't need to build it yourself to integrate it.
 
 ## Integration
 
@@ -917,7 +877,7 @@ class PaymentViewController: UIViewController {
         // Create payment breakdown (optional)
         let breakdown = PaymentBreakdown(
             subtotal: 1000,        // $10.00
-            taxRate: 875,          // 8.75%
+            taxRate: 8.75,         // 8.75% (a Double percent, not cents)
             taxAmount: 88,         // $0.88
             tipAmount: 200,        // $2.00
             tipType: .fixed
