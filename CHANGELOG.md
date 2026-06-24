@@ -43,11 +43,6 @@ runtime. Update your `catch` / `switch` logic if you key off the old values:
 - **"Not authenticated" precondition is now `.unauthorized`.** Calling a
   payment / refund / pre-auth operation with no active session throws
   `.unauthorized` instead of `.invalidRequest`.
-- **Expired sessions are detected locally.** When the stored session token is
-  past its JWT expiry, the SDK clears it and throws `.unauthorized` proactively
-  (rather than reusing a dead token until the backend returns 401). The error
-  you receive on expiry — `.unauthorized` — is unchanged; it just arrives
-  sooner and more reliably. Re-authenticate by calling `login(...)` again.
 
 ### Fixed
 
