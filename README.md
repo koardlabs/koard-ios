@@ -14,7 +14,8 @@ Built with Swift and modularized using Swift Package Manager, KoardSDK provides 
 - 🧾 Receipt delivery via email or SMS
 - 🔁 Fallback payment links for browser-based checkout
 - 📍 Multi-location merchant support
-- 🧪 Written with modern `@Test`-based Swift Testing (iOS 17+)
+- 🏪 Fetch merchant account & location details (profile, list and select the active location)
+- 🧩 Modern async/await Swift API (iOS 17+)
 - 📦 Distributed via SPM, CocoaPods, or as a binary XCFramework
 
 ---
@@ -26,14 +27,14 @@ Built with Swift and modularized using Swift Package Manager, KoardSDK provides 
 Add this to your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/koardlabs/koard-sdk.git", from: "1.0.16")
+.package(url: "https://github.com/koardlabs/koard-ios.git", from: "1.0.18")
 ```
 
 Then add `KoardSDK` as a dependency in your target.
 
 ### 🔹 Manual Installation (.xcframework)
 
-1. Go to the [Releases](https://github.com/koardlabs/koardsdk-ios/releases) page
+1. Go to the [Releases](https://github.com/koardlabs/koard-ios/releases) page
 2. Download `KoardSDK.xcframework.zip`
 3. Unzip and drag `KoardSDK.xcframework` into your Xcode project
 4. In your target’s **General > Frameworks, Libraries & Embedded Content**, select "Embed & Sign"
@@ -47,88 +48,52 @@ import KoardSDK
 
 ## 📚 Documentation
 
-This SDK uses DocC to generate rich developer documentation.
+Full SDK documentation: [KoardSDK Documentation](https://koardlabs.github.io/koard-ios/documentation/koardsdk/index.html).
 
-Full SDK documentation can be found here: [KoardSDK Documentation](https://koardlabs.github.io/koard-ios/documentation/koardsdk/index.html).
-
-### To preview in Xcode:
-
-1. Open `Package.swift` in Xcode (not the `.xcodeproj`)
-2. From the menu, select: **Product > Build Documentation**
-3. Or Option-click on any symbol to view its documentation
-
-You can also find grouped API overviews in:
-```
-Sources/KoardSDK/KoardSDK.docc/KoardSDK.md
-```
-
----
-
-## 🧪 Running Tests
-
-Unit tests are written using Swift Testing (iOS 17+).
-
-```bash
-swift test
-```
-
-Or press **⌘U** in Xcode after opening `Package.swift`.
+Once the package is added to your project, Option-click any symbol in Xcode to
+view its inline documentation.
 
 ---
 
 
-# Koard SDK 1.0.15 Migration Guide
+# What's New in 1.0.18
 
-This release introduces two important updates that may require minor adjustments to your integration.
+This release hardens session auth, Keychain handling, and the Tap to Pay reader,
+and makes error reporting more precise. **The only API addition is
+`login(alias:)`** (additive — no existing signatures changed) — see
+[CHANGELOG.md](CHANGELOG.md) for the full list.
 
----
+## Highlights
 
-## 1. Added `batchID` to `Transaction` Model
+- **Keychain isolation on `logout()`.** Logout now clears only the SDK's own
+  Keychain items instead of every generic-password item under your app — it can
+  no longer wipe your app's other credentials.
+- **Reliable session expiry.** The SDK reads the login token's real expiry and
+  stops reusing an expired token (which previously surfaced as an opaque
+  card-reader token error). On expiry you get `.unauthorized` — call
+  `login(...)` again.
+- **Serialized card reader.** Overlapping reader operations (e.g. switching
+  location and tapping immediately) no longer collide with a "reader busy"
+  error; a sale waits for the reader to become ready.
+- **No charges against a stale location.** A sale started right after switching
+  the active location now re-prepares the reader session for the new location
+  first, instead of charging against the previously-selected one.
+- **Alias login.** New `login(alias:)` logs in with a single opaque alias string
+  (e.g. from a QR scan or SSO callback) instead of a code + PIN, yielding the
+  same session token. See the Authentication section below.
+- **First-class cancellation.** When the customer cancels at the Tap to Pay
+  sheet you now get `.TTPPaymentFailed(.canceled)` rather than a generic failure.
+- **Clearer HTTP errors.** `429` → `.rateLimited`; `4xx`/`5xx` → `.server(message:)`
+  with a readable message (no more opaque decode errors); transport failures are
+  wrapped as `.network(...)`.
 
-A new optional property `batchID` has been added to the `Transaction` model.  
-This value can be used to associate a transaction with a settlement batch or batch reporting record.
+## ⚠️ Behavior changes (update your `catch` if you key off these)
 
-**Example:**
-```swift
-let transaction = Transaction(
-    id: "abc123",
-    amount: 12.00,
-    currency: .usd,
-    batchID: "batch-09242025"
-)
-```
-
-If your implementation does not rely on batching or settlement tracking, you do **not** need to modify your existing code.  
-The property is optional and defaults to `nil`.
-
----
-
-## 2. Floating-Point Transaction Amounts
-
-All transaction APIs (`sale`, `refund`, `capture`, `void`, and `authorize`) now take `Double` or `Float` values for the `amount` parameter instead of `Int`.
-
-**Old (1.14):**
-```swift
-let sale = ProcessSaleRequestModel(amount: 1200, currency: .usd) // cents
-```
-
-**New (1.15):**
-```swift
-let sale = TransactionSaleRequest(amount: 12.00, currency: .usd) // dollars
-```
-
-### Migration Notes
-- Update any amount values that were represented in cents to use decimal currency units (e.g., `1200` → `12.00`).
-- The SDK rounds amounts to two decimal places following standard financial rounding rules.
-
----
-
-### Summary
-
-| Change | Impact |
-|--------|---------|
-| `batchID` added to `Transaction` | Optional, no breaking change |
-| Transaction amounts now `Double`/`Float` | Breaking for apps passing `Int` values |
+- Tap to Pay cancellation now throws `.TTPPaymentFailed(.canceled)` (previously
+  `.paymentCardReaderNilResult`).
+- Transport/timeout errors throw `KoardMerchantSDKError.network(...)` instead of
+  a raw `URLError` (the original `URLError` is in `underlying`).
+- `429` responses throw the new `.rateLimited(message:)` case.
 
 ---
 
@@ -172,7 +137,7 @@ Multi-location merchants must set an active location before processing payments:
 Initialize the SDK early in your app lifecycle (typically in `AppDelegate` or `SceneDelegate`):
 
 ```swift
-import KoardMerchantSDK
+import KoardSDK
 
 class AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -219,6 +184,17 @@ private func authenticateMerchant() async throws {
 }
 ```
 
+> **Alternative: alias login.** If you've already resolved the merchant identity
+> into a single string (e.g. a QR scan, an SSO callback, or a server-issued
+> provisioning token), use `login(alias:)` instead of `login(code:pin:)`. It hits
+> the same endpoint and yields the same session token; like code+PIN login it is
+> session-auth only — the session token is persisted, the alias itself is never
+> stored.
+>
+> ```swift
+> try await KoardMerchantSDK.shared.login(alias: "merchant-alias-string")
+> ```
+
 #### Step 3: Location Setup
 
 Retrieve and set the active location:
@@ -249,6 +225,23 @@ private func setupLocation() async throws {
         throw error
     }
 }
+```
+
+##### Fetching Merchant & Location Details
+
+You can read the authenticated merchant's account profile and the active
+location's full details at any time after login:
+
+```swift
+// Merchant account profile
+let account = try await KoardMerchantSDK.shared.getMerchantAccount()  // AccountBase
+
+// All locations for the merchant
+let locations = try await KoardMerchantSDK.shared.locations()         // [Location]
+
+// The currently active location — id only, or the full object
+let activeId = KoardMerchantSDK.shared.getActiveLocationID()          // String?
+let activeLocation = try await KoardMerchantSDK.shared.getActiveLocation()  // Location
 ```
 
 #### Step 4: Card Reader Preparation
@@ -320,7 +313,7 @@ private func processSale() async throws {
     // Create payment breakdown (optional)
     let breakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00 in cents
-        taxRate: 875,          // 8.75% (8.75 * 100)
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents) (8.75 * 100)
         taxAmount: 88,         // $0.88 in cents
         tipAmount: 200,        // $2.00 in cents
         tipType: .fixed        // or .percentage
@@ -329,8 +322,9 @@ private func processSale() async throws {
     // Create currency
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
     
-    // Optional: Generate UUID4 for idempotency (prevents duplicate transactions)
-    let customTransactionId = UUID().uuidString
+    // Optional: pass an `eventId` (UUID4) for idempotency — retrying with the
+    // same eventId returns the original result instead of charging twice.
+    let eventId = UUID().uuidString
     
     do {
         // Process the sale
@@ -338,7 +332,7 @@ private func processSale() async throws {
             amount: 1288,              // Total amount in cents
             breakdown: breakdown,       // Optional breakdown
             currency: currency,
-            transactionId: customTransactionId,  // Optional: Use for idempotency. If nil, Koard generates one
+            eventId: eventId,          // Optional idempotency key. If nil, Koard generates one
             type: .sale                // Transaction type
         )
         
@@ -358,15 +352,16 @@ private func processSale() async throws {
 private func processPreauth() async throws {
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
     
-    // Optional: Generate UUID4 for idempotency (prevents duplicate transactions)
-    let customTransactionId = UUID().uuidString
+    // Optional: pass an `eventId` (UUID4) for idempotency.
+    let eventId = UUID().uuidString
     
     do {
-        // Process preauthorization (no breakdown needed)
+        // Process preauthorization
         let response = try await KoardMerchantSDK.shared.preauth(
-            amount: 1000,                        // Amount to preauthorize in cents
+            amount: 1000,              // Amount to preauthorize in cents
+            breakdown: nil,            // Optional breakdown
             currency: currency,
-            transactionId: customTransactionId   // Optional: Use for idempotency. If nil, Koard generates one
+            eventId: eventId           // Optional idempotency key. If nil, Koard generates one
         )
         
         print("Preauth successful: \(response.transactionId ?? "Unknown")")
@@ -497,7 +492,7 @@ private func incrementalAuth(transactionId: String, additionalAmount: Int) async
     // Optional: Add breakdown for the additional amount
     let breakdown = PaymentBreakdown(
         subtotal: additionalAmount,
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: Int(Double(additionalAmount) * 0.0875),
         tipAmount: 0,
         tipType: .fixed
@@ -528,7 +523,7 @@ private func captureTransaction(transactionId: String, finalAmount: Int? = nil) 
     // Optional: Update breakdown with final tip amount
     let finalBreakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 88,         // $0.88
         tipAmount: 300,        // $3.00 final tip
         tipType: .fixed
@@ -588,25 +583,41 @@ private func getTransactionHistory() async throws {
 
 ```swift
 private func handleSDKError(_ error: Error) {
-    if let koardError = error as? KoardMerchantSDKError {
-        switch koardError {
-        case .missingLocationID:
-            print("No active location set")
-            // Prompt user to select location
-            
-        case .missingMerchantCode:
-            print("Merchant not authenticated")
-            // Redirect to login
-            
-        case .TTPPaymentFailed(let ttpError):
-            print("Tap to Pay error: \(ttpError)")
-            // Handle specific TTP errors
-            
-        default:
-            print("Koard SDK error: \(koardError)")
-        }
-    } else {
+    guard let koardError = error as? KoardMerchantSDKError else {
         print("General error: \(error)")
+        return
+    }
+    switch koardError {
+    case .unauthorized:
+        print("Not authenticated or session expired")
+        // Redirect to login
+
+    case .blockedAccount:
+        print("Merchant account is blocked")
+
+    case .rateLimited:
+        print("Too many requests — back off and retry")
+
+    case .missingLocationID:
+        print("No active location set")
+        // Prompt user to select location
+
+    case let .server(message):
+        print("Server error: \(message ?? "unknown")")
+
+    case let .network(description, _):
+        print("Network error: \(description)")
+
+    case let .TTPPaymentFailed(ttpError):
+        if case .canceled = ttpError {
+            print("Customer cancelled the tap")   // benign, not a failure
+        } else {
+            print("Tap to Pay error: \(ttpError)")
+        }
+
+    default:
+        // Every case is human-readable via errorDescription.
+        print("Koard SDK error: \(koardError.errorDescription)")
     }
 }
 ```
@@ -658,22 +669,25 @@ This is the recommended flow for restaurants and hospitality where tip amounts a
 ```swift
 private func preauthCaptureWorkflow() async throws {
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-    let transactionId = UUID().uuidString
-    
+    let eventId = UUID().uuidString   // idempotency key for this preauth
+
     // Step 1: Preauthorize base amount
     let preauthResponse = try await KoardMerchantSDK.shared.preauth(
         amount: 1000,          // $10.00 base amount
+        breakdown: nil,
         currency: currency,
-        transactionId: transactionId
+        eventId: eventId
     )
     
+    // The real transaction id (used for follow-up capture/auth/reverse) comes
+    // back on the response — distinct from the eventId above.
     let authorizedTransactionId = preauthResponse.transactionId!
     print("Preauth completed: \(authorizedTransactionId)")
     
     // Step 2: Customer adds tip, create final breakdown
     let finalBreakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 88,         // $0.88
         tipAmount: 200,        // $2.00 tip added
         tipType: .fixed
@@ -697,13 +711,14 @@ For complex scenarios where additional authorizations are needed:
 ```swift
 private func incrementalAuthWorkflow() async throws {
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-    let transactionId = UUID().uuidString
-    
+    let eventId = UUID().uuidString   // idempotency key for this preauth
+
     // Step 1: Initial preauth
     let preauthResponse = try await KoardMerchantSDK.shared.preauth(
         amount: 1000,          // $10.00 initial amount
+        breakdown: nil,
         currency: currency,
-        transactionId: transactionId
+        eventId: eventId
     )
     
     let authorizedTransactionId = preauthResponse.transactionId!
@@ -711,7 +726,7 @@ private func incrementalAuthWorkflow() async throws {
     // Step 2: Customer orders additional items - incremental auth
     let additionalBreakdown = PaymentBreakdown(
         subtotal: 500,         // $5.00 additional items
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 44,         // $0.44 additional tax
         tipAmount: 0,
         tipType: .fixed
@@ -726,7 +741,7 @@ private func incrementalAuthWorkflow() async throws {
     // Step 3: Final capture with tip
     let finalBreakdown = PaymentBreakdown(
         subtotal: 1500,        // $15.00 total
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 131,        // $1.31 total tax
         tipAmount: 300,        // $3.00 tip
         tipType: .fixed
@@ -750,21 +765,21 @@ For simple transactions where immediate payment is required:
 private func saleWorkflow() async throws {
     let breakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00
-        taxRate: 875,          // 8.75%
+        taxRate: 8.75,         // 8.75% (a Double percent, not cents)
         taxAmount: 88,         // $0.88
         tipAmount: 200,        // $2.00
         tipType: .fixed
     )
     
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-    let transactionId = UUID().uuidString
-    
+    let eventId = UUID().uuidString   // idempotency key
+
     // Single sale transaction - immediate capture
     let response = try await KoardMerchantSDK.shared.sale(
         amount: 1288,          // $12.88 total
         breakdown: breakdown,
         currency: currency,
-        transactionId: transactionId
+        eventId: eventId
     )
     
     print("Sale completed: \(response.transactionId ?? "Unknown")")
@@ -780,33 +795,37 @@ private func saleWorkflow() async throws {
 5. **Location Setting**: Set active location before any payment operations
 6. **Session Preparation**: Call `prepare()` before each payment session
 7. **User Experience**: Monitor reader events for better UX feedback
-8. **Transaction Idempotency**: Use custom UUID4 transaction IDs to prevent duplicate transactions due to network issues or retries
+8. **Idempotency**: Pass a stable `eventId` (UUID4) on write operations to prevent duplicate transactions from network retries.
 
-#### Transaction Idempotency
+#### Idempotency (`eventId`)
 
-For critical payment operations, especially in unreliable network conditions, use custom transaction IDs:
+For critical payment operations, especially in unreliable network conditions,
+pass an `eventId` on the write call (`sale`, `preauth`, `capture`, `refund`,
+`reverse`, `auth`, `confirm`). It's optional — if omitted, Koard generates one.
 
 ```swift
-// Generate a UUID4 for the transaction
-let transactionId = UUID().uuidString
+// Generate a stable UUID4 once and reuse it for any retries of THIS operation.
+let eventId = UUID().uuidString
 
-// Use the same ID for retries - Koard will return the same result
 let response = try await KoardMerchantSDK.shared.sale(
     amount: 1000,
     breakdown: nil,
     currency: currency,
-    transactionId: transactionId  // This ensures idempotency
+    eventId: eventId  // retrying with the same eventId returns the original result
 )
 
-// If network fails and you retry with the same transactionId,
-// Koard will return the original transaction result instead of processing again
+// If the network fails and you retry with the same eventId, Koard returns the
+// original transaction result instead of charging again.
 ```
 
-**Important**: 
-- Use UUID4 format for transaction IDs (e.g., `UUID().uuidString`)
-- Store transaction IDs before making requests for retry scenarios
-- Same transaction ID will always return the same result
-- This prevents accidental duplicate charges during network issues
+**`eventId` vs `transactionId`** — don't confuse them:
+- **`eventId`** is *your* idempotency key for a write. Optional; reuse it on retries of the same operation.
+- **`transactionId`** is the server-assigned id of an *existing* transaction (from a response's `transactionId`). You pass it back to **reference** that transaction in follow-ups — `getTransaction`, `refund`, `reverse`, `capture`, `auth`, `confirm` — and as `partialAuthTransactionId` when completing a partial approval. It is **not** an input on a fresh `sale`/`preauth`.
+
+**Important**:
+- Use UUID4 format for `eventId` (e.g., `UUID().uuidString`).
+- Store the `eventId` before making the request so retries reuse the same value.
+- The same `eventId` always returns the same result, preventing accidental duplicate charges.
 
 ### Troubleshooting
 
@@ -818,75 +837,25 @@ let response = try await KoardMerchantSDK.shared.sale(
 
 This guide provides a complete implementation pattern for integrating KoardMerchantSDK into your iOS mPOS application.
 
-## Building the Framework
+## Distribution
 
-Follow these steps to build the `KoardMerchantSDK.xcframework` for distribution:
-
-### Prerequisites
-- Xcode 16.3 or later
-- iOS 17.0+ deployment target
-- Valid Apple Developer account for code signing
-
-### Build Steps
-
-1. **Clean previous builds** (optional but recommended):
-   ```bash
-   rm -rf build/
-   ```
-
-2. **Create iOS Device archive**:
-   ```bash
-   xcodebuild archive \
-     -project KoardMerchantSDK.xcodeproj \
-     -scheme KoardSDK \
-     -destination "generic/platform=iOS" \
-     -archivePath ./build/KoardSDK-iOS.xcarchive \
-     SKIP_INSTALL=NO \
-     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
-   ```
-
-3. **Create iOS Simulator archive**:
-   ```bash
-   xcodebuild archive \
-     -project KoardMerchantSDK.xcodeproj \
-     -scheme KoardSDK \
-     -destination "generic/platform=iOS Simulator" \
-     -archivePath ./build/KoardSDK-iOS-Simulator.xcarchive \
-     SKIP_INSTALL=NO \
-     BUILD_LIBRARY_FOR_DISTRIBUTION=YES
-   ```
-
-4. **Create XCFramework**:
-   ```bash
-   xcodebuild -create-xcframework \
-     -framework ./build/KoardSDK-iOS.xcarchive/Products/Library/Frameworks/KoardSDK.framework \
-     -framework ./build/KoardSDK-iOS-Simulator.xcarchive/Products/Library/Frameworks/KoardSDK.framework \
-     -output ./build/KoardMerchantSDK.xcframework
-   ```
-
-### Output
-
-The built framework will be located at:
-```
-./build/KoardMerchantSDK.xcframework
-```
-
-This XCFramework supports:
-- **iOS Device** (arm64)
-- **iOS Simulator** (arm64, x86_64)
+`KoardSDK` is distributed as a prebuilt, resilient static `KoardSDK.xcframework`
+(iOS device arm64 + simulator arm64/x86_64) via Swift Package Manager,
+CocoaPods, or direct `.xcframework` download — see [Installation](#-installation).
+You don't need to build it yourself to integrate it.
 
 ## Integration
 
 ### Adding to Your Project
 
-1. Drag `KoardMerchantSDK.xcframework` into your Xcode project
+1. Drag `KoardSDK.xcframework` into your Xcode project
 2. In your target's "General" tab, add it to "Frameworks, Libraries, and Embedded Content"
 3. Set the framework to "Embed & Sign"
 
 ### Usage
 
 ```swift
-import KoardMerchantSDK
+import KoardSDK
 
 class PaymentViewController: UIViewController {
     
@@ -922,7 +891,7 @@ class PaymentViewController: UIViewController {
         // Create payment breakdown (optional)
         let breakdown = PaymentBreakdown(
             subtotal: 1000,        // $10.00
-            taxRate: 875,          // 8.75%
+            taxRate: 8.75,         // 8.75% (a Double percent, not cents)
             taxAmount: 88,         // $0.88
             tipAmount: 200,        // $2.00
             tipType: .fixed
@@ -978,55 +947,41 @@ class PaymentViewController: UIViewController {
 
 ---
 
-## 🧭 Migration Guide: `KoardMerchantSDKError` → `KoardSDKError`
+## 🧭 Error Handling
 
-As of **v1.0.0**, the old `KoardMerchantSDKError` enum has been replaced with a cleaner, developer-friendly `KoardSDKError`.
+Every throwing SDK call surfaces a **`KoardMerchantSDKError`**. It conforms to
+`KoardDescribableError`, so `error.errorDescription` always gives a
+user-presentable string.
 
-### ✅ Why we changed it:
-- Fewer error cases to manage
-- Clearer categories for UI and logging
-- Built-in `LocalizedError` support
-- Structured underlying error handling
+### Cases
 
-### 🔄 Mapping of Old → New Errors:
+| Case | When |
+|------|------|
+| `.unauthorized` | Not logged in, or the session expired (HTTP 401/403). Call `login(...)` again. |
+| `.blockedAccount` | Merchant account is blocked (HTTP 423). |
+| `.rateLimited(message:)` | Too many requests (HTTP 429). Back off and retry. |
+| `.server(message:)` | Server-side error (HTTP 400/404/5xx); `message` is human-readable. |
+| `.network(description:underlying:)` | Transport failure (offline, timeout). `underlying` is the original `URLError`. |
+| `.invalidParameters(String)` | A required argument was missing or invalid. |
+| `.missingLocationID` / `.missingTerminalID` | Required context not set before the call. |
+| `.TTPPaymentFailed(TTPPaymentError)` | Tap to Pay failure. `.canceled` = customer cancelled (benign); `.paymentCardReaderError(_)` = reader error. |
+| `.TTPConfigurationFailed(_)` | Reader/account configuration failure. |
+| `.invalidTransactionResponse` / `.decodingFailure` / `.unknown(_)` | Unexpected or uncategorized response. |
 
-| Old Error                         | New Error                        |
-|----------------------------------|----------------------------------|
-| `.urlForming`                    | `.invalidRequest`                |
-| `.notAuthorized` (401, 403)      | `.unauthorized`                  |
-| `.merchantBlocked` (423)         | `.blockedAccount`                |
-| `.apiError(ApiErrorDetail)`      | `.server(message:)`              |
-| `.unsupportedOSVersion("15.4")`  | `.unsupportedPlatform("15.4")`   |
-| `.decodingFailure`               | `.decodingFailure`               |
-| `.network(URLError)`             | `.network(...)`                  |
-| `.unknownError`                  | `.unknown(...)`                  |
-
-### 🆕 Example Usage
+### Example
 
 ```swift
 do {
-    try await sdk.login(code: "demo", pin: "1234")
-} catch let error as KoardSDKError {
-    showAlert(error.localizedDescription)
+    try await KoardMerchantSDK.shared.login(code: "demo", pin: "1234")
+} catch let error as KoardMerchantSDKError {
+    switch error {
+    case .unauthorized:        showLoginScreen()
+    case .rateLimited:         showAlert("Too many attempts. Please wait and try again.")
+    case let .server(message): showAlert(message ?? "Server error")
+    default:                   showAlert(error.errorDescription)
+    }
 }
 ```
-
-### 💡 Custom Handling Still Works
-
-```swift
-switch error {
-case .unauthorized:
-    showLoginScreen()
-case .server(let message):
-    showAlert(message ?? "Server error")
-case .unknown(let underlying):
-    logger.error("Unexpected error: \(underlying?.localizedDescription ?? "unknown")")
-default:
-    showAlert(error.localizedDescription)
-}
-```
-
-> `KoardMerchantSDKError` is deprecated and will be removed in a future version.
 
 ## 📝 License
 
