@@ -59,8 +59,9 @@ view its inline documentation.
 # What's New in 1.0.18
 
 This release hardens session auth, Keychain handling, and the Tap to Pay reader,
-and makes error reporting more precise. **No public API signatures changed** —
-see [CHANGELOG.md](CHANGELOG.md) for the full list.
+and makes error reporting more precise. **The only API addition is
+`login(alias:)`** (additive — no existing signatures changed) — see
+[CHANGELOG.md](CHANGELOG.md) for the full list.
 
 ## Highlights
 
@@ -74,6 +75,12 @@ see [CHANGELOG.md](CHANGELOG.md) for the full list.
 - **Serialized card reader.** Overlapping reader operations (e.g. switching
   location and tapping immediately) no longer collide with a "reader busy"
   error; a sale waits for the reader to become ready.
+- **No charges against a stale location.** A sale started right after switching
+  the active location now re-prepares the reader session for the new location
+  first, instead of charging against the previously-selected one.
+- **Alias login.** New `login(alias:)` logs in with a single opaque alias string
+  (e.g. from a QR scan or SSO callback) instead of a code + PIN, yielding the
+  same session token. See the Authentication section below.
 - **First-class cancellation.** When the customer cancels at the Tap to Pay
   sheet you now get `.TTPPaymentFailed(.canceled)` rather than a generic failure.
 - **Clearer HTTP errors.** `429` → `.rateLimited`; `4xx`/`5xx` → `.server(message:)`
@@ -176,6 +183,17 @@ private func authenticateMerchant() async throws {
     }
 }
 ```
+
+> **Alternative: alias login.** If you've already resolved the merchant identity
+> into a single string (e.g. a QR scan, an SSO callback, or a server-issued
+> provisioning token), use `login(alias:)` instead of `login(code:pin:)`. It hits
+> the same endpoint and yields the same session token; like code+PIN login it is
+> session-auth only — the session token is persisted, the alias itself is never
+> stored.
+>
+> ```swift
+> try await KoardMerchantSDK.shared.login(alias: "merchant-alias-string")
+> ```
 
 #### Step 3: Location Setup
 

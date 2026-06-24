@@ -13,9 +13,10 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 > integrators should be aware of — see **⚠️ Behavior changes** under each
 > release. Recommended bump: **minor**.
 
-## [1.0.18] - 2026-06-23
+## [1.0.18] - 2026-06-24
 
 ### ⚠️ Behavior changes for integrators
+
 These do not break compilation, but they change the error/value you receive at
 runtime. Update your `catch` / `switch` logic if you key off the old values:
 
@@ -23,7 +24,7 @@ runtime. Update your `catch` / `switch` logic if you key off the old values:
   at the Apple Tap to Pay sheet, `sale(...)`, `refund(..., withTap: true)`, and
   the pre-auth flow now throw `KoardMerchantSDKError.TTPPaymentFailed(.canceled)`.
   Previously this surfaced as `.TTPPaymentFailed(.paymentCardReaderNilResult)`.
-  If you were treating `.paymentCardReaderNilResult` as "cancelled", switch to
+  If you were treating `.paymentCardReaderNilResult` as "canceled", switch to
   `.canceled`. Other reader read failures now surface as
   `.paymentCardReaderError(underlying)` instead of a nil result.
 - **Network/transport errors are now typed.** Offline / timeout / cannot-connect
@@ -49,6 +50,7 @@ runtime. Update your `catch` / `switch` logic if you key off the old values:
   sooner and more reliably. Re-authenticate by calling `login(...)` again.
 
 ### Fixed
+
 - **`logout()` no longer wipes the host app's Keychain.** `logout()` previously
   issued a blanket Keychain delete scoped to the app's service, removing **all**
   generic-password items the host app owned — not just Koard's. It now deletes
@@ -71,16 +73,34 @@ runtime. Update your `catch` / `switch` logic if you key off the old values:
   (cancellation, etc.) previously returned a nil result that collapsed into a
   generic `paymentCardReaderNilResult`; the real outcome is now surfaced (see
   Behavior changes).
+- **Charges no longer run against a stale location after a location switch.**
+  The reader session now records which location it was prepared for; a sale
+  started after the active location changed re-prepares the session (under the
+  reader lock) before charging, instead of charging against the session bound to
+  the previously-selected location. Closes a race between "switch location" and
+  an immediately-following sale.
 
 ### Added
+
+- `login(alias:)` — log in with a single opaque alias string instead of a
+  code + PIN, for integrators who have already resolved the merchant identity
+  (e.g. QR scan, SSO callback, or a server-issued provisioning token). It hits
+  the same `/v1/merchant/login` route and yields the same session token as
+  `login(code:pin:)`; like that method it is session-auth only — the session
+  token is persisted, the alias itself is never stored.
+- `deviceType` on transaction responses (`KoardTransaction` /
+  `TransactionResponse`) — optional `String?` reporting the device that
+  originated the transaction. Additive and decoded via `decodeIfPresent`, so
+  existing decoders are unaffected.
 - `KoardMerchantSDKError.rateLimited(message:)` — HTTP 429.
-- `KoardMerchantSDKError.TTPPaymentError.canceled` — customer cancelled at the
+- `KoardMerchantSDKError.TTPPaymentError.canceled` — customer canceled at the
   Tap to Pay sheet (a benign outcome, distinct from a failure).
 - First unit/integration test suite covering JWT-expiry decoding, session-token
   refresh/expiry, the masked-401 → typed-error path, and Keychain logout
   scoping.
 
 ### Changed
+
 - `login(code:pin:)` no longer persists the merchant code or PIN to the
   Keychain. Authentication state is determined solely by the session token;
   credentials are never stored. (Re-authenticate via `login(...)` after a
