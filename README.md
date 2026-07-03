@@ -55,6 +55,141 @@ view its inline documentation.
 
 ---
 
+## 🧩 API Reference
+
+All calls are on the shared singleton:
+
+```swift
+import KoardSDK
+
+let sdk = KoardMerchantSDK.shared
+```
+
+Amounts are integers in the smallest currency unit (e.g. cents). Async methods
+are `async throws` and throw `KoardMerchantSDKError` (see [Error Handling](#-error-handling)).
+
+### Setup
+
+```swift
+// Call once, early in app launch.
+sdk.initialize(
+    options: KoardOptions(environment: .uat, loggingLevel: .debug),
+    apiKey: "your-api-key"
+)
+```
+
+### Authentication
+
+```swift
+try await sdk.login(code: "merchant-code", pin: "1234")   // code + PIN
+try await sdk.login(alias: "opaque-alias")                // single alias (QR/SSO/provisioning)
+sdk.logout()                                              // clears session + reader
+let signedIn = sdk.isAuthenticated                        // Bool
+```
+
+### Merchant & locations
+
+```swift
+let account   = try await sdk.getMerchantAccount()        // AccountBase
+let locations = try await sdk.locations()                 // [Location]
+sdk.setActiveLocationID(locations[0].id)                  // pick the active location
+let activeId  = sdk.getActiveLocationID()                 // String?
+let active    = try await sdk.getActiveLocation()         // Location
+let terminal  = try await sdk.getTerminal()               // Terminal (active location)
+```
+
+### Tap to Pay — account linking & reader
+
+```swift
+let linked = try await sdk.isAccountLinked()              // Bool
+
+// Link the merchant's account (presents Apple's T&C sheet). Throws on decline/failure.
+try await sdk.linkAccountAsync()
+// Fire-and-forget variant (observe `status` for the outcome):
+try sdk.linkAccount()
+
+try await sdk.prepare()                                   // ready the reader for the active location
+sdk.deinitializeCardReader()                              // tear down the reader session
+
+let status    = sdk.status                                // ProximityReaderStatus
+let supported = sdk.isReaderSupported                     // Bool
+for await event in sdk.readerEvents { /* PaymentCardReader.Event */ }
+```
+
+> `prepare()` requires a linked account; it throws `.accountNotLinked` if the
+> device isn't linked yet — guard it and call `linkAccount()`.
+
+### Payments
+
+```swift
+let breakdown = PaymentBreakdown(subtotal: 1000, taxAmount: 88, tipAmount: 200, tipType: .fixed)
+let usd = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
+
+// Sale (tap to pay)
+let sale = try await sdk.sale(amount: 1288, breakdown: breakdown, currency: usd)
+
+// Pre-authorization, then capture
+let auth = try await sdk.preauth(amount: 1288, breakdown: breakdown, currency: usd)
+let cap  = try await sdk.capture(transactionId: auth.transactionId, amount: 1288)
+
+// Refund (optionally tap the card again with `withTap: true`)
+let refund = try await sdk.refund(transactionId: sale.transactionId, amount: 1288)
+
+// Reverse (void) an authorization
+let void = try await sdk.reverse(transactionId: auth.transactionId)
+
+// Adjust tip on an existing transaction
+let tipped = try await sdk.tipAdjust(transactionId: sale.transactionId, amount: 300, tipType: .fixed)
+
+// Accept/decline a partial approval
+let partial = try await sdk.partialAuthApproval(transactionId: sale.transactionId, approve: true)
+
+// Confirm/decline a pending surcharge
+let confirmed = try await sdk.confirm(transaction: sale.transactionId, confirm: true)
+```
+
+### Transactions — lookup & history
+
+```swift
+let tx      = try await sdk.getTransaction(transactionId: "…")          // KoardTransaction
+let history = try await sdk.transactionHistory()                        // TransactionHistoryResponse
+
+// Filters (all return TransactionHistoryResponse):
+try await sdk.transactionsByStatus("approved")
+try await sdk.transactionsByStatuses(["approved", "refunded"])
+try await sdk.transactionsByType(.sale)
+try await sdk.transactionsByTypes([.sale, .refund])
+try await sdk.transactionsByStatusesAndTypes(statuses: [.approved], types: [.sale])
+try await sdk.transactionsByDateRange(startDate: start, endDate: end)
+try await sdk.transactionsByCardNumber("1234")
+try await sdk.searchTransactions("query")
+```
+
+### Receipts & fallback
+
+```swift
+try await sdk.sendReceipts(transactionId: "…", email: "buyer@example.com")   // and/or phoneNumber:
+let link = try await sdk.createFallbackLink(amount: 1288, breakdown: breakdown) // FallbackResponse
+```
+
+### Utilities
+
+```swift
+try sdk.presentTutorial(from: viewController)   // Apple's Tap to Pay how-to
+```
+
+### Types
+
+| Type | Notes |
+|---|---|
+| `KoardOptions(environment:loggingLevel:)` | `environment`: `.uat` / `.production` / `.custom(String)`. `loggingLevel`: `.none` / `.error` / `.warning` / `.debug` / `.verbose` |
+| `PaymentBreakdown(subtotal:taxRate:taxAmount:tipAmount:tipRate:tipType:surcharge:)` | `tipType`: `.fixed` / `.percentage`; optional `Surcharge(amount:percentage:bypass:)` |
+| `CurrencyCode(currencyCode:displayName:)` | ISO code + display name |
+| `PaymentType` | `.sale` `.refund` `.auth` `.capture` `.reverse` `.tipAdjust` `.incrementalAuth` |
+| `KoardTransaction.Status` | `.pending` `.authorized` `.captured` `.approved` `.declined` `.refunded` `.reversed` … |
+
+---
+
 
 # What's New in 1.0.18
 
