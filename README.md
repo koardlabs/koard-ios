@@ -6,23 +6,23 @@ Built with Swift and modularized using Swift Package Manager, KoardSDK provides 
 
 ---
 
-## 🚀 Features
+## Features
 
-- ✅ Tap to Pay support using Apple’s Proximity Reader APIs
-- 🔐 Merchant login and token handling
-- 💳 Sale, refund, capture, reverse, and pre-auth transactions
-- 🧾 Receipt delivery via email or SMS
-- 🔁 Fallback payment links for browser-based checkout
-- 📍 Multi-location merchant support
-- 🏪 Fetch merchant account & location details (profile, list and select the active location)
-- 🧩 Modern async/await Swift API (iOS 17+)
-- 📦 Distributed via SPM, CocoaPods, or as a binary XCFramework
+- Tap to Pay support using Apple’s Proximity Reader APIs
+- Merchant login and token handling
+- Sale, refund, capture, reverse, and pre-auth transactions
+- Receipt delivery via email or SMS
+- Fallback payment links for browser-based checkout
+- Multi-location merchant support
+- Fetch merchant account & location details (profile, list and select the active location)
+- Modern async/await Swift API (iOS 17+)
+- Distributed via SPM, CocoaPods, or as a binary XCFramework
 
 ---
 
-## 📦 Installation
+## Installation
 
-### 🔹 Swift Package Manager (Recommended)
+### Swift Package Manager (Recommended)
 
 Add this to your `Package.swift`:
 
@@ -32,7 +32,7 @@ Add this to your `Package.swift`:
 
 Then add `KoardSDK` as a dependency in your target.
 
-### 🔹 Manual Installation (.xcframework)
+### Manual Installation (.xcframework)
 
 1. Go to the [Releases](https://github.com/koardlabs/koard-ios/releases) page
 2. Download `KoardSDK.xcframework.zip`
@@ -46,7 +46,7 @@ import KoardSDK
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 Full SDK documentation: [KoardSDK Documentation](https://koardlabs.github.io/koard-ios/documentation/koardsdk/index.html).
 
@@ -55,7 +55,7 @@ view its inline documentation.
 
 ---
 
-## 🧩 API Reference
+## API Reference
 
 All calls are on the shared singleton:
 
@@ -222,7 +222,7 @@ and makes error reporting more precise. **The only API addition is
   with a readable message (no more opaque decode errors); transport failures are
   wrapped as `.network(...)`.
 
-## ⚠️ Behavior changes (update your `catch` if you key off these)
+## Behavior changes (update your `catch` if you key off these)
 
 - Tap to Pay cancellation now throws `.TTPPaymentFailed(.canceled)` (previously
   `.paymentCardReaderNilResult`).
@@ -276,19 +276,19 @@ import KoardSDK
 
 class AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         // Configure SDK options
         let options = KoardOptions(
             environment: .uat,           // or .production
             loggingLevel: .debug         // .debug, .info, .warning, .error, .none
         )
-        
+
         // Initialize with your API key
         KoardMerchantSDK.shared.initialize(
-            options: options, 
+            options: options,
             apiKey: "your-koard-api-key"
         )
-        
+
         return true
     }
 }
@@ -306,12 +306,12 @@ private func authenticateMerchant() async throws {
             code: "your-merchant-code",
             pin: "your-merchant-pin"
         )
-        
+
         print("Merchant authenticated successfully")
-        
+
         // After login, set up location
         try await setupLocation()
-        
+
     } catch {
         print("Authentication failed: \(error)")
         throw error
@@ -339,22 +339,22 @@ private func setupLocation() async throws {
     do {
         // Get available locations
         let locations = try await KoardMerchantSDK.shared.locations()
-        
+
         guard !locations.isEmpty else {
             throw PaymentError.noLocationsAvailable
         }
-        
+
         // For single location merchants, use the first location
         let activeLocation = locations.first!
-        
+
         // For multi-location merchants, let user select
         // let activeLocation = userSelectedLocation
-        
+
         // Set the active location
         KoardMerchantSDK.shared.setActiveLocationID(activeLocation.id)
-        
+
         print("Active location set: \(activeLocation.name)")
-        
+
     } catch {
         print("Location setup failed: \(error)")
         throw error
@@ -388,24 +388,24 @@ private func prepareCardReader() async throws {
     do {
         // Check if account is linked (required for Tap to Pay)
         let isLinked = try await KoardMerchantSDK.shared.isAccountLinked()
-        
+
         if !isLinked {
             // Link the merchant account to Apple Pay
             KoardMerchantSDK.shared.linkAccount()
-            
+
             // Wait for linking to complete
             // This typically requires user interaction
             return
         }
-        
+
         // Prepare the card reader session
         try await KoardMerchantSDK.shared.prepare()
-        
+
         print("Card reader prepared and ready")
-        
+
         // Optional: Monitor reader status
         monitorReaderStatus()
-        
+
     } catch {
         print("Card reader preparation failed: \(error)")
         throw error
@@ -453,14 +453,14 @@ private func processSale() async throws {
         tipAmount: 200,        // $2.00 in cents
         tipType: .fixed        // or .percentage
     )
-    
+
     // Create currency
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-    
+
     // Optional: pass an `eventId` (UUID4) for idempotency — retrying with the
     // same eventId returns the original result instead of charging twice.
     let eventId = UUID().uuidString
-    
+
     do {
         // Process the sale
         let response = try await KoardMerchantSDK.shared.sale(
@@ -470,10 +470,10 @@ private func processSale() async throws {
             eventId: eventId,          // Optional idempotency key. If nil, Koard generates one
             type: .sale                // Transaction type
         )
-        
+
         // Handle the response
         try await handleTransactionResponse(response)
-        
+
     } catch {
         print("Sale failed: \(error)")
         throw error
@@ -486,10 +486,10 @@ private func processSale() async throws {
 ```swift
 private func processPreauth() async throws {
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-    
+
     // Optional: pass an `eventId` (UUID4) for idempotency.
     let eventId = UUID().uuidString
-    
+
     do {
         // Process preauthorization
         let response = try await KoardMerchantSDK.shared.preauth(
@@ -498,12 +498,12 @@ private func processPreauth() async throws {
             currency: currency,
             eventId: eventId           // Optional idempotency key. If nil, Koard generates one
         )
-        
+
         print("Preauth successful: \(response.transactionId ?? "Unknown")")
-        
+
         // Store transaction ID for later capture/reverse
         UserDefaults.standard.set(response.transactionId, forKey: "lastPreauthId")
-        
+
     } catch {
         print("Preauth failed: \(error)")
         throw error
@@ -518,35 +518,35 @@ private func handleTransactionResponse(_ response: TransactionResponse) async th
     guard let transaction = response.transaction else {
         throw PaymentError.invalidResponse
     }
-    
+
     switch transaction.status {
     case .approved:
         print("Transaction approved!")
         print("Transaction ID: \(transaction.transactionId)")
         print("Amount: $\(Double(transaction.totalAmount) / 100.0)")
-        
+
     case .surchargePending:
         print("Surcharge pending - customer approval required")
-        
+
         // Show surcharge disclosure to customer
         if let disclosure = transaction.surchargeDisclosure {
             let approved = try await showSurchargeDisclosure(disclosure)
-            
+
             // Confirm or deny the surcharge
             let confirmedTransaction = try await KoardMerchantSDK.shared.confirm(
                 transaction: transaction.transactionId,
                 confirm: approved
             )
-            
+
             print("Final transaction status: \(confirmedTransaction.status)")
         }
-        
+
     case .declined:
         print("Transaction declined: \(transaction.statusReason ?? "Unknown reason")")
-        
+
     case .error:
         print("Transaction error: \(transaction.statusReason ?? "Unknown error")")
-        
+
     default:
         print("Transaction status: \(transaction.status.string)")
     }
@@ -562,15 +562,15 @@ private func showSurchargeDisclosure(_ disclosure: String) async throws -> Bool 
                 message: disclosure,
                 preferredStyle: .alert
             )
-            
+
             alert.addAction(UIAlertAction(title: "Accept", style: .default) { _ in
                 continuation.resume(returning: true)
             })
-            
+
             alert.addAction(UIAlertAction(title: "Decline", style: .cancel) { _ in
                 continuation.resume(returning: false)
             })
-            
+
             // Present alert (you'll need to implement this based on your view hierarchy)
             // self.present(alert, animated: true)
         }
@@ -589,9 +589,9 @@ private func processRefund(transactionId: String, amount: Int? = nil) async thro
             transactionId: transactionId,
             amount: amount  // nil for full refund
         )
-        
+
         print("Refund successful: \(response.transactionId ?? "Unknown")")
-        
+
     } catch {
         print("Refund failed: \(error)")
         throw error
@@ -608,9 +608,9 @@ private func reversePreauth(transactionId: String, amount: Int? = nil) async thr
             transactionId: transactionId,
             amount: amount  // nil for full reversal
         )
-        
+
         print("Reversal successful: \(response.transactionId ?? "Unknown")")
-        
+
     } catch {
         print("Reversal failed: \(error)")
         throw error
@@ -632,16 +632,16 @@ private func incrementalAuth(transactionId: String, additionalAmount: Int) async
         tipAmount: 0,
         tipType: .fixed
     )
-    
+
     do {
         let response = try await KoardMerchantSDK.shared.auth(
             transactionId: transactionId,
             amount: additionalAmount,
             breakdown: breakdown  // Optional
         )
-        
+
         print("Incremental auth successful: \(response.transactionId ?? "Unknown")")
-        
+
     } catch {
         print("Incremental auth failed: \(error)")
         throw error
@@ -663,16 +663,16 @@ private func captureTransaction(transactionId: String, finalAmount: Int? = nil) 
         tipAmount: 300,        // $3.00 final tip
         tipType: .fixed
     )
-    
+
     do {
         let response = try await KoardMerchantSDK.shared.capture(
             transactionId: transactionId,
             amount: finalAmount,      // nil to capture full authorized amount
             breakdown: finalBreakdown // Optional: updated breakdown with final tip
         )
-        
+
         print("Capture successful: \(response.transactionId ?? "Unknown")")
-        
+
     } catch {
         print("Capture failed: \(error)")
         throw error
@@ -687,15 +687,15 @@ private func getTransactionHistory() async throws {
     do {
         // Get recent transactions
         let history = try await KoardMerchantSDK.shared.transactionHistory()
-        
+
         print("Found \(history.transactions.count) transactions")
-        
+
         // Filter by status
         let approvedTransactions = try await KoardMerchantSDK.shared.transactionsByStatus("approved")
-        
+
         // Search transactions
         let searchResults = try await KoardMerchantSDK.shared.searchTransactions("card_number_here")
-        
+
         // Advanced filtering
         let filteredTransactions = try await KoardMerchantSDK.shared.searchTransactionsAdvanced(
             startDate: Date().addingTimeInterval(-86400 * 7), // Last 7 days
@@ -706,7 +706,7 @@ private func getTransactionHistory() async throws {
             maxAmount: 10000, // $100.00
             limit: 50
         )
-        
+
     } catch {
         print("Transaction history failed: \(error)")
         throw error
@@ -763,7 +763,7 @@ private func handleSDKError(_ error: Error) {
 private func handleAppLifecycle() {
     // The SDK automatically handles background/foreground transitions
     // But you can monitor the status if needed
-    
+
     NotificationCenter.default.addObserver(
         forName: UIApplication.didBecomeActiveNotification,
         object: nil,
@@ -785,12 +785,12 @@ private func handleAppLifecycle() {
 private func logout() {
     // Clear all session data
     KoardMerchantSDK.shared.logout()
-    
+
     // Clear any stored transaction IDs
     UserDefaults.standard.removeObject(forKey: "lastPreauthId")
-    
+
     print("Logged out successfully")
-    
+
     // Redirect to login screen
 }
 ```
@@ -813,12 +813,12 @@ private func preauthCaptureWorkflow() async throws {
         currency: currency,
         eventId: eventId
     )
-    
+
     // The real transaction id (used for follow-up capture/auth/reverse) comes
     // back on the response — distinct from the eventId above.
     let authorizedTransactionId = preauthResponse.transactionId!
     print("Preauth completed: \(authorizedTransactionId)")
-    
+
     // Step 2: Customer adds tip, create final breakdown
     let finalBreakdown = PaymentBreakdown(
         subtotal: 1000,        // $10.00
@@ -827,14 +827,14 @@ private func preauthCaptureWorkflow() async throws {
         tipAmount: 200,        // $2.00 tip added
         tipType: .fixed
     )
-    
+
     // Step 3: Capture with final amount and breakdown
     let captureResponse = try await KoardMerchantSDK.shared.capture(
         transactionId: authorizedTransactionId,
         amount: 1288,          // $12.88 final amount
         breakdown: finalBreakdown
     )
-    
+
     print("Capture completed: \(captureResponse.transactionId ?? "Unknown")")
 }
 ```
@@ -855,9 +855,9 @@ private func incrementalAuthWorkflow() async throws {
         currency: currency,
         eventId: eventId
     )
-    
+
     let authorizedTransactionId = preauthResponse.transactionId!
-    
+
     // Step 2: Customer orders additional items - incremental auth
     let additionalBreakdown = PaymentBreakdown(
         subtotal: 500,         // $5.00 additional items
@@ -866,13 +866,13 @@ private func incrementalAuthWorkflow() async throws {
         tipAmount: 0,
         tipType: .fixed
     )
-    
+
     let authResponse = try await KoardMerchantSDK.shared.auth(
         transactionId: authorizedTransactionId,
         amount: 544,           // $5.44 additional amount
         breakdown: additionalBreakdown
     )
-    
+
     // Step 3: Final capture with tip
     let finalBreakdown = PaymentBreakdown(
         subtotal: 1500,        // $15.00 total
@@ -881,13 +881,13 @@ private func incrementalAuthWorkflow() async throws {
         tipAmount: 300,        // $3.00 tip
         tipType: .fixed
     )
-    
+
     let captureResponse = try await KoardMerchantSDK.shared.capture(
         transactionId: authorizedTransactionId,
         amount: 1931,          // $19.31 final amount
         breakdown: finalBreakdown
     )
-    
+
     print("Final capture completed: \(captureResponse.transactionId ?? "Unknown")")
 }
 ```
@@ -905,7 +905,7 @@ private func saleWorkflow() async throws {
         tipAmount: 200,        // $2.00
         tipType: .fixed
     )
-    
+
     let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
     let eventId = UUID().uuidString   // idempotency key
 
@@ -916,7 +916,7 @@ private func saleWorkflow() async throws {
         currency: currency,
         eventId: eventId
     )
-    
+
     print("Sale completed: \(response.transactionId ?? "Unknown")")
 }
 ```
@@ -993,35 +993,35 @@ You don't need to build it yourself to integrate it.
 import KoardSDK
 
 class PaymentViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSDK()
     }
-    
+
     private func setupSDK() {
         // Initialize SDK
         let options = KoardOptions(environment: .uat, loggingLevel: .debug)
         KoardMerchantSDK.shared.initialize(options: options, apiKey: "your-api-key")
     }
-    
+
     private func authenticateAndPrepare() async throws {
         // Login with merchant credentials
         try await KoardMerchantSDK.shared.login(code: "merchant-code", pin: "merchant-pin")
-        
+
         // Get locations and set active location
         let locations = try await KoardMerchantSDK.shared.locations()
         if let firstLocation = locations.first {
             KoardMerchantSDK.shared.setActiveLocationID(firstLocation.id)
         }
-        
+
         // Link account (required for Tap to Pay)
         KoardMerchantSDK.shared.linkAccount()
-        
+
         // Prepare card reader
         try await KoardMerchantSDK.shared.prepare()
     }
-    
+
     private func processPayment() async throws {
         // Create payment breakdown (optional)
         let breakdown = PaymentBreakdown(
@@ -1031,17 +1031,17 @@ class PaymentViewController: UIViewController {
             tipAmount: 200,        // $2.00
             tipType: .fixed
         )
-        
+
         // Create currency
         let currency = CurrencyCode(currencyCode: "USD", displayName: "US Dollar")
-        
+
         // Process sale
         let response = try await KoardMerchantSDK.shared.sale(
             amount: 1288,          // $12.88 total (subtotal + tax + tip)
             breakdown: breakdown,
             currency: currency
         )
-        
+
         // Handle response
         if let transaction = response.transaction {
             switch transaction.status {
@@ -1082,7 +1082,7 @@ class PaymentViewController: UIViewController {
 
 ---
 
-## 🧭 Error Handling
+## Error Handling
 
 Every throwing SDK call surfaces a **`KoardMerchantSDKError`**. It conforms to
 `KoardDescribableError`, so `error.errorDescription` always gives a
@@ -1118,12 +1118,12 @@ do {
 }
 ```
 
-## 📝 License
+## License
 
 MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
-## 💬 Support
+## Support
 
 For questions, issues or contributions, please open a GitHub Issue or email support@koardlabs.com.
