@@ -13,6 +13,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 
 ## [1.0.20] - 2026-07-03
 
+### ⚠️ Behavior changes for integrators
+
+- `linkAccountAsync()` now **throws** when linking fails or is declined (previously it never threw). Wrap the call in `try`/`catch` and handle the failure — e.g. keep showing your "link account" prompt.
+- `prepare()` can now throw the new `KoardMerchantSDKError.readerTokenInvalid`. Handle it in your `catch`; a retry typically recovers.
+- Changing the API key resets the session — after reconfiguring the SDK with a different key, log in again before making requests.
+
 ### Fixed
 
 - Reconfiguring the SDK with a different API key now starts a fresh session instead of reusing the previous one.
