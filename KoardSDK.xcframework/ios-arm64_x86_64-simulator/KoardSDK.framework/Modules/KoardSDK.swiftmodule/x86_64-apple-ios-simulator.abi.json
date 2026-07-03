@@ -29254,6 +29254,46 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "accountNotLinked",
+            "printedName": "accountNotLinked",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(KoardSDK.KoardMerchantSDKError.Type) -> KoardSDK.KoardMerchantSDKError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "KoardMerchantSDKError",
+                    "printedName": "KoardSDK.KoardMerchantSDKError",
+                    "usr": "s:8KoardSDK0A16MerchantSDKErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "KoardSDK.KoardMerchantSDKError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "KoardMerchantSDKError",
+                        "printedName": "KoardSDK.KoardMerchantSDKError",
+                        "usr": "s:8KoardSDK0A16MerchantSDKErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:8KoardSDK0A16MerchantSDKErrorO16accountNotLinkedyA2CmF",
+            "mangledName": "$s8KoardSDK0A16MerchantSDKErrorO16accountNotLinkedyA2CmF",
+            "moduleName": "KoardSDK",
+            "declAttributes": [
+              "RawDocComment"
+            ]
+          },
+          {
             "kind": "TypeDecl",
             "name": "TTPConfigurationError",
             "printedName": "TTPConfigurationError",
@@ -33350,1617 +33390,1617 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 130,
       "length": 38,
       "value": "\"com.koard.merchantsdk.keys.devicekey\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 208,
       "length": 35,
       "value": "\"Koard Merchant Device Certificate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 278,
       "length": 17,
       "value": "\"merchantCodeKey\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 328,
       "length": 16,
       "value": "\"merchantPinKey\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 376,
       "length": 15,
       "value": "\"locationIDKey\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 431,
       "length": 22,
       "value": "\"processingTerminalID\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 509,
       "length": 17,
       "value": "\"authAccessToken\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 569,
       "length": 27,
       "value": "\"authAccessTokenExpiration\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 627,
       "length": 19,
       "value": "\"merchantAccountID\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 713,
       "length": 20,
       "value": "\"showTTPTutorialKey\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/DeviceConstant.swift",
       "kind": "StringLiteral",
       "offset": 1597,
       "length": 23,
       "value": "\"https:\/\/api.koard.com\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 700,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 711,
       "length": 5,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 726,
       "length": 7,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 743,
       "length": 5,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Constants\/KoardOptions.swift",
       "kind": "IntegerLiteral",
       "offset": 758,
       "length": 7,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 466,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 501,
       "length": 2,
       "value": "20"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
       "kind": "StringLiteral",
       "offset": 840,
       "length": 10,
       "value": "\"pgNumber\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetLocationsRequest.swift",
       "kind": "StringLiteral",
       "offset": 875,
       "length": 8,
       "value": "\"pgSize\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 869,
       "length": 3,
       "value": "100"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 936,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "StringLiteral",
       "offset": 1019,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "StringLiteral",
       "offset": 1122,
       "length": 6,
       "value": "\"desc\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 1788,
       "length": 3,
       "value": "100"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "IntegerLiteral",
       "offset": 1815,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "StringLiteral",
       "offset": 1843,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/GetTransactionHistoryRequest.swift",
       "kind": "StringLiteral",
       "offset": 1885,
       "length": 6,
       "value": "\"desc\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/SendReceiptsRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/SendReceiptsRequest.swift",
       "kind": "StringLiteral",
       "offset": 258,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Requests\/SendReceiptsRequest.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Requests\/SendReceiptsRequest.swift",
       "kind": "StringLiteral",
       "offset": 321,
       "length": 14,
       "value": "\"phone_number\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 70,
       "length": 13,
       "value": "\"bleu_sierra\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 108,
       "length": 15,
       "value": "\"payroc_sierra\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1546,
       "length": 17,
       "value": "\"organization_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1594,
       "length": 19,
       "value": "\"has_access_to_mms\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1652,
       "length": 28,
       "value": "\"has_access_to_apple_config\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1722,
       "length": 29,
       "value": "\"available_processor_configs\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1773,
       "length": 8,
       "value": "\"tax_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1912,
       "length": 20,
       "value": "\"parent_account_ids\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 1979,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 2017,
       "length": 12,
       "value": "\"deleted_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 2055,
       "length": 12,
       "value": "\"updated_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 2097,
       "length": 16,
       "value": "\"surcharge_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 2159,
       "length": 33,
       "value": "\"surcharge_confirmation_required\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 2223,
       "length": 17,
       "value": "\"surcharge_basis\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 2264,
       "length": 10,
       "value": "\"tax_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Account.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Account.swift",
       "kind": "StringLiteral",
       "offset": 2299,
       "length": 11,
       "value": "\"tax_basis\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Address.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Address.swift",
       "kind": "StringLiteral",
       "offset": 256,
       "length": 14,
       "value": "\"street_line1\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Address.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Address.swift",
       "kind": "StringLiteral",
       "offset": 298,
       "length": 14,
       "value": "\"street_line2\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/AuthorizeRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/AuthorizeRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 207,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/CardReadData.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/CardReadData.swift",
       "kind": "StringLiteral",
       "offset": 623,
       "length": 13,
       "value": "\"location_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/CardReadData.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/CardReadData.swift",
       "kind": "StringLiteral",
       "offset": 660,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/ConfirmationRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/ConfirmationRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 552,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/FallbackRequestData.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/FallbackRequestData.swift",
       "kind": "StringLiteral",
       "offset": 251,
       "length": 13,
       "value": "\"location_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/FallbackResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/FallbackResponse.swift",
       "kind": "StringLiteral",
       "offset": 158,
       "length": 15,
       "value": "\"fallback_link\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 496,
       "length": 15,
       "value": "\"approval_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 540,
       "length": 15,
       "value": "\"response_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 587,
       "length": 18,
       "value": "\"response_message\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 638,
       "length": 19,
       "value": "\"authorized_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/GatewayTransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 695,
       "length": 25,
       "value": "\"processor_response_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3372,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3412,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3468,
       "length": 10,
       "value": "\"batch_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3507,
       "length": 15,
       "value": "\"processor_mid\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3551,
       "length": 15,
       "value": "\"processor_tid\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3592,
       "length": 12,
       "value": "\"account_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3629,
       "length": 11,
       "value": "\"device_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3709,
       "length": 13,
       "value": "\"location_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3759,
       "length": 24,
       "value": "\"gateway_transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3831,
       "length": 12,
       "value": "\"tip_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3867,
       "length": 10,
       "value": "\"tip_type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3903,
       "length": 12,
       "value": "\"tax_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3939,
       "length": 10,
       "value": "\"tax_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 3977,
       "length": 14,
       "value": "\"total_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4024,
       "length": 19,
       "value": "\"surcharge_applied\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4075,
       "length": 18,
       "value": "\"surcharge_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4123,
       "length": 16,
       "value": "\"surcharge_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4195,
       "length": 10,
       "value": "\"owner_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4238,
       "length": 20,
       "value": "\"parent_account_ids\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4284,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4345,
       "length": 15,
       "value": "\"status_reason\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4390,
       "length": 16,
       "value": "\"payment_method\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4431,
       "length": 11,
       "value": "\"card_type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4468,
       "length": 12,
       "value": "\"card_brand\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4542,
       "length": 20,
       "value": "\"additional_details\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4605,
       "length": 30,
       "value": "\"gateway_transaction_response\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4673,
       "length": 25,
       "value": "\"processor_response_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4739,
       "length": 28,
       "value": "\"processor_response_message\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4799,
       "length": 18,
       "value": "\"transaction_type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4852,
       "length": 22,
       "value": "\"apple_transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4907,
       "length": 19,
       "value": "\"reader_identifier\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 4962,
       "length": 22,
       "value": "\"surcharge_disclosure\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 5017,
       "length": 19,
       "value": "\"surcharge_allowed\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 5072,
       "length": 22,
       "value": "\"surcharge_percentage\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 5121,
       "length": 13,
       "value": "\"device_type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 5297,
       "length": 19,
       "value": "\"surcharge_pending\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 5349,
       "length": 19,
       "value": "\"surcharge_applied\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 5483,
       "length": 13,
       "value": "\"pickup_card\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "StringLiteral",
       "offset": 5521,
       "length": 11,
       "value": "\"timed_out\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/KoardTransaction.swift",
       "kind": "Dictionary",
       "offset": 10400,
       "length": 1561,
       "value": "[(\"5A\", \"Application Primary Account Number (PAN)\"), (\"82\", \"Application Interchange Profile\"), (\"84\", \"Dedicated File (DF) Name\"), (\"95\", \"Terminal Verification Results\"), (\"9A\", \"Transaction Date\"), (\"9C\", \"Transaction Type\"), (\"5F2A\", \"Transaction Currency Code\"), (\"5F34\", \"Application Primary Account Number (PAN) Sequence Number\"), (\"9F02\", \"Amount, Authorised (Numeric)\"), (\"9F03\", \"Amount, Other (Numeric)\"), (\"9F10\", \"Issuer Application Data\"), (\"9F1A\", \"Terminal Country Code\"), (\"9F1E\", \"Interface Device (IFD) Serial Number\"), (\"9F26\", \"Application Cryptogram\"), (\"9F27\", \"Cryptogram Information Data\"), (\"9F34\", \"Cardholder Verification Method (CVM) Results\"), (\"9F35\", \"Terminal Type\"), (\"9F36\", \"Application Transaction Counter (ATC)\"), (\"9F37\", \"Unpredictable Number\"), (\"8E\", \"Cardholder Verification Method (CVM) List\"), (\"9F07\", \"Application Usage Control\"), (\"9F0D\", \"Issuer Action Code – Default\"), (\"9F0E\", \"Issuer Action Code – Denial\"), (\"9F0F\", \"Issuer Action Code – Online\"), (\"9F09\", \"Application Version Number\"), (\"9F08\", \"Application Version Number\"), (\"9B\", \"Transaction Status Information\"), (\"50\", \"Application Label\"), (\"9F12\", \"Application Preferred Name\"), (\"9F06\", \"Application Identifier (AID) – terminal\"), (\"5F25\", \"Application Effective Date\"), (\"5F24\", \"Application Expiration Date\"), (\"9F33\", \"Terminal Capabilities\"), (\"4F\", \"Application Identifier (AID) – card\"), (\"9F15\", \"Merchant Category Code\"), (\"5F2D\", \"Language Preference\")]"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1319,
       "length": 12,
       "value": "\"account_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1423,
       "length": 21,
       "value": "\"processor_config_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1472,
       "length": 14,
       "value": "\"country_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1535,
       "length": 13,
       "value": "\"terminal_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1596,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1634,
       "length": 12,
       "value": "\"updated_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1672,
       "length": 12,
       "value": "\"deleted_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1714,
       "length": 16,
       "value": "\"surcharge_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1776,
       "length": 33,
       "value": "\"surcharge_confirmation_required\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1840,
       "length": 17,
       "value": "\"surcharge_basis\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1881,
       "length": 10,
       "value": "\"tax_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Location.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Location.swift",
       "kind": "StringLiteral",
       "offset": 1916,
       "length": 11,
       "value": "\"tax_basis\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/LoginResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/LoginResponse.swift",
       "kind": "StringLiteral",
       "offset": 157,
       "length": 7,
       "value": "\"token\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/LoginResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/LoginResponse.swift",
       "kind": "StringLiteral",
       "offset": 190,
       "length": 12,
       "value": "\"account_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/PartialAuthApprovalRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/PartialAuthApprovalRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 1171,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/PaymentBreakdown.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/PaymentBreakdown.swift",
       "kind": "BooleanLiteral",
       "offset": 346,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/ProcessAuthRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/ProcessAuthRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 286,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/ProcessCaptureRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/ProcessCaptureRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 272,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/ProcessPaymentRequestModelV2.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/ProcessPaymentRequestModelV2.swift",
       "kind": "StringLiteral",
       "offset": 1479,
       "length": 18,
       "value": "\"card_reader_data\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/ProcessPaymentRequestModelV2.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/ProcessPaymentRequestModelV2.swift",
       "kind": "StringLiteral",
       "offset": 1582,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/ProcessPaymentRequestModelV2.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/ProcessPaymentRequestModelV2.swift",
       "kind": "StringLiteral",
       "offset": 1633,
       "length": 29,
       "value": "\"partial_auth_transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/RefundRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/RefundRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 517,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/RefundRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/RefundRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 556,
       "length": 18,
       "value": "\"card_reader_data\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/RefundRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/RefundRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 604,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/ReverseRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/ReverseRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 384,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/ReverseRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/ReverseRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 444,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/PaymentType.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/PaymentType.swift",
       "kind": "StringLiteral",
       "offset": 226,
       "length": 12,
       "value": "\"tip_adjust\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/PaymentType.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/PaymentType.swift",
       "kind": "StringLiteral",
       "offset": 266,
       "length": 18,
       "value": "\"incremental_auth\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "BooleanLiteral",
       "offset": 644,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "Array",
       "offset": 716,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "StringLiteral",
       "offset": 1887,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 26152,
+      "offset": 26889,
       "length": 12,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 26235,
+      "offset": 26972,
       "length": 13,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/ProximityReaderViewModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 26310,
+      "offset": 27047,
       "length": 7,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
       "offset": 409,
       "length": 14,
       "value": "\"access_token\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
       "offset": 555,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
       "offset": 1144,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "StringLiteral",
       "offset": 1188,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "IntegerLiteral",
       "offset": 1388,
       "length": 4,
       "value": "3600"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "IntegerLiteral",
       "offset": 1534,
       "length": 2,
       "value": "60"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "IntegerLiteral",
       "offset": 5037,
       "length": 2,
       "value": "90"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/TapToPhone\/TokenProvider.swift",
       "kind": "IntegerLiteral",
       "offset": 5042,
       "length": 2,
       "value": "60"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 155,
       "length": 19,
       "value": "\"surcharge_expired\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 203,
       "length": 19,
       "value": "\"surcharge_pending\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 259,
       "length": 29,
       "value": "\"surcharge_declined_by_payer\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 314,
       "length": 16,
       "value": "\"payment_failed\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 351,
       "length": 11,
       "value": "\"timed_out\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 386,
       "length": 14,
       "value": "\"invalid_card\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 430,
       "length": 20,
       "value": "\"insufficient_funds\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 475,
       "length": 15,
       "value": "\"user_canceled\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 519,
       "length": 19,
       "value": "\"merchant_canceled\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 571,
       "length": 25,
       "value": "\"reversed_due_to_timeout\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/StatusReason.swift",
       "kind": "StringLiteral",
       "offset": 882,
       "length": 18,
       "value": "\"partial_approval\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2429,
       "length": 13,
       "value": "\"terminal_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2511,
       "length": 12,
       "value": "\"account_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2585,
       "length": 15,
       "value": "\"serial_number\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2666,
       "length": 19,
       "value": "\"agent_bank_number\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2722,
       "length": 24,
       "value": "\"merchant_category_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2781,
       "length": 21,
       "value": "\"terminal_capability\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2831,
       "length": 15,
       "value": "\"currency_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2874,
       "length": 14,
       "value": "\"country_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2922,
       "length": 21,
       "value": "\"processor_config_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 2989,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3027,
       "length": 12,
       "value": "\"deleted_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3065,
       "length": 12,
       "value": "\"updated_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3106,
       "length": 15,
       "value": "\"merchant_name\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3151,
       "length": 16,
       "value": "\"surcharge_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3213,
       "length": 33,
       "value": "\"surcharge_confirmation_required\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3277,
       "length": 17,
       "value": "\"surcharge_basis\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3318,
       "length": 10,
       "value": "\"tax_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3353,
       "length": 11,
       "value": "\"tax_basis\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/Terminal.swift",
       "kind": "StringLiteral",
       "offset": 3389,
       "length": 11,
       "value": "\"var_sheet\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TipAdjustRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TipAdjustRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 566,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TipAdjustRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TipAdjustRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 626,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TipAdjustRequestModel.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TipAdjustRequestModel.swift",
       "kind": "StringLiteral",
       "offset": 660,
       "length": 6,
       "value": "\"type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2431,
       "length": 16,
       "value": "\"transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2471,
       "length": 10,
       "value": "\"event_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2530,
       "length": 15,
       "value": "\"status_reason\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2578,
       "length": 19,
       "value": "\"surcharge_applied\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2627,
       "length": 16,
       "value": "\"surcharge_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2675,
       "length": 18,
       "value": "\"surcharge_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2777,
       "length": 10,
       "value": "\"batch_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2816,
       "length": 15,
       "value": "\"processor_mid\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2860,
       "length": 15,
       "value": "\"processor_tid\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2901,
       "length": 12,
       "value": "\"account_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 2938,
       "length": 11,
       "value": "\"device_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3042,
       "length": 13,
       "value": "\"location_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3092,
       "length": 24,
       "value": "\"gateway_transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3164,
       "length": 12,
       "value": "\"tip_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3200,
       "length": 10,
       "value": "\"tip_type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3236,
       "length": 12,
       "value": "\"tax_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3272,
       "length": 10,
       "value": "\"tax_rate\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3310,
       "length": 14,
       "value": "\"total_amount\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3350,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3392,
       "length": 16,
       "value": "\"payment_method\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3433,
       "length": 11,
       "value": "\"card_type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3470,
       "length": 12,
       "value": "\"card_brand\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3538,
       "length": 25,
       "value": "\"processor_response_code\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3604,
       "length": 28,
       "value": "\"processor_response_message\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3664,
       "length": 18,
       "value": "\"transaction_type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3717,
       "length": 22,
       "value": "\"apple_transaction_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3772,
       "length": 19,
       "value": "\"reader_identifier\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3860,
       "length": 10,
       "value": "\"owner_id\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3903,
       "length": 20,
       "value": "\"parent_account_ids\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 3966,
       "length": 30,
       "value": "\"gateway_transaction_response\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 4040,
       "length": 20,
       "value": "\"additional_details\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionResponse.swift",
       "kind": "StringLiteral",
       "offset": 4087,
       "length": 13,
       "value": "\"device_type\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionStatus.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionStatus.swift",
       "kind": "StringLiteral",
       "offset": 171,
       "length": 19,
       "value": "\"surcharge_applied\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Models\/TransactionStatus.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Models\/TransactionStatus.swift",
       "kind": "StringLiteral",
       "offset": 219,
       "length": 19,
       "value": "\"surcharge_pending\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardLogger\/SimpleOSLogger.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardLogger\/SimpleOSLogger.swift",
       "kind": "StringLiteral",
       "offset": 95,
       "length": 24,
       "value": "\"com.koard.merchant-sdk\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardLogger\/SimpleOSLogger.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardLogger\/SimpleOSLogger.swift",
       "kind": "StringLiteral",
       "offset": 131,
       "length": 18,
       "value": "\"KoardMerchantSDK\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
       "kind": "IntegerLiteral",
       "offset": 9299,
       "length": 3,
       "value": "100"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
       "kind": "IntegerLiteral",
       "offset": 9326,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
       "kind": "StringLiteral",
       "offset": 9354,
       "length": 12,
       "value": "\"created_at\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+TransactionQueries.swift",
       "kind": "StringLiteral",
       "offset": 9396,
       "length": 6,
       "value": "\"desc\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 80,
       "length": 5,
       "value": "\"GET\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 102,
       "length": 6,
       "value": "\"POST\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 124,
       "length": 5,
       "value": "\"PUT\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 148,
       "length": 8,
       "value": "\"DELETE\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 3777,
       "length": 60,
       "value": "\"Login requires either an `alias` or both `code` and `pin`.\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 3987,
       "length": 19,
       "value": "\"v1\/merchant\/login\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "BooleanLiteral",
       "offset": 4104,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "StringLiteral",
       "offset": 4712,
       "length": 38,
       "value": "\"[Auth] Login successful, token saved\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "BooleanLiteral",
       "offset": 6016,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "BooleanLiteral",
       "offset": 9619,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/API\/ApiCallsHandler.swift",
       "kind": "BooleanLiteral",
       "offset": 10726,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+Transactions.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK+Transactions.swift",
       "kind": "BooleanLiteral",
       "offset": 2244,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Services\/KeychainService.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Services\/KeychainService.swift",
       "kind": "StringLiteral",
       "offset": 1312,
       "length": 15,
       "value": "\"com.koard.sdk\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Extensions\/CharacterSet+URLEncoding.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Extensions\/CharacterSet+URLEncoding.swift",
       "kind": "StringLiteral",
       "offset": 797,
       "length": 3,
       "value": "\"\/\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/Extensions\/DateFormatter+Extensions.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/Extensions\/DateFormatter+Extensions.swift",
       "kind": "StringLiteral",
       "offset": 965,
       "length": 18,
       "value": "\"America\/New_York\""
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
       "kind": "BooleanLiteral",
       "offset": 4046,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/behailutekletsadik\/koard\/sdks\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
+      "filePath": "\/Users\/behailutekletsadik\/koard\/mobile\/koard-ios-internal\/Sources\/KoardMerchantSDK\/KoardMerchantSDK.swift",
       "kind": "BooleanLiteral",
       "offset": 4269,
       "length": 5,
