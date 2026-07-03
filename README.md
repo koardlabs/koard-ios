@@ -27,7 +27,7 @@ Built with Swift and modularized using Swift Package Manager, KoardSDK provides 
 Add this to your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/koardlabs/koard-ios.git", from: "1.0.19")
+.package(url: "https://github.com/koardlabs/koard-ios.git", from: "1.0.20")
 ```
 
 Then add `KoardSDK` as a dependency in your target.

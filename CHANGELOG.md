@@ -11,6 +11,76 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 > should be aware of; unless a release says otherwise, the public API is
 > unchanged.
 
+## [1.0.20] - 2026-07-03
+
+### Fixed
+
+- **Changing the API key now invalidates the stale merchant session.** When the
+  host app was reconfigured with a different Koard API key and relaunched, the
+  SDK restored the persisted session token / account / active location from the
+  **old** key's merchant and kept using it — so the app "didn't update" after a
+  key swap. `initialize(options:apiKey:)` now records a one-way SHA-256
+  fingerprint of the key and, when it changes, clears the persisted merchant
+  session (device enrollment is preserved) so the next request re-authenticates
+  under the new key. Mirrors the Android SDK's behavior; the raw key is never
+  stored — only its fingerprint.
+- **Reader no longer flashes `.preparing` on an unlinked device.** `prepare()`
+  set the reader status to `.preparing` *before* checking whether the account was
+  linked, so an unlinked prepare — notably the `didBecomeActive` observer
+  re-running after the merchant **declined** the Apple linking sheet — briefly
+  reported `.preparing` before snapping back to `.notReady`. `.preparing` is now
+  set only after the account is confirmed linked, so an unlinked device goes
+  straight to `.notReady` / `accountNotLinked` with no flicker.
+
+- **`logout()` now tears down the card-reader session.** It cleared the auth
+  token and Keychain but left the reader reporting the previous merchant's
+  `.ready`/`.linked` status and holding its prepared session. Logging out and
+  back in as a **different** merchant who wasn't linked yet then briefly showed
+  "card reader ready" for a few seconds before the new prepare resolved to
+  `accountNotLinked`. `logout()` now resets the reader (`status = .notReady`,
+  drops the session, recreates the reader) **and invalidates the cached
+  Tap-to-Pay token** (minted for the previous merchant, cached ~90 min) so no
+  stale readiness — or a wrong linked-state check against the old merchant's
+  token — leaks across a merchant switch. Without the token reset, a
+  freshly-logged-in **linked** merchant could briefly show "account not linked"
+  (the check ran against the previous, unlinked merchant's token).
+- **Switching locations no longer marks the reader "ready" against the previous
+  location's token.** `setActiveLocationID()` warms a fresh, location-specific
+  reader token in the background (keeping the old one usable). Now that `prepare()`
+  is faster (no per-prepare `isAccountLinked()` round-trip), it could win the race
+  with that refresh and mark the reader ready using the OLD location's token — an
+  instant, false "ready" on every switch. `prepare()` now detects a changed active
+  location, invalidates the cached token + stale session, and re-prepares against
+  the new location's token.
+
+### Added
+
+- `KoardMerchantSDKError.readerTokenInvalid(String?)` — thrown by `prepare()`
+  when the Tap to Pay reader token is empty/invalid/expired (commonly a
+  sandbox-vs-production environment mismatch). The SDK invalidates its cached
+  reader token when this is thrown so a retry fetches a fresh one.
+
+### Changed
+
+- **`prepare()` no longer pre-checks `isAccountLinked()` on every call.** It
+  previously ran an extra reader round-trip (under the reader lock) before every
+  prepare — added latency to a frequently-called path. It now calls
+  `reader.prepare()` directly and maps the `PaymentCardReaderError` it throws:
+  `.accountNotLinked` / `.accountLinkingCheckFailed` → `accountNotLinked`;
+  `.invalidReaderToken` / `.emptyReaderToken` / `.tokenExpired` /
+  `.prepareExpired` → `readerTokenInvalid` (and invalidates the cached token);
+  `.merchantBlocked` / `.accountDeactivated` → `blockedAccount`. It also no
+  longer pre-sets `.preparing` (progress still arrives via the reader's
+  `.configuring` events), so a failed prepare doesn't flash `.preparing`.
+
+- **`linkAccountAsync()` now surfaces link failures instead of swallowing them.**
+  It previously caught every error, recorded the reader status, and returned
+  normally — so `try await linkAccountAsync()` could not distinguish a successful
+  link from a declined/failed one. It now rethrows genuine errors (e.g. the
+  merchant declining Apple's linking sheet) while still treating an
+  "already linked" account as success. Callers that `try await` it should handle
+  the thrown error (e.g. keep presenting the link prompt on decline).
+
 ## [1.0.19] - 2026-07-02
 
 ### ⚠️ Behavior changes for integrators
@@ -167,6 +237,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
   demo / sample code. Baseline release for the public `koard-ios` distribution
   repo (binary `KoardSDK.xcframework` + SwiftPM `Package.swift` + podspec).
 
+[1.0.20]: https://github.com/koardlabs/koard-ios/compare/1.0.19...1.0.20
 [1.0.19]: https://github.com/koardlabs/koard-ios/compare/1.0.18...1.0.19
 [1.0.18]: https://github.com/koardlabs/koard-ios/compare/1.0.17...1.0.18
 [1.0.17]: https://github.com/koardlabs/koard-ios/compare/1.0.16...1.0.17
