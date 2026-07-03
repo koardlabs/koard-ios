@@ -13,7 +13,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 
 ## [1.0.20] - 2026-07-03
 
-### ⚠️ Behavior changes for integrators
+### Behavior changes for integrators
 
 - `linkAccountAsync()` now **throws** when linking fails or is declined (previously it never threw). Wrap the call in `try`/`catch` and handle the failure — e.g. keep showing your "link account" prompt.
 - `prepare()` can now throw the new `KoardMerchantSDKError.readerTokenInvalid`. Handle it in your `catch`; a retry typically recovers.
@@ -36,7 +36,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 
 ## [1.0.19] - 2026-07-02
 
-### ⚠️ Behavior changes for integrators
+### Behavior changes for integrators
 
 - **`prepare()` no longer auto-links the Tap to Pay account.** Previously
   `prepare()` (which also runs from the `didBecomeActive` observer) silently
@@ -76,7 +76,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 > non-`@frozen` enums), but they change the error/value you receive at runtime.
 > Update your `catch` / `switch` logic if you key off the old values.
 
-### ⚠️ Behavior changes for integrators
+### Behavior changes for integrators
 
 - **Tap to Pay cancellation now has its own error.** When the customer cancels
   at the Apple Tap to Pay sheet, `sale(...)`, `refund(..., withTap: true)`, and
