@@ -5,20 +5,15 @@ All notable changes to **KoardSDK** are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project aims to follow [Semantic Versioning](https://semver.org/).
 
-> The public SDK ships as a resilient binary `KoardSDK.xcframework`
-> (`BUILD_LIBRARY_FOR_DISTRIBUTION=YES`). The changes below introduce **no
-> breaking API or ABI changes** — all public method signatures are unchanged,
-> and the two new error cases are additive on non-`@frozen` enums (source- and
-> binary-compatible). They do, however, include **runtime behavior changes**
-> integrators should be aware of — see **⚠️ Behavior changes** under each
-> release. Recommended bump: **minor**.
+> KoardSDK is distributed as a resilient, **static** binary
+> `KoardSDK.xcframework` (built with `BUILD_LIBRARY_FOR_DISTRIBUTION=YES`).
+> Each release below lists any behavior, API, or ABI changes integrators
+> should be aware of; unless a release says otherwise, the public API is
+> unchanged.
 
 ## [1.0.19] - 2026-07-02
 
 ### ⚠️ Behavior changes for integrators
-
-These do not break compilation, but they change the error/value you receive at
-runtime. Update your `catch` / `switch` logic if you key off the old values:
 
 - **`prepare()` no longer auto-links the Tap to Pay account.** Previously
   `prepare()` (which also runs from the `didBecomeActive` observer) silently
@@ -29,6 +24,37 @@ runtime. Update your `catch` / `switch` logic if you key off the old values:
   and drive linking explicitly via the public `linkAccount()` API (this restores
   merchant-side control over how and when linking is presented). The background
   prepare retry loop treats not-linked as terminal and no longer retries it.
+
+### Added
+
+- `KoardMerchantSDKError.accountNotLinked` — thrown by `prepare()` when the
+  device isn't linked to the merchant's Tap to Pay account, so callers can guard
+  it and explicitly call `linkAccount()` instead of the SDK silently presenting
+  the Apple linking sheet.
+
+### Fixed
+
+- **Endless Tap to Pay account-linking prompt after a decline.** A merchant who
+  declined the Apple account-linking sheet was re-prompted on every app
+  activation, because `prepare()` (run from `didBecomeActive`) auto-linked and
+  the retry loop re-presented the sheet. `prepare()` now surfaces
+  `accountNotLinked` and leaves linking to the explicit `linkAccount()` call
+  (see **Behavior changes**), breaking the loop.
+- **Reader stuck reporting `.preparing` on an unlinked account.** `prepare()`
+  set the reader status to `.preparing` before the linked-account check; when the
+  account wasn't linked it threw without clearing the status, so callers polling
+  `status` saw `.preparing` forever (the UI showed "preparing card reader"
+  indefinitely). The status is now reset to `.notReady` before the
+  `accountNotLinked` error is thrown.
+
+## [1.0.18] - 2026-06-24
+
+> These do not break compilation or ABI (the new error cases are additive on
+> non-`@frozen` enums), but they change the error/value you receive at runtime.
+> Update your `catch` / `switch` logic if you key off the old values.
+
+### ⚠️ Behavior changes for integrators
+
 - **Tap to Pay cancellation now has its own error.** When the customer cancels
   at the Apple Tap to Pay sheet, `sale(...)`, `refund(..., withTap: true)`, and
   the pre-auth flow now throw `KoardMerchantSDKError.TTPPaymentFailed(.canceled)`.
@@ -55,18 +81,6 @@ runtime. Update your `catch` / `switch` logic if you key off the old values:
 
 ### Fixed
 
-- **Endless Tap to Pay account-linking prompt after a decline.** A merchant who
-  declined the Apple account-linking sheet was re-prompted on every app
-  activation, because `prepare()` (run from `didBecomeActive`) auto-linked and
-  the retry loop re-presented the sheet. `prepare()` now surfaces
-  `accountNotLinked` and leaves linking to the explicit `linkAccount()` call
-  (see **Behavior changes**), breaking the loop.
-- **Reader stuck reporting `.preparing` on an unlinked account.**
-  `prepare()` set the reader status to `.preparing` before the linked-account
-  check; when the account wasn't linked it threw without clearing the status, so
-  callers polling `status` saw `.preparing` forever (the UI showed "preparing
-  card reader" indefinitely). The status is now reset to `.notReady` before the
-  `accountNotLinked` error is thrown.
 - **`logout()` no longer wipes the host app's Keychain.** `logout()` previously
   issued a blanket Keychain delete scoped to the app's service, removing **all**
   generic-password items the host app owned — not just Koard's. It now deletes
@@ -108,10 +122,6 @@ runtime. Update your `catch` / `switch` logic if you key off the old values:
   `TransactionResponse`) — optional `String?` reporting the device that
   originated the transaction. Additive and decoded via `decodeIfPresent`, so
   existing decoders are unaffected.
-- `KoardMerchantSDKError.accountNotLinked` — thrown by `prepare()` when the
-  device isn't linked to the merchant's Tap to Pay account, so callers can guard
-  it and explicitly call `linkAccount()` instead of the SDK silently presenting
-  the Apple linking sheet.
 - `KoardMerchantSDKError.rateLimited(message:)` — HTTP 429.
 - `KoardMerchantSDKError.TTPPaymentError.canceled` — customer canceled at the
   Tap to Pay sheet (a benign outcome, distinct from a failure).
@@ -130,3 +140,34 @@ runtime. Update your `catch` / `switch` logic if you key off the old values:
   `429` → `.rateLimited`, other non-2xx (`404`/`408`/`5xx`/…) → `.server` with a
   readable message and the status code.
 
+## [1.0.17] - 2026-05-13
+
+### Added
+
+- **Partial approval flow.** `preauth(...)` and `sale(...)` now accept an
+  optional `partialAuthTransactionId` to complete the remaining amount of a
+  partial approval. New `KoardTransaction` properties: `isPartialApproval`,
+  `authorizedAmount`, `remainingAmount`. New `StatusReason.partialApproval` case.
+
+### Changed
+
+- `KoardDescribableError` now conforms to `LocalizedError`, exposing
+  `errorDescription` and `failureReason` directly.
+- **Distribution: KoardSDK now ships as a static framework** (previously
+  dynamic). The public API is unchanged. If Xcode warns that
+  `KoardSDK.framework` is missing an executable, change the `KoardSDK.xcframework`
+  entry under your app target's **General → Frameworks & Libraries** from
+  **Embed & Sign** to **Do Not Embed**, clean the build folder (⌘⇧K), and rebuild.
+
+## [1.0.16] - 2026-02-10
+
+### Changed
+
+- Migrated the public distribution off the `develop` branch and refreshed the
+  demo / sample code. Baseline release for the public `koard-ios` distribution
+  repo (binary `KoardSDK.xcframework` + SwiftPM `Package.swift` + podspec).
+
+[1.0.19]: https://github.com/koardlabs/koard-ios/compare/1.0.18...1.0.19
+[1.0.18]: https://github.com/koardlabs/koard-ios/compare/1.0.17...1.0.18
+[1.0.17]: https://github.com/koardlabs/koard-ios/compare/1.0.16...1.0.17
+[1.0.16]: https://github.com/koardlabs/koard-ios/compare/1.0.15...1.0.16
