@@ -11,9 +11,32 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 > should be aware of; unless a release says otherwise, the public API is
 > unchanged.
 
+## [1.0.20] - 2026-07-03
+
+### Behavior changes for integrators
+
+- `linkAccountAsync()` now **throws** when linking fails or is declined (previously it never threw). Wrap the call in `try`/`catch` and handle the failure — e.g. keep showing your "link account" prompt.
+- `prepare()` can now throw the new `KoardMerchantSDKError.readerTokenInvalid`. Handle it in your `catch`; a retry typically recovers.
+- Changing the API key resets the session — after reconfiguring the SDK with a different key, log in again before making requests.
+
+### Fixed
+
+- Reconfiguring the SDK with a different API key now starts a fresh session instead of reusing the previous one.
+- The card reader no longer briefly shows "ready" after logout, or when switching merchant or location.
+- An unlinked device no longer flashes "preparing" before reporting that the account isn't linked.
+- Account-linking failures are now reported to the caller instead of being silently ignored.
+
+### Added
+
+- `KoardMerchantSDKError.readerTokenInvalid` — reported when the reader token is rejected (for example, a token used against the wrong environment).
+
+### Changed
+
+- Card-reader preparation is faster.
+
 ## [1.0.19] - 2026-07-02
 
-### ⚠️ Behavior changes for integrators
+### Behavior changes for integrators
 
 - **`prepare()` no longer auto-links the Tap to Pay account.** Previously
   `prepare()` (which also runs from the `didBecomeActive` observer) silently
@@ -53,7 +76,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 > non-`@frozen` enums), but they change the error/value you receive at runtime.
 > Update your `catch` / `switch` logic if you key off the old values.
 
-### ⚠️ Behavior changes for integrators
+### Behavior changes for integrators
 
 - **Tap to Pay cancellation now has its own error.** When the customer cancels
   at the Apple Tap to Pay sheet, `sale(...)`, `refund(..., withTap: true)`, and
@@ -167,6 +190,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
   demo / sample code. Baseline release for the public `koard-ios` distribution
   repo (binary `KoardSDK.xcframework` + SwiftPM `Package.swift` + podspec).
 
+[1.0.20]: https://github.com/koardlabs/koard-ios/compare/1.0.19...1.0.20
 [1.0.19]: https://github.com/koardlabs/koard-ios/compare/1.0.18...1.0.19
 [1.0.18]: https://github.com/koardlabs/koard-ios/compare/1.0.17...1.0.18
 [1.0.17]: https://github.com/koardlabs/koard-ios/compare/1.0.16...1.0.17

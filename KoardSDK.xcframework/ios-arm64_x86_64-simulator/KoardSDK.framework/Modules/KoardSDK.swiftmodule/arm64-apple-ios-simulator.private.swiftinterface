@@ -3,6 +3,7 @@
 // swift-module-flags: -target arm64-apple-ios17.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name KoardSDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.3
 import Combine
+import CryptoKit
 import Foundation
 import ProximityReader
 import Security
@@ -758,6 +759,7 @@ public enum KoardMerchantSDKError : Swift.Error, KoardSDK.KoardDescribableError 
   case failedToConfirmSurcharge(any Swift.Error)
   case invalidParameters(Swift.String)
   case accountNotLinked
+  case readerTokenInvalid(Swift.String?)
   public enum TTPConfigurationError : Swift.Error {
     case noReader
     case noReaderIdentifier(any Swift.Error)

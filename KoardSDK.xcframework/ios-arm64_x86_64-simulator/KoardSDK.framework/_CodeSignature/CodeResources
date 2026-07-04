@@ -22,27 +22,27 @@
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		6+gJ419edCoQZ8u1fw1XzcE9vIs=
+		DS1J42cu+PXKaxa2+jY0Vi6TcYE=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		qd0F3DZWP9EBDWfjQQ0Aj88/VZ8=
+		ZiErueVamv3qqxYbeqRfHGIJW4E=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		6+gJ419edCoQZ8u1fw1XzcE9vIs=
+		DS1J42cu+PXKaxa2+jY0Vi6TcYE=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		WXlPZXipttOKjPG9sjYR/Xy0TrE=
+		iIlZ4lZgMyxZloSo+R6+mT4kl/k=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		pymw9tNke5LfSj2MmpziuRBE344=
+		lenWg2Ymw5aPA1onHDNrNFrlQK0=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		WXlPZXipttOKjPG9sjYR/Xy0TrE=
+		iIlZ4lZgMyxZloSo+R6+mT4kl/k=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -76,42 +76,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LriG3VeYuwFEb1EhsiThf3utMA5PnHVyq5N6WNJ4SuA=
+			T0TAd7TtueePFJ3Kr0uUWf/NEJzMeR1v94R+eVEmnLc=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aQPnwkwYjGWtGijgaKxr/qEZ4k4B0WOVDOlFenBtSrY=
+			oyIofKQcLMzUrUDDPvn6TsEasY89pM6QOevdtve2xFI=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LriG3VeYuwFEb1EhsiThf3utMA5PnHVyq5N6WNJ4SuA=
+			T0TAd7TtueePFJ3Kr0uUWf/NEJzMeR1v94R+eVEmnLc=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RfkPqzh6v8cQ/oQ42MFIpihb8/P1eH409Atxv4vaw3I=
+			RzpczDW4v0gQ0zKPLL4A60GR2JDOIKrGDXXORYV4pRU=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			283uKSeSM/UgE5/bFJT8x8YfAJA/qJq3xc8/BI1hG/c=
+			XKeYuHT85ZEZweaSwR4aLAYcWHbFsn19hXq2It9VYMc=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RfkPqzh6v8cQ/oQ42MFIpihb8/P1eH409Atxv4vaw3I=
+			RzpczDW4v0gQ0zKPLL4A60GR2JDOIKrGDXXORYV4pRU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
