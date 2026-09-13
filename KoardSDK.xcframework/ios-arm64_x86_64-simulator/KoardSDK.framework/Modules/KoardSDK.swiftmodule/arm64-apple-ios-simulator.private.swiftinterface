@@ -681,6 +681,7 @@ public enum KoardPaymentProcessingEvent : Swift.Sendable {
 @available(iOS 17.0, *)
 extension KoardSDK.KoardMerchantSDK {
   public func deinitializeCardReader()
+  public func `deinit`()
   public func initialize(options: KoardSDK.KoardOptions, apiKey: Swift.String)
   public func prepare() async throws
 }
@@ -693,8 +694,9 @@ public class SimpleOSLogger {
   public func verbose(_ message: Swift.String)
   @objc deinit
 }
-public struct AnyCodable : Swift.Decodable {
+public struct AnyCodable : Swift.Codable {
   public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
   public var stringValue: Swift.String? {
     get
   }
@@ -805,13 +807,13 @@ extension ProximityReader.PaymentCardReaderSession.ReadError {
 @available(iOS 17.0, *)
 extension KoardSDK.KoardMerchantSDK {
   public func reverse(transactionId: Swift.String, amount: Swift.Int? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func refund(transactionId: Swift.String, amount: Swift.Int? = nil, eventId: Swift.String? = nil, withTap: Swift.Bool = false) async throws -> KoardSDK.TransactionResponse
-  public func refund(transactionID: Swift.String, amount: Swift.Int?, eventId: Swift.String? = nil, cardReadData: KoardSDK.CardReadData? = nil) async throws -> KoardSDK.TransactionResponse
+  public func refund(transactionId: Swift.String, amount: Swift.Int? = nil, eventId: Swift.String? = nil, withTap: Swift.Bool = false, metadata: [Swift.String : Any]? = nil) async throws -> KoardSDK.TransactionResponse
+  public func refund(transactionID: Swift.String, amount: Swift.Int?, eventId: Swift.String? = nil, cardReadData: KoardSDK.CardReadData? = nil, metadata: [Swift.String : Any]? = nil) async throws -> KoardSDK.TransactionResponse
   public func getTransaction(transactionId: Swift.String) async throws -> KoardSDK.KoardTransaction
   public func tipAdjust(transactionId: Swift.String, amount: Swift.Int, tipType: KoardSDK.PaymentBreakdown.TipType?, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
   public func capture(transactionId: Swift.String, amount: Swift.Int? = nil, breakdown: KoardSDK.PaymentBreakdown? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func preauth(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .auth, partialAuthTransactionId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
-  public func sale(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .sale, partialAuthTransactionId: Swift.String? = nil) async throws -> KoardSDK.TransactionResponse
+  public func preauth(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .auth, partialAuthTransactionId: Swift.String? = nil, metadata: [Swift.String : Any]? = nil) async throws -> KoardSDK.TransactionResponse
+  public func sale(amount: Swift.Int, breakdown: KoardSDK.PaymentBreakdown?, currency: KoardSDK.CurrencyCode, eventId: Swift.String? = nil, type: KoardSDK.PaymentType = .sale, partialAuthTransactionId: Swift.String? = nil, metadata: [Swift.String : Any]? = nil) async throws -> KoardSDK.TransactionResponse
   public func partialAuthApproval(transactionId: Swift.String, approve: Swift.Bool, eventId: Swift.String? = nil) async throws -> KoardSDK.KoardTransaction
   public func confirm(transaction transactionID: Swift.String, confirm: Swift.Bool, amount: Swift.Int? = nil, breakdown: KoardSDK.PaymentBreakdown? = nil, eventId: Swift.String? = nil) async throws -> KoardSDK.KoardTransaction
 }
@@ -876,6 +878,9 @@ public class KoardMerchantSDK : ObjectiveC.NSObject {
     get
   }
   public var isReaderSupported: Swift.Bool {
+    get
+  }
+  public var isInitialized: Swift.Bool {
     get
   }
   final public let readerViewModel: KoardSDK.ProximityReaderViewModel

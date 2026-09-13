@@ -14,23 +14,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		o8dS5mXIAqbLNo4D3ovmpWPViLs=
+		HjrVAMdVfbva3NoMtuyeUzrIIfs=
 		</data>
 		<key>KoardMerchantSDK.md</key>
 		<data>
-		AX4qt8Kaix8rFdyfQ0xaXuHTqmY=
+		TETIvZNTspWydtxnpBIZ3T+DFBQ=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		I0CIwkUD182Rcz9+opRA/IzKKZ8=
+		cePbPVSY7wRQfNRb8Khb1CSI2gA=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		1At/AC5a1GjMMzrB1EH8prP9Ckg=
+		gCpMPg+dWOpjTKErd3LlDDVZ7x0=
 		</data>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		I0CIwkUD182Rcz9+opRA/IzKKZ8=
+		cePbPVSY7wRQfNRb8Khb1CSI2gA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -57,28 +57,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NPf+SqLiHVFPmjwWneKXtjDo+uV0ken3HL6hleFxt3Y=
+			4U/i88OppzfYHH4Mm9cuWSXjzQQVQdALdGeEINIkrY4=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KHZDFpFDDdSjVq74qoHe/pq8lPa4+oS6M3EKxRY9z4g=
+			ET8uo/1QYUJOO+ktzsUQH/5q2WmyqaTrD8D6A7Vqowc=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ttKTkE0qaH7DvBYxVsBTccp0ZkKY80yQ1XIJGM8VqRg=
+			OnH+Y+GEYhEp+NralgzuTu/JB4A9BakR33oulP2jwFA=
 			</data>
 		</dict>
 		<key>Modules/KoardSDK.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KHZDFpFDDdSjVq74qoHe/pq8lPa4+oS6M3EKxRY9z4g=
+			ET8uo/1QYUJOO+ktzsUQH/5q2WmyqaTrD8D6A7Vqowc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

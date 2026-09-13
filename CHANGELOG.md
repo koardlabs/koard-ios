@@ -11,6 +11,14 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 > should be aware of; unless a release says otherwise, the public API is
 > unchanged.
 
+## [1.0.21] - 2026-09-13
+
+### Added
+
+- Sales, authorizations, and refunds accept optional transaction metadata.
+- `deinit()` lets apps deinitialize the SDK and initialize it again without restarting.
+- `isInitialized` reports whether the SDK is initialized.
+
 ## [1.0.20] - 2026-07-03
 
 ### Behavior changes for integrators
@@ -190,6 +198,7 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
   demo / sample code. Baseline release for the public `koard-ios` distribution
   repo (binary `KoardSDK.xcframework` + SwiftPM `Package.swift` + podspec).
 
+[1.0.21]: https://github.com/koardlabs/koard-ios/compare/1.0.20...1.0.21
 [1.0.20]: https://github.com/koardlabs/koard-ios/compare/1.0.19...1.0.20
 [1.0.19]: https://github.com/koardlabs/koard-ios/compare/1.0.18...1.0.19
 [1.0.18]: https://github.com/koardlabs/koard-ios/compare/1.0.17...1.0.18
