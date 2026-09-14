@@ -10,6 +10,7 @@ This SDK allows merchants to authenticate, process transactions, manage location
 
 ### Getting Started
 - ``initialize(options:apiKey:)``
+- ``deinit()``
 - ``presentTutorial(from:)``
 
 ### Authentication
@@ -30,12 +31,12 @@ This SDK allows merchants to authenticate, process transactions, manage location
 - ``deinitializeCardReader()``
 
 ### Transactions
-- ``sale(amount:breakdown:currency:eventId:type:)``
-- ``refund(transactionId:amount:eventId:)``
+- ``sale(amount:breakdown:currency:eventId:type:partialAuthTransactionId:metadata:)``
+- ``refund(transactionId:amount:eventId:withTap:metadata:)``
 - ``tipAdjust(transactionId:amount:tipType:eventId:)``
 - ``reverse(transactionId:amount:eventId:)``
 - ``capture(transactionId:amount:breakdown:eventId:)``
-- ``preauth(amount:breakdown:currency:eventId:type:)``
+- ``preauth(amount:breakdown:currency:eventId:type:partialAuthTransactionId:metadata:)``
 - ``confirm(transactionID:confirm:amount:breakdown:)``
 
 ### Transaction Queries

@@ -27,7 +27,7 @@ Built with Swift and modularized using Swift Package Manager, KoardSDK provides 
 Add this to your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/koardlabs/koard-ios.git", from: "1.0.20")
+.package(url: "https://github.com/koardlabs/koard-ios.git", from: "1.0.21")
 ```
 
 Then add `KoardSDK` as a dependency in your target.
@@ -71,12 +71,25 @@ are `async throws` and throw `KoardMerchantSDKError` (see [Error Handling](#-err
 ### Setup
 
 ```swift
-// Call once, early in app launch.
+// Initialize before using the SDK.
 sdk.initialize(
     options: KoardOptions(environment: .uat, loggingLevel: .debug),
     apiKey: "your-api-key"
 )
 ```
+
+Read `sdk.isInitialized` to check initialization state. It is `false` before
+initialization and after `deinit()`; it does not indicate whether the merchant
+is signed in or the card reader is ready.
+
+To tear down the SDK:
+
+```swift
+sdk.deinit()
+```
+
+Call `initialize` again and sign in before resuming payments. The app does not
+need to restart.
 
 ### Authentication
 
@@ -146,6 +159,17 @@ let partial = try await sdk.partialAuthApproval(transactionId: sale.transactionI
 
 // Confirm/decline a pending surcharge
 let confirmed = try await sdk.confirm(transaction: sale.transactionId, confirm: true)
+```
+
+Sales, pre-authorizations, and refunds accept an optional `metadata` JSON object:
+
+```swift
+let sale = try await sdk.sale(
+    amount: 1288,
+    breakdown: breakdown,
+    currency: usd,
+    metadata: ["order_id": "order-123", "source": "mobile"]
+)
 ```
 
 ### Transactions — lookup & history
