@@ -11,6 +11,12 @@ and this project aims to follow [Semantic Versioning](https://semver.org/).
 > should be aware of; unless a release says otherwise, the public API is
 > unchanged.
 
+## [Unreleased]
+
+### Changed
+
+- The SDK is now licensed under the Koard SDK License Agreement, the same license as the Koard Android SDK. See [LICENSE](LICENSE). Releases up to 1.0.21 were published under the MIT License.
+
 ## [1.0.21] - 2026-09-13
 
 ### Added

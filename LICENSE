@@ -1,21 +1,53 @@
-MIT License
+Koard SDK License Agreement
 
-Copyright (c) 2025 Koard
+Copyright (c) 2026 Koard Labs. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This license governs use of the Koard Merchant SDK and any accompanying
+files, documentation, and materials (collectively, the "SDK"). By
+downloading, installing, or using the SDK, you agree to these terms. If you
+do not agree, do not use the SDK.
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+1. Grant of License.
+   Subject to your continued compliance with these terms, Koard Labs grants
+   you a limited, non-exclusive, non-transferable, non-sublicensable,
+   revocable license to use the SDK solely to build and operate your own
+   applications that integrate with Koard services.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+2. Restrictions.
+   You may NOT, without Koard Labs' prior express written consent:
+   (a) commercialize, sell, lease, rent, sublicense, or otherwise exploit
+       the SDK, or any portion of it, for commercial gain independent of
+       your permitted use of Koard services;
+   (b) modify, adapt, translate, or create derivative works of the SDK;
+   (c) reuse, redistribute, republish, or otherwise make the SDK or its
+       components available outside of your own integrating application;
+   (d) reverse engineer, decompile, or disassemble the SDK, except to the
+       limited extent applicable law expressly permits despite this
+       restriction; or
+   (e) remove or obscure any proprietary notices in the SDK.
+
+3. Ownership.
+   The SDK is licensed, not sold. Koard Labs and its licensors retain all
+   right, title, and interest in and to the SDK, including all intellectual
+   property rights therein. No rights are granted except as expressly set
+   out in this agreement.
+
+4. No Warranty.
+   THE SDK IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF ANY
+   KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
+   NON-INFRINGEMENT.
+
+5. Limitation of Liability.
+   TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL KOARD LABS BE
+   LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY
+   DAMAGES, OR FOR ANY CLAIM OR DAMAGES ARISING FROM OR IN CONNECTION WITH
+   THE SDK OR ITS USE, WHETHER IN CONTRACT, TORT, OR OTHERWISE.
+
+6. Termination.
+   This license terminates automatically and immediately if you breach any
+   of these terms. Upon termination you must cease all use of the SDK and
+   destroy all copies in your possession or control.
+
+For commercialization rights or any other permissions, contact
+support@koard.com.

@@ -1144,7 +1144,7 @@ do {
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
+Koard SDK License Agreement. See [LICENSE](LICENSE) for details.
 
 ---
 
